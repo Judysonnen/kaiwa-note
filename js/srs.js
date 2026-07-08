@@ -7,6 +7,7 @@
 // weights them accordingly and the queue serves grammar/sentences first.
 
 import { fsrs, createEmptyCard, Rating } from './vendor/ts-fsrs.mjs';
+import { touch, push } from './sync.js';
 
 const STORE_KEY = 'kaiwa-note:srs:v1';
 const META_KEY = 'kaiwa-note:meta:v1';
@@ -32,6 +33,8 @@ function loadJson(key) {
 
 function saveJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+  touch();
+  push(); // no-op unless cloud sync is configured
 }
 
 export function todayKey(now = new Date()) {

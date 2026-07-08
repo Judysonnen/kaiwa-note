@@ -14,3 +14,11 @@ Commit messages in English.
 
 To preview locally: `python3 -m http.server` in the repo root (fetch() needs a
 server; opening index.html from file:// will not work).
+## Cloud sync (optional)
+
+Review progress lives in localStorage; the Pages Function in
+functions/api/state.js backs it up to Cloudflare KV so devices share
+progress. One-time setup in the Cloudflare dashboard: create a KV
+namespace, bind it to the Pages project as `STATE`, set a secret env
+var `SYNC_TOKEN`, redeploy, then tap 同期 in the site footer on each
+device and enter the token. Without setup the site stays local-only.

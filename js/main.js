@@ -1,6 +1,7 @@
 import { renderPitch } from './pitch.js';
 import { speakJa, speakSeq, speakButton } from './tts.js';
 import { dateInfo, timeInfo } from './clock.js';
+import { pull, push, getToken, setToken } from './sync.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
   isSeen, addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
@@ -590,5 +591,17 @@ async function route() {
   updateDueBadge();
 }
 
+document.getElementById('sync-setup')?.addEventListener('click', async () => {
+  const t = prompt('云同步密钥（需与 Cloudflare 里的 SYNC_TOKEN 一致；留空关闭同步）', getToken());
+  if (t === null) return;
+  setToken(t.trim());
+  if (t.trim()) {
+    await pull();
+    push();
+  }
+  route();
+});
+
 window.addEventListener('hashchange', route);
-route();
+// Adopt newer cloud progress (if sync is configured) before first render.
+pull().finally(route);
