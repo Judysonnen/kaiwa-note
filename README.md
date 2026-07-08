@@ -1,4 +1,4 @@
-# にほんごノート
+# かいわノート
 
 My Japanese lessons are one-on-one conversation practice, and the notes that
 come out of them are wonderful but messy: new words, grammar patterns and

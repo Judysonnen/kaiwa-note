@@ -1,7 +1,7 @@
-# nihongo-note
+# kaiwa-note
 
 Static site (no build step): plain HTML + ES modules, deployed to Cloudflare
-Pages at nihongo-note.pages.dev. Review scheduling uses the vendored ts-fsrs
+Pages at kaiwa-note.pages.dev. Review scheduling uses the vendored ts-fsrs
 bundle in `js/vendor/`; review progress lives in the browser's localStorage,
 lesson content lives in `data/`.
 

@@ -4,7 +4,7 @@
 
 import { fsrs, createEmptyCard, Rating } from './vendor/ts-fsrs.mjs';
 
-const STORE_KEY = 'nihongo-note:srs:v1';
+const STORE_KEY = 'kaiwa-note:srs:v1';
 const scheduler = fsrs();
 
 export { Rating };
