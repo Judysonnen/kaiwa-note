@@ -61,7 +61,9 @@ Chinese strings walking through the sentence's grammar for a beginner — why
 each conjugation/particle/form is used (e.g. why て-form here, why plain ない
 before ので). Write these at import time; assume Di has NOT seen the pattern
 before. Sentences are reviewed as production cards (Chinese front, Japanese
-back), so `zh` should read as a natural prompt for saying the Japanese.
+back), so `zh` should read as a natural prompt for saying the Japanese —
+never include meta markers like （示例）; context clarifiers like （吃火锅）
+are fine.
 
 Review is sentences-only (`NEW_MIX` in `js/srs.js`); grammar and vocab are
 notebook reference material, and their content should be woven into the
