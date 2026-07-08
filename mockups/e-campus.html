@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案E・大学ノート</title>
+<style>
+:root {
+  --paper: #FFFFFF;
+  --line-blue: #C9DDEF;
+  --margin-red: #E8A0A8;
+  --ink: #1E3A5F;      /* navy ink */
+  --ink-strong: #16294A;
+  --soft: #5C7391;
+  --muted: #93A6BC;
+  --red: #D6494F;      /* red pen */
+  --marker: #FFF3A6;   /* highlighter */
+  --sans: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
+  --lh: 34px;          /* ruled line height */
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #EEF1F4; font-family: var(--sans); color: var(--ink); }
+
+/* the notebook page */
+.sheet {
+  max-width: 44rem;
+  margin: 1.5rem auto;
+  background:
+    repeating-linear-gradient(transparent 0, transparent calc(var(--lh) - 1px), var(--line-blue) calc(var(--lh) - 1px), var(--line-blue) var(--lh));
+  background-color: var(--paper);
+  border-radius: 4px;
+  box-shadow: 0 2px 14px rgba(30, 58, 95, 0.12);
+  position: relative;
+  padding: var(--lh) 2rem calc(var(--lh) * 2) 4.4rem;
+  line-height: var(--lh);
+}
+/* red margin line */
+.sheet::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 3.4rem;
+  width: 2px;
+  background: var(--margin-red);
+}
+/* binder holes */
+.sheet::after {
+  content: "";
+  position: absolute;
+  top: 90px; left: 1.1rem;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #EEF1F4;
+  box-shadow: inset 0 1px 3px rgba(30,58,95,0.25), 0 260px 0 #EEF1F4, 0 260px 3px -1px rgba(30,58,95,0.15) , inset 0 1px 3px rgba(30,58,95,0.25);
+}
+
+.head { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.brand { font-weight: 800; font-size: 1.3rem; color: var(--ink-strong); letter-spacing: 0.02em; }
+.brand .hl { background: linear-gradient(transparent 55%, var(--marker) 55%, var(--marker) 95%, transparent 95%); padding: 0 0.1em; }
+.nav { margin-left: auto; display: flex; gap: 1.2rem; font-size: 0.9rem; font-weight: 600; }
+.nav a { color: var(--soft); text-decoration: none; }
+.nav a.on { color: var(--red); border-bottom: 2px solid var(--red); }
+.badge { display: inline-block; background: var(--red); color: #fff; border-radius: 999px; font-size: 0.7rem; padding: 0 0.45em; vertical-align: 0.15em; }
+
+.date-line { color: var(--muted); font-size: 0.82rem; }
+h1 { font-size: 1.25rem; color: var(--ink-strong); font-weight: 800; }
+h1 .hl { background: linear-gradient(transparent 55%, var(--marker) 55%, var(--marker) 95%, transparent 95%); }
+
+.tag {
+  display: inline-block;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  padding: 0 0.9rem;
+  line-height: calc(var(--lh) - 8px);
+  margin-top: var(--lh);
+  background: var(--paper);
+}
+.tag.red { border-color: var(--red); color: var(--red); }
+
+.vrow { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+.w { font-weight: 800; font-size: 1.15rem; color: var(--ink-strong); }
+.w rt { font-size: 0.55rem; font-weight: 400; color: var(--soft); }
+.pitch { display: inline-flex; font-size: 0.9rem; }
+.pitch .m { border-top: 2px solid transparent; padding: 0 0.02em; }
+.pitch .hi { border-top-color: var(--red); }
+.pitch .drop { border-right: 2px solid var(--red); }
+.mean { color: var(--soft); font-size: 0.85rem; }
+.spk { border: 1.5px solid var(--line-blue); background: #fff; color: var(--ink); border-radius: 50%; width: 1.7rem; height: 1.7rem; font-size: 0.7rem; cursor: pointer; vertical-align: middle; }
+
+.gpat { font-weight: 800; font-size: 1.1rem; color: var(--ink-strong); }
+.gpat .circle { border: 2px solid var(--red); border-radius: 50% 46% 52% 48% / 62% 55% 60% 52%; padding: 0 0.5em; display: inline-block; line-height: calc(var(--lh) - 6px); }
+.gexp { color: var(--soft); font-size: 0.88rem; }
+.gzh { background: #F2F7FC; border-left: 3px solid var(--ink); font-size: 0.85rem; color: var(--soft); padding: 0 0.8rem; margin: 0; line-height: calc(var(--lh) - 4px); }
+.gex { font-size: 0.95rem; }
+.gex .zh { color: var(--muted); font-size: 0.82rem; margin-left: 0.8em; }
+
+.sent .ja { font-weight: 600; }
+.sent .zh { color: var(--muted); font-size: 0.85rem; }
+
+/* review card: an index card clipped to the page */
+.rzone { text-align: center; margin-top: var(--lh); }
+.rcard {
+  display: inline-block;
+  background: #FDFDFB;
+  border: 1.5px solid var(--line-blue);
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(30,58,95,0.15);
+  padding: 1.6rem 2.4rem 1.3rem;
+  transform: rotate(-0.6deg);
+  position: relative;
+  line-height: 1.7;
+  min-width: 20rem;
+}
+.rcard::before { /* paperclip-ish tab */
+  content: "復習";
+  position: absolute; top: -0.8rem; left: 50%; transform: translateX(-50%);
+  background: var(--red); color: #fff; font-size: 0.68rem; letter-spacing: 0.25em;
+  padding: 0.1rem 0.9rem; border-radius: 3px; font-weight: 800;
+}
+.rcard .front { font-size: 1.25rem; font-weight: 700; color: var(--ink-strong); margin-top: 0.4rem; }
+.rcard .hint { color: var(--muted); font-size: 0.78rem; }
+.grades { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem; }
+.grades button { font-family: inherit; border: 1.5px solid var(--ink); background: #fff; color: var(--ink); border-radius: 6px; padding: 0.45rem 0.9rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+.grades .again { border-color: var(--red); color: var(--red); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="head">
+    <span class="brand">かいわ<span class="hl">ノート</span></span>
+    <nav class="nav"><a class="on" href="#">きょう <span class="badge">10</span></a><a href="#">ノート</a></nav>
+  </div>
+  <div class="date-line">2026年7月8日（水）</div>
+  <h1>今日のテーマ：<span class="hl">趣味と読書の話</span></h1>
+
+  <div class="tag">たんご</div>
+  <div class="vrow"><span class="w"><ruby>趣味<rt>しゅみ</rt></ruby></span><span class="pitch"><span class="m hi drop">しゅ</span><span class="m">み</span></span><span class="mean">hobby</span><button class="spk">🔊</button></div>
+  <div class="vrow"><span class="w"><ruby>諦<rt>あきら</rt></ruby>める</span><span class="pitch"><span class="m">あ</span><span class="m hi">き</span><span class="m hi">ら</span><span class="m hi drop">め</span><span class="m">る</span></span><span class="mean">to give up</span><button class="spk">🔊</button></div>
+  <div class="vrow"><span class="w"><ruby>作家<rt>さっか</rt></ruby></span><span class="pitch"><span class="m">さっ</span><span class="m hi">か</span></span><span class="mean">writer, author</span><button class="spk">🔊</button></div>
+
+  <div class="tag red">ぶんぽう</div>
+  <div class="gpat"><span class="circle">Verb + たいです</span></div>
+  <div class="gexp">want to do something</div>
+  <div class="gzh">接续：动词ます形去掉ます＋たい。表示第一人称「想做某事」。たい按い形容词变化。</div>
+  <div class="gex">🔊 ピアノも習いたいです<span class="zh">也想学钢琴。</span></div>
+
+  <div class="tag">れいぶん</div>
+  <div class="sent"><div class="ja">🔊 何を弾きたいかによってちがいます</div><div class="zh">取决于你想弹什么。</div></div>
+  <div class="sent"><div class="ja">🔊 ミステリーだけじゃなくてノンフィクションも読みます</div><div class="zh">不只推理小说，也读非虚构。</div></div>
+
+  <div class="rzone">
+    <div class="rcard">
+      <div class="front">取决于你想弹什么。</div>
+      <div class="hint">日本語で言ってみましょう</div>
+      <div class="grades">
+        <button class="again">もう一度</button><button>難しい</button><button>普通</button><button>簡単</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

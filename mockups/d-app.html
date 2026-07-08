@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案D・モダンアプリ</title>
+<style>
+:root {
+  --bg: #F4F5FA;
+  --card: #FFFFFF;
+  --ink: #23252F;
+  --soft: #6B6E7E;
+  --muted: #9DA0B0;
+  --violet: #6C5CE7;
+  --violet-deep: #5343C9;
+  --violet-soft: #EEEBFD;
+  --mint: #00C9A7;
+  --mint-soft: #DFF7F1;
+  --peach: #FF8A70;
+  --peach-soft: #FFEBE5;
+  --sans: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--sans); line-height: 1.7; padding-bottom: 7rem; }
+.wrap { max-width: 30rem; margin: 0 auto; padding: 1.2rem 1.25rem; }
+
+.top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.logo { font-weight: 800; font-size: 1.15rem; letter-spacing: 0.02em; }
+.logo em { font-style: normal; color: var(--violet); }
+.avatar { width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--violet-soft); display: flex; align-items: center; justify-content: center; }
+
+/* hero: today's session */
+.hero {
+  background: linear-gradient(135deg, var(--violet) 0%, #8E7CF3 60%, #A99BF7 100%);
+  border-radius: 24px;
+  color: #fff;
+  padding: 1.6rem 1.5rem 1.5rem;
+  box-shadow: 0 12px 28px rgba(108, 92, 231, 0.35);
+  margin-bottom: 1.2rem;
+}
+.hero .eyebrow { font-size: 0.78rem; opacity: 0.85; font-weight: 600; letter-spacing: 0.1em; }
+.hero .big { font-size: 2.4rem; font-weight: 800; line-height: 1.25; margin: 0.2rem 0 0.1rem; }
+.hero .sub { font-size: 0.85rem; opacity: 0.85; }
+.hero .cta {
+  display: block; margin-top: 1.1rem; background: #fff; color: var(--violet-deep);
+  border-radius: 999px; text-align: center; padding: 0.85rem; font-weight: 800; font-size: 1rem;
+  text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* streak strip */
+.streak-card { background: var(--card); border-radius: 20px; padding: 1rem 1.2rem; box-shadow: 0 4px 16px rgba(35,37,47,0.06); margin-bottom: 1.2rem; }
+.streak-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.6rem; }
+.streak-head b { font-size: 0.95rem; }
+.streak-head span { color: var(--peach); font-weight: 700; font-size: 0.85rem; }
+.days { display: flex; gap: 0.45rem; justify-content: space-between; }
+.day { flex: 1; aspect-ratio: 1; border-radius: 12px; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 0.65rem; color: var(--muted); }
+.day.done { background: var(--mint-soft); color: var(--mint); }
+.day.done::before { content: "✓"; font-weight: 800; font-size: 1rem; }
+.day.today { outline: 2px solid var(--violet); color: var(--violet); font-weight: 700; }
+
+/* lesson cards */
+h2 { font-size: 1rem; margin: 1.4rem 0 0.7rem; }
+.lesson { background: var(--card); border-radius: 20px; padding: 1.1rem 1.2rem; box-shadow: 0 4px 16px rgba(35,37,47,0.06); display: flex; align-items: center; gap: 1rem; margin-bottom: 0.8rem; text-decoration: none; color: var(--ink); }
+.lesson .icon { width: 2.9rem; height: 2.9rem; border-radius: 14px; background: var(--violet-soft); color: var(--violet); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+.lesson b { display: block; font-size: 0.98rem; }
+.lesson small { color: var(--muted); font-size: 0.78rem; }
+.lesson .arrow { margin-left: auto; color: var(--muted); }
+
+/* entry chips preview */
+.pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.pill { background: var(--card); border-radius: 999px; padding: 0.45rem 0.95rem; font-size: 0.9rem; font-weight: 700; box-shadow: 0 3px 10px rgba(35,37,47,0.06); display: inline-flex; align-items: center; gap: 0.45rem; }
+.pill .p { font-weight: 400; color: var(--soft); font-size: 0.78rem; }
+.pill .spk { border: none; background: var(--violet-soft); color: var(--violet); width: 1.5rem; height: 1.5rem; border-radius: 50%; font-size: 0.7rem; cursor: pointer; }
+
+/* review card */
+.review { margin-top: 1.6rem; }
+.rcard { background: var(--card); border-radius: 24px; padding: 2.4rem 1.4rem 1.6rem; text-align: center; box-shadow: 0 8px 24px rgba(35,37,47,0.09); }
+.rcard .tag { display: inline-block; background: var(--peach-soft); color: var(--peach); font-size: 0.7rem; font-weight: 800; border-radius: 999px; padding: 0.15rem 0.8rem; letter-spacing: 0.15em; }
+.rcard .front { font-size: 1.5rem; font-weight: 700; margin: 0.8rem 0 0.2rem; }
+.rcard .hint { color: var(--muted); font-size: 0.8rem; }
+.grades { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-top: 1.4rem; }
+.grades button { border: none; border-radius: 14px; padding: 0.75rem 0.2rem; font-weight: 800; font-size: 0.85rem; cursor: pointer; font-family: inherit; }
+.g1 { background: var(--peach-soft); color: var(--peach); }
+.g2 { background: var(--bg); color: var(--soft); }
+.g3 { background: var(--violet-soft); color: var(--violet); }
+.g4 { background: var(--mint-soft); color: var(--mint); }
+
+/* floating bottom nav */
+.tabbar {
+  position: fixed; bottom: 1.1rem; left: 50%; transform: translateX(-50%);
+  background: var(--card); border-radius: 999px; box-shadow: 0 10px 30px rgba(35,37,47,0.18);
+  display: flex; gap: 0.4rem; padding: 0.45rem;
+}
+.tabbar a { text-decoration: none; color: var(--muted); font-size: 0.85rem; font-weight: 700; padding: 0.5rem 1.3rem; border-radius: 999px; }
+.tabbar a.on { background: var(--violet); color: #fff; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="logo">かいわ<em>ノート</em></span>
+    <span class="avatar">🎌</span>
+  </div>
+
+  <div class="hero">
+    <div class="eyebrow">きょうのぶん</div>
+    <div class="big">10枚 <span style="font-size:1rem;font-weight:600">・ 約3分</span></div>
+    <div class="sub">文法 3 ・ 例文 4 ・ 単語 3</div>
+    <a class="cta" href="#">はじめる</a>
+  </div>
+
+  <div class="streak-card">
+    <div class="streak-head"><b>7月のきろく</b><span>🔥 3日連続</span></div>
+    <div class="days">
+      <div class="day done"></div><div class="day done"></div><div class="day done"></div>
+      <div class="day today">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div>
+    </div>
+  </div>
+
+  <h2>ノート</h2>
+  <a class="lesson" href="#">
+    <span class="icon">📖</span>
+    <span><b>趣味と読書の話</b><small>2026-07-08 ・ 文法14 ・ 例文35 ・ 単語50</small></span>
+    <span class="arrow">›</span>
+  </a>
+
+  <h2>単語プレビュー</h2>
+  <div class="pill-row">
+    <span class="pill">趣味<span class="p">しゅみ・hobby</span><button class="spk">🔊</button></span>
+    <span class="pill">諦める<span class="p">あきらめる・to give up</span><button class="spk">🔊</button></span>
+    <span class="pill">作家<span class="p">さっか・writer</span><button class="spk">🔊</button></span>
+  </div>
+
+  <div class="review">
+    <h2>復習カード</h2>
+    <div class="rcard">
+      <span class="tag">例文</span>
+      <div class="front">取决于你想弹什么。</div>
+      <div class="hint">日本語で言ってみましょう</div>
+      <div class="grades">
+        <button class="g1">もう一度</button><button class="g2">難しい</button><button class="g3">普通</button><button class="g4">簡単</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="tabbar">
+  <a class="on" href="#">きょう</a><a href="#">ノート</a>
+</nav>
+</body>
+</html>
