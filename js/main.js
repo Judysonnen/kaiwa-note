@@ -533,7 +533,7 @@ async function renderReview() {
 
     const revealBtn = el('button', 'reveal-btn', '答えを見る');
     revealBtn.type = 'button';
-    view.appendChild(labeled(revealBtn, '看答案'));
+    view.appendChild(revealBtn);
 
     const GRADE_ZH = { 'もう一度': '没记住', 'できた': '记住了' };
     const gradeRow = el('div', 'grade-row');
