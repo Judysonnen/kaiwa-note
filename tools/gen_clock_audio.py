@@ -60,7 +60,17 @@ def clock_texts() -> list[str]:
     return texts
 
 
+# Fixed interface phrases (jaLine targets in js/main.js). Dynamic strings
+# (counts, dates) fall back to system speech when tapped.
+UI_TEXTS = [
+    'きょうのぶんは、おしまい！', 'きょうは何もありません', 'きょうのぶん',
+    'はじめる', 'もっとやる', '答えを見る', 'つぎへ', 'もう一度', 'できた',
+    '日本語で言ってみましょう', '日本語は？',
+    'おつかれさま！', 'ナイス！', '完璧だ！', '今日も勝ち。',
+    '継続は力なり。', 'すばらしい！', 'その調子！', 'やるじゃん！',
+]
+
 if __name__ == '__main__':
     # Normal speaking rate: these clips are chained at playback, and the
     # lesson-clip -10% slowdown makes chained speech drag.
-    asyncio.run(generate(clock_texts(), rate='+0%', force=True))
+    asyncio.run(generate(clock_texts() + UI_TEXTS, rate='+0%'))

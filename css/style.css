@@ -91,13 +91,58 @@ button { font-family: inherit; cursor: pointer; }
   padding: 1.6rem 1.25rem 3.5rem;
 }
 
-/* review: keep the card block vertically centered in the viewport */
+/* review: bigger stage, card block vertically centered in the viewport */
 .view.center-view {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 56rem;
   padding-bottom: 2.5rem;
 }
+
+.center-view .bigcard { min-height: 21rem; padding: 3.2rem 2.2rem 2.6rem; }
+
+.center-view .card-front.is-sentence { font-size: 1.6rem; }
+
+.center-view .sentence-answer { font-size: 2rem; }
+
+.center-view .card-back .meaning { font-size: 1.15rem; }
+
+.center-view .breakdown li { font-size: 0.92rem; }
+
+.center-view .card-back .breakdown,
+.center-view .card-back .gex-line,
+.center-view .card-back .detail { max-width: 36rem; }
+
+/* ---------- bilingual UI text ---------- */
+
+.jaline-ja {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.jaline-ja:hover { color: var(--punch); }
+
+.jaline-zh { color: var(--muted); font-size: 0.78rem; font-weight: 600; margin-top: 0.1rem; }
+
+.today-hero .jaline { margin-top: 0.2rem; }
+
+.btn-zh { display: block; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; opacity: 0.72; margin-top: 0.1rem; }
+
+/* ---------- unlearned-material planner ---------- */
+
+.learn-progress { margin-top: 1.4rem; }
+
+.lp-bar { height: 8px; background: var(--hairline); }
+
+.lp-fill { height: 100%; background: var(--ink); }
+
+.lp-text { color: var(--ink-soft); font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem; text-align: center; }
 
 .site-footer {
   background: var(--ink);

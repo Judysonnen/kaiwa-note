@@ -88,8 +88,9 @@ export function grade(itemId, rating, kind = 'vocab', now = new Date()) {
   return result.card;
 }
 
-// Today's queue: every due card (oldest first), then fresh cards by kind
-// priority (grammar, sentence, vocab), each capped by its daily allowance.
+// Today's queue: new cards lead, due reviews are sprinkled in between
+// (2 new : 1 review), so a session feels like learning with occasional
+// refreshers rather than a review backlog. All due cards still appear.
 export function buildQueue(items, now = new Date()) {
   const store = loadJson(STORE_KEY);
   const meta = loadMeta();
@@ -104,11 +105,22 @@ export function buildQueue(items, now = new Date()) {
   }
   due.sort((a, b) => a.due - b.due);
 
-  const queue = due.map(d => d.item);
+  const freshList = [];
   for (const kind of KIND_ORDER) {
     const allowance = Math.max(0, NEW_MIX[kind] - (used[kind] || 0));
-    queue.push(...fresh[kind].slice(0, allowance));
+    freshList.push(...fresh[kind].slice(0, allowance));
   }
+
+  const dueList = due.map(d => d.item);
+  const queue = [];
+  let f = 0;
+  let r = 0;
+  while (f < freshList.length) {
+    queue.push(freshList[f++]);
+    if (f < freshList.length) queue.push(freshList[f++]);
+    if (r < dueList.length) queue.push(dueList[r++]);
+  }
+  queue.push(...dueList.slice(r));
   return queue;
 }
 
