@@ -1,7 +1,7 @@
 import { renderPitch } from './pitch.js';
 import { speakJa, speakSeq, speakButton } from './tts.js';
 import { dateInfo, timeInfo } from './clock.js';
-import { pull, push, getToken, setToken } from './sync.js';
+import { pull, push, getToken, setToken, test as syncTest } from './sync.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
   isSeen, addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
@@ -596,8 +596,15 @@ document.getElementById('sync-setup')?.addEventListener('click', async () => {
   if (t === null) return;
   setToken(t.trim());
   if (t.trim()) {
-    await pull();
-    push();
+    if (await syncTest()) {
+      await pull();
+      push();
+      alert('云同步已连接 ✓ 进度会自动备份');
+    } else {
+      alert('连接失败：密钥不对，或 Cloudflare 的绑定还没生效');
+    }
+  } else {
+    alert('已关闭云同步，进度只存在本设备');
   }
   route();
 });

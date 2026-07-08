@@ -53,6 +53,16 @@ export async function pull() {
   }
 }
 
+// Verify the configured token against the API (for setup feedback).
+export async function test() {
+  try {
+    await call('GET');
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 let pushTimer = null;
 
 // After progress changes: debounce, then upload the whole blob.
