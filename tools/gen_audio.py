@@ -39,6 +39,8 @@ def lesson_texts(lesson: dict) -> list[str]:
     texts = []
     for v in lesson.get("vocab", []):
         texts.append(v["word"])
+        if v.get("note"):
+            texts.append(v["note"])
     for g in lesson.get("grammar", []):
         for ex in g.get("examples", []):
             texts.append(ex["ja"] if isinstance(ex, dict) else ex)

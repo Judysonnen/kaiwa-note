@@ -181,11 +181,10 @@ function vocabCard(v) {
   }
   card.appendChild(word);
   card.appendChild(el('div', 'mean', v.meaning));
-  if (v.note) card.appendChild(el('div', 'note', v.note));
   const foot = el('div', 'tcard-foot');
-  foot.appendChild(el('span', 'kind kind-vocab', '単語'));
   foot.appendChild(speakButton(v.word));
   card.appendChild(foot);
+  if (v.note) card.appendChild(exampleLine({ ja: v.note, zh: v.note_zh }));
   return card;
 }
 
@@ -267,11 +266,10 @@ async function renderLesson(id) {
 
 // ---------- review ----------
 
+// Two buttons only: deciding between four grades every card is friction.
 const GRADES = [
   { rating: Rating.Again, label: 'もう一度', cls: 'b-again' },
-  { rating: Rating.Hard, label: '難しい', cls: 'b-hard' },
-  { rating: Rating.Good, label: '普通', cls: 'b-good' },
-  { rating: Rating.Easy, label: '簡単', cls: 'b-easy' },
+  { rating: Rating.Good, label: 'できた', cls: 'b-good' },
 ];
 
 async function renderReview() {
@@ -333,8 +331,8 @@ async function renderReview() {
     if (kind === 'vocab') {
       back.appendChild(renderPitch(data.reading, data.accent));
       back.appendChild(el('div', 'meaning', data.meaning));
-      if (data.note) back.appendChild(el('div', 'example', data.note));
       back.appendChild(speakButton(data.word));
+      if (data.note) back.appendChild(exampleLine({ ja: data.note, zh: data.note_zh }));
     } else if (kind === 'grammar') {
       back.appendChild(el('div', 'meaning', data.explanation));
       if (data.detail) back.appendChild(el('div', 'detail', data.detail));
@@ -397,6 +395,7 @@ function setActiveNav(name) {
 
 async function route() {
   const hash = location.hash || '#/';
+  view.classList.toggle('center-view', hash === '#/review');
   try {
     if (hash.startsWith('#/lesson/')) {
       setActiveNav('lessons');

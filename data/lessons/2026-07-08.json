@@ -9,7 +9,8 @@
       "reading": "ひなべ",
       "accent": null,
       "meaning": "hot pot",
-      "note": "アメリカ人はあまり行きません"
+      "note": "アメリカ人はあまり行きません",
+      "note_zh": "美国人不太去。"
     },
     {
       "id": "v02",
@@ -17,7 +18,8 @@
       "reading": "トッピング",
       "accent": null,
       "meaning": "topping",
-      "note": "どんなトッピングが好きですか？"
+      "note": "どんなトッピングが好きですか？",
+      "note_zh": "你喜欢什么样的配料？"
     },
     {
       "id": "v03",
@@ -41,7 +43,8 @@
       "reading": "いっしゅうかん",
       "accent": null,
       "meaning": "one week",
-      "note": "ふつうの1週間でした"
+      "note": "ふつうの1週間でした",
+      "note_zh": "是很普通的一周。"
     },
     {
       "id": "v06",
@@ -97,7 +100,8 @@
       "reading": "ちかく",
       "accent": null,
       "meaning": "near, vicinity",
-      "note": "サンフランシスコの近くです"
+      "note": "サンフランシスコの近くです",
+      "note_zh": "在旧金山附近。"
     },
     {
       "id": "v13",
@@ -105,7 +109,8 @@
       "reading": "せんこう",
       "accent": 0,
       "meaning": "major (field of study)",
-      "note": "専攻に似ています"
+      "note": "専攻に似ています",
+      "note_zh": "和我的专业很接近。"
     },
     {
       "id": "v14",
@@ -121,7 +126,8 @@
       "reading": "コーディング",
       "accent": null,
       "meaning": "coding",
-      "note": "毎日コーディングします"
+      "note": "毎日コーディングします",
+      "note_zh": "每天写代码。"
     },
     {
       "id": "v16",
@@ -137,7 +143,8 @@
       "reading": "どれぐらい",
       "accent": null,
       "meaning": "how long / how much",
-      "note": "どれぐらい？1年？3年？"
+      "note": "どれぐらい？1年？3年？",
+      "note_zh": "多久？一年？三年？"
     },
     {
       "id": "v18",
@@ -193,7 +200,8 @@
       "reading": "ひく",
       "accent": 0,
       "meaning": "to play (strings / piano)",
-      "note": "バイオリンとギターを弾きます"
+      "note": "バイオリンとギターを弾きます",
+      "note_zh": "拉小提琴、弹吉他。"
     },
     {
       "id": "v25",
@@ -201,7 +209,8 @@
       "reading": "ならう",
       "accent": 2,
       "meaning": "to learn from a teacher",
-      "note": "ピアノも習いたいです"
+      "note": "ピアノも習いたいです",
+      "note_zh": "也想学钢琴。"
     },
     {
       "id": "v26",
@@ -217,7 +226,8 @@
       "reading": "じぶんで",
       "accent": null,
       "meaning": "by oneself",
-      "note": "自分で勉強しました"
+      "note": "自分で勉強しました",
+      "note_zh": "是自学的。"
     },
     {
       "id": "v28",
@@ -241,7 +251,8 @@
       "reading": "ぜんぜん",
       "accent": 0,
       "meaning": "(not) at all; completely",
-      "note": "全然ちがいます"
+      "note": "全然ちがいます",
+      "note_zh": "完全不一样。"
     },
     {
       "id": "v31",
@@ -257,7 +268,8 @@
       "reading": "もうすこし",
       "accent": null,
       "meaning": "a little more",
-      "note": "POPはもう少しかんたんです"
+      "note": "POPはもう少しかんたんです",
+      "note_zh": "流行乐要简单一些。"
     },
     {
       "id": "v33",
@@ -273,7 +285,8 @@
       "reading": "すくない",
       "accent": 3,
       "meaning": "few, little",
-      "note": "コードが少ないです"
+      "note": "コードが少ないです",
+      "note_zh": "和弦比较少。"
     },
     {
       "id": "v35",
@@ -297,7 +310,8 @@
       "reading": "にんき",
       "accent": 0,
       "meaning": "popularity; popular",
-      "note": "とても人気です"
+      "note": "とても人気です",
+      "note_zh": "非常受欢迎。"
     },
     {
       "id": "v38",
@@ -305,7 +319,8 @@
       "reading": "しょうせつ",
       "accent": 0,
       "meaning": "novel",
-      "note": "ミステリー小説"
+      "note": "ミステリー小説",
+      "note_zh": "推理小说。"
     },
     {
       "id": "v39",
@@ -353,7 +368,8 @@
       "reading": "ほんや",
       "accent": 1,
       "meaning": "bookstore",
-      "note": "日本の本屋さんにもあります"
+      "note": "日本の本屋さんにもあります",
+      "note_zh": "日本的书店里也有。"
     },
     {
       "id": "v45",
@@ -377,7 +393,8 @@
       "reading": "あきらめる",
       "accent": 4,
       "meaning": "to give up",
-      "note": "トライしましたけど、諦めました"
+      "note": "トライしましたけど、諦めました",
+      "note_zh": "试过，但放弃了。"
     },
     {
       "id": "v48",

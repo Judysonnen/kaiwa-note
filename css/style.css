@@ -88,6 +88,14 @@ button { font-family: inherit; cursor: pointer; }
   padding: 1.6rem 1.25rem 3.5rem;
 }
 
+/* review: keep the card block vertically centered in the viewport */
+.view.center-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2.5rem;
+}
+
 .site-footer {
   background: var(--ink);
   color: #9C9C97;
@@ -427,7 +435,7 @@ button { font-family: inherit; cursor: pointer; }
 
 .grade-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   margin-top: 1.4rem;
   border: 2px solid var(--ink);
   background: var(--ink);
@@ -450,6 +458,8 @@ button { font-family: inherit; cursor: pointer; }
 .b-again { background: var(--punch); color: #fff; }
 
 .b-again:hover { background: #E04400; }
+
+.b-good:hover { background: var(--ink); color: #fff; }
 
 /* ---------- review done ---------- */
 

@@ -35,7 +35,7 @@ entry (with the sentence in `note`) and a sentence entry.
 
 ## Fields
 
-Vocab: `{ id, word, reading, accent, meaning, note }`
+Vocab: `{ id, word, reading, accent, meaning, note, note_zh }`
 
 - `id`: `v01`, `v02`, ... in note order; grammar `g01...`; sentences `s01...`.
 - `reading`: kana. For katakana words, repeat the word.
@@ -44,6 +44,8 @@ Vocab: `{ id, word, reading, accent, meaning, note }`
 - `meaning`: short English gloss (matches the teacher's style). Keep any emoji
   the teacher used.
 - `note`: an example or teacher remark from the notes, else `null`.
+- `note_zh`: Chinese translation of `note` when present (notes get audio and
+  are displayed like example sentences).
 
 Grammar: `{ id, pattern, explanation, examples, detail }` where `examples` is
 an array of `{ ja, zh }` objects (Japanese sentence from the notes plus a
