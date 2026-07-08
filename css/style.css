@@ -296,9 +296,15 @@ button { font-family: inherit; cursor: pointer; }
 
 .note::before { content: "▸ "; color: var(--aka); font-family: var(--sans); }
 
-.gex { font-family: var(--serif); font-size: 0.95rem; padding-left: 1.1em; margin-top: 0.15rem; }
+.gex-line { display: flex; align-items: flex-start; gap: 0.6rem; margin-top: 0.5rem; }
 
-.gex::before { content: "▸ "; color: var(--aka); font-family: var(--sans); }
+.gex-line .speak { margin-top: 0.2rem; }
+
+.gex-body { min-width: 0; }
+
+.gex { font-family: var(--serif); font-size: 0.98rem; }
+
+.gex-zh { color: var(--muted); font-size: 0.82rem; }
 
 /* grammar 讲解 block */
 .detail {
@@ -442,6 +448,8 @@ button { font-family: inherit; cursor: pointer; }
 .card-back .example { font-family: var(--serif); color: var(--ink-soft); font-size: 0.98rem; }
 
 .card-back .detail { text-align: left; max-width: 30rem; }
+
+.card-back .gex-line { text-align: left; max-width: 30rem; width: 100%; justify-content: center; }
 
 .sentence-answer { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; line-height: 1.6; }
 

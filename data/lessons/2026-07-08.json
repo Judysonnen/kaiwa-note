@@ -410,8 +410,14 @@
       "pattern": "Verb + たいです",
       "explanation": "want to do something",
       "examples": [
-        "食べたいです",
-        "ピアノも習いたいです"
+        {
+          "ja": "食べたいです",
+          "zh": "想吃。"
+        },
+        {
+          "ja": "ピアノも習いたいです",
+          "zh": "也想学钢琴。"
+        }
       ],
       "detail": "接续：动词ます形去掉ます＋たい。表示第一人称「想做某事」（疑问句可用于第二人称）。たい本身按い形容词变化：食べたくないです（不想吃）、食べたかったです（当时想吃）。"
     },
@@ -420,8 +426,14 @@
       "pattern": "〜ています",
       "explanation": "て-form + います: ongoing action or habit",
       "examples": [
-        "4歳から弾いています",
-        "ブログを書いています"
+        {
+          "ja": "4歳から弾いています",
+          "zh": "从四岁一直弹到现在。"
+        },
+        {
+          "ja": "ブログを書いています",
+          "zh": "在写博客。"
+        }
       ],
       "detail": "接续：动词て形＋います。两个核心用法：①动作正在进行（ブログを書いています＝在写博客/有写博客的习惯）；②从过去持续到现在的状态或习惯（4歳から弾いています＝从4岁一直弹到现在）。"
     },
@@ -430,8 +442,14 @@
       "pattern": "（理由）〜から、〜",
       "explanation": "gives a reason: because (reason), (statement)",
       "examples": [
-        "私は大学院に行きましたから、その学生より年齢が上です",
-        "働いていますから、時間があまりありません"
+        {
+          "ja": "私は大学院に行きましたから、その学生より年齢が上です",
+          "zh": "因为我读了研究生，所以比那个学生年长。"
+        },
+        {
+          "ja": "働いていますから、時間があまりありません",
+          "zh": "因为在工作，没什么时间。"
+        }
       ],
       "detail": "接续：句子（可以是です/ます礼貌形）＋から，先说理由再说结论。から直接接在礼貌形后面是它和ので的一个区别，口语中主观、直接。"
     },
@@ -440,7 +458,10 @@
       "pattern": "〜ので",
       "explanation": "gives a reason, softer than から",
       "examples": [
-        "働いていて時間があまりないので、最近はブログを書いていません"
+        {
+          "ja": "働いていて時間があまりないので、最近はブログを書いていません",
+          "zh": "因为工作忙没什么时间，最近没在写博客。"
+        }
       ],
       "detail": "接续：普通形＋ので（な形容词和名词用〜なので）。同样表原因，但比から更客观柔和，用来委婉地解释情况，不显得在强调自己的主张。拒绝或道歉时用ので更礼貌。"
     },
@@ -449,7 +470,10 @@
       "pattern": "います / あります",
       "explanation": "います for people and animals, あります for things",
       "examples": [
-        "人がたくさんいました"
+        {
+          "ja": "人がたくさんいました",
+          "zh": "当时有很多人。"
+        }
       ],
       "detail": "存在动词的分工：有生命的（人、动物）用います，无生命的（东西、植物、事件）用あります。人がたくさんいました＝当时有很多人。"
     },
@@ -458,7 +482,10 @@
       "pattern": "〜か + わかりません",
       "explanation": "embedded question: I don't know (what / whether) ...",
       "examples": [
-        "どんな仕事が好きかわかりません"
+        {
+          "ja": "どんな仕事が好きかわかりません",
+          "zh": "不知道自己喜欢什么样的工作。"
+        }
       ],
       "detail": "嵌入疑问句：疑问词的问句变普通形＋か，塞进大句子里。どんな仕事が好きか＋わかりません＝不知道自己喜欢什么样的工作。嵌入部分不用です/ます。"
     },
@@ -467,7 +494,10 @@
       "pattern": "〜かどうか",
       "explanation": "whether or not",
       "examples": [
-        "ベストセラーかどうかわかりません"
+        {
+          "ja": "ベストセラーかどうかわかりません",
+          "zh": "不知道是不是畅销书。"
+        }
       ],
       "detail": "没有疑问词的「是否」用かどうか：普通形＋かどうか。ベストセラーかどうかわかりません＝不知道是不是畅销书。名词直接＋かどうか，不加だ。"
     },
@@ -476,7 +506,10 @@
       "pattern": "〜だけじゃなくて…も",
       "explanation": "not only ... but also ...",
       "examples": [
-        "ミステリーだけじゃなくてノンフィクションも読みます"
+        {
+          "ja": "ミステリーだけじゃなくてノンフィクションも読みます",
+          "zh": "不只推理小说，也读非虚构。"
+        }
       ],
       "detail": "AだけじゃなくてBも＝不仅A而且B。じゃなくて是ではなくて的口语缩略。注意后半句用も呼应。"
     },
@@ -485,7 +518,10 @@
       "pattern": "〜によってちがいます",
       "explanation": "it depends on ...",
       "examples": [
-        "何を弾きたいかによってちがいます"
+        {
+          "ja": "何を弾きたいかによってちがいます",
+          "zh": "取决于你想弹什么。"
+        }
       ],
       "detail": "名词＋によって（ちがいます）＝因…而异。前面还可以接嵌入疑问句：何を弾きたいかによって＝取决于你想弹什么。"
     },
@@ -494,7 +530,10 @@
       "pattern": "Potential form（読める）",
       "explanation": "can do: 読む → 読めます",
       "examples": [
-        "中国語の本は速く読めます"
+        {
+          "ja": "中国語の本は速く読めます",
+          "zh": "中文书能读得很快。"
+        }
       ],
       "detail": "可能形变位：一类动词词尾う段→え段＋ます（読む→読めます）；二类动词去る＋られます（食べられます）；する→できます、来る→来られます。可能形句中宾语的を常改成が：本が読めます。"
     },
@@ -503,7 +542,10 @@
       "pattern": "おいくつですか？",
       "explanation": "polite way to ask age: いくつですか / おいくつですか = 何歳ですか",
       "examples": [
-        "おいくつですか？"
+        {
+          "ja": "おいくつですか？",
+          "zh": "您多大年纪？"
+        }
       ],
       "detail": "问年龄的礼貌层级：何歳ですか（直接）→ いくつですか → おいくつですか（最礼貌，加了美化语お）。对长辈或初次见面用おいくつですか。"
     },
@@ -512,7 +554,10 @@
       "pattern": "特にないです",
       "explanation": "nothing in particular; ≠ 別に, which can sound curt",
       "examples": [
-        "特にいないです。いろいろな作家の本を読みます。"
+        {
+          "ja": "特にいないです。いろいろな作家の本を読みます。",
+          "zh": "没有特别喜欢的，各种作家的书都读。"
+        }
       ],
       "detail": "被问「有没有…」时，「没有特别的」用特にないです（人用特にいないです），自然又礼貌。别に（ないです）字面意思相近，但语气冷淡敷衍，容易失礼，会话中避免。"
     },
@@ -521,7 +566,10 @@
       "pattern": "AはBより〜",
       "explanation": "comparison: A is more ... than B; 年齢が上です = older",
       "examples": [
-        "私は大学院に行きましたから、その学生より年齢が上です"
+        {
+          "ja": "私は大学院に行きましたから、その学生より年齢が上です",
+          "zh": "因为我读了研究生，所以比那个学生年长。"
+        }
       ],
       "detail": "比较句：BよりA（のほうが）〜＝A比B更…。例句里年齢が上です＝年纪更大（上/下用于年龄高低）。より前面是被比下去的那一方。"
     },
@@ -530,7 +578,10 @@
       "pattern": "Plain past + noun（読んだ本）",
       "explanation": "plain past verb modifies a noun: the book (I) read",
       "examples": [
-        "最近読んだ本は、Never Let Me Goです"
+        {
+          "ja": "最近読んだ本は、Never Let Me Goです",
+          "zh": "最近读的书是《别让我走》。"
+        }
       ],
       "detail": "日语没有关系代词，动词普通形直接放在名词前面修饰它：読んだ本＝读过的书、最近読んだ本＝最近读的书。整个从句里不用です/ます。"
     }
@@ -539,177 +590,212 @@
     {
       "id": "s01",
       "ja": "アメリカ人はあまり行きません",
-      "meaning": "Americans don't go there much."
+      "meaning": "Americans don't go there much.",
+      "zh": "美国人不太去（吃火锅）。"
     },
     {
       "id": "s02",
       "ja": "どんなトッピングが好きですか？",
-      "meaning": "What toppings do you like?"
+      "meaning": "What toppings do you like?",
+      "zh": "你喜欢什么样的配料？"
     },
     {
       "id": "s03",
       "ja": "ふつうの1週間でした",
-      "meaning": "It was an ordinary week."
+      "meaning": "It was an ordinary week.",
+      "zh": "是很普通的一周。"
     },
     {
       "id": "s04",
       "ja": "スタジアムでワールドカップを見ました",
-      "meaning": "I watched the World Cup at a stadium."
+      "meaning": "I watched the World Cup at a stadium.",
+      "zh": "在体育场看了世界杯。"
     },
     {
       "id": "s05",
       "ja": "人がたくさんいました",
-      "meaning": "There were a lot of people."
+      "meaning": "There were a lot of people.",
+      "zh": "当时有很多人。"
     },
     {
       "id": "s06",
       "ja": "大学でともだちとサッカーゲームをよく見ました",
-      "meaning": "In college I often watched soccer games with friends."
+      "meaning": "In college I often watched soccer games with friends.",
+      "zh": "大学时常和朋友一起看足球比赛。"
     },
     {
       "id": "s07",
       "ja": "大学は中国で卒業しました",
-      "meaning": "I graduated from university in China."
+      "meaning": "I graduated from university in China.",
+      "zh": "大学是在中国毕业的。"
     },
     {
       "id": "s08",
       "ja": "大学院はアメリカで卒業しました",
-      "meaning": "I finished graduate school in the US."
+      "meaning": "I finished graduate school in the US.",
+      "zh": "研究生是在美国毕业的。"
     },
     {
       "id": "s09",
       "ja": "大学院は行きませんでした",
-      "meaning": "(Example) I didn't go to graduate school."
+      "meaning": "(Example) I didn't go to graduate school.",
+      "zh": "（示例）没有读研究生。"
     },
     {
       "id": "s10",
       "ja": "サンフランシスコの近くです",
-      "meaning": "It's near San Francisco."
+      "meaning": "It's near San Francisco.",
+      "zh": "在旧金山附近。"
     },
     {
       "id": "s11",
       "ja": "どんな仕事をしていますか？",
-      "meaning": "What kind of work do you do?"
+      "meaning": "What kind of work do you do?",
+      "zh": "你做什么样的工作？"
     },
     {
       "id": "s12",
       "ja": "専攻に似ています",
-      "meaning": "It's similar to my major."
+      "meaning": "It's similar to my major.",
+      "zh": "和我的专业很接近。"
     },
     {
       "id": "s13",
       "ja": "毎日コーディングします",
-      "meaning": "I code every day."
+      "meaning": "I code every day.",
+      "zh": "每天写代码。"
     },
     {
       "id": "s14",
       "ja": "嫌いじゃありません",
-      "meaning": "I don't dislike it."
+      "meaning": "I don't dislike it.",
+      "zh": "并不讨厌。"
     },
     {
       "id": "s15",
       "ja": "どんな仕事が好きかわかりません",
-      "meaning": "I don't know what kind of work I like."
+      "meaning": "I don't know what kind of work I like.",
+      "zh": "不知道自己喜欢什么样的工作。"
     },
     {
       "id": "s16",
       "ja": "4歳から弾いています",
-      "meaning": "I've been playing since I was four."
+      "meaning": "I've been playing since I was four.",
+      "zh": "从四岁一直弹到现在。"
     },
     {
       "id": "s17",
       "ja": "自分で勉強しました",
-      "meaning": "I studied it on my own."
+      "meaning": "I studied it on my own.",
+      "zh": "是自学的。"
     },
     {
       "id": "s18",
       "ja": "エレキギターとアコースティックギターは全然ちがいます",
-      "meaning": "Electric and acoustic guitar are completely different."
+      "meaning": "Electric and acoustic guitar are completely different.",
+      "zh": "电吉他和木吉他完全不一样。"
     },
     {
       "id": "s19",
       "ja": "何を弾きたいかによってちがいます",
-      "meaning": "It depends on what you want to play."
+      "meaning": "It depends on what you want to play.",
+      "zh": "取决于你想弹什么。"
     },
     {
       "id": "s20",
       "ja": "POPはもう少しかんたんです",
-      "meaning": "Pop is a bit easier."
+      "meaning": "Pop is a bit easier.",
+      "zh": "流行乐要简单一些。"
     },
     {
       "id": "s21",
       "ja": "コードが少ないです",
-      "meaning": "There are fewer chords."
+      "meaning": "There are fewer chords.",
+      "zh": "和弦比较少。"
     },
     {
       "id": "s22",
       "ja": "ほかに趣味はありますか？",
-      "meaning": "Do you have any other hobbies?"
+      "meaning": "Do you have any other hobbies?",
+      "zh": "还有别的爱好吗？"
     },
     {
       "id": "s23",
       "ja": "ブログを書いています",
-      "meaning": "I write a blog."
+      "meaning": "I write a blog.",
+      "zh": "在写博客。"
     },
     {
       "id": "s24",
       "ja": "働いていますから、時間があまりありません。",
-      "meaning": "I'm working, so I don't have much time."
+      "meaning": "I'm working, so I don't have much time.",
+      "zh": "因为在工作，没什么时间。"
     },
     {
       "id": "s25",
       "ja": "働いていて時間があまりないので、最近はブログを書いていません。",
-      "meaning": "I'm working and don't have much time, so I haven't been blogging lately."
+      "meaning": "I'm working and don't have much time, so I haven't been blogging lately.",
+      "zh": "因为工作忙没什么时间，最近没在写博客。"
     },
     {
       "id": "s26",
       "ja": "そして、とても人気です",
-      "meaning": "And it's very popular."
+      "meaning": "And it's very popular.",
+      "zh": "而且非常受欢迎。"
     },
     {
       "id": "s27",
       "ja": "本を読んで、レビューや考えたことを書きます",
-      "meaning": "I read books and write reviews and thoughts."
+      "meaning": "I read books and write reviews and thoughts.",
+      "zh": "读完书，写书评和感想。"
     },
     {
       "id": "s28",
       "ja": "ミステリーだけじゃなくてノンフィクションも読みます",
-      "meaning": "I read not only mysteries but also nonfiction."
+      "meaning": "I read not only mysteries but also nonfiction.",
+      "zh": "不只推理小说，也读非虚构。"
     },
     {
       "id": "s29",
       "ja": "ベストセラーかどうかわかりません",
-      "meaning": "I don't know whether it's a bestseller."
+      "meaning": "I don't know whether it's a bestseller.",
+      "zh": "不知道是不是畅销书。"
     },
     {
       "id": "s30",
       "ja": "日本の本屋さんにもあります",
-      "meaning": "Japanese bookstores have it too."
+      "meaning": "Japanese bookstores have it too.",
+      "zh": "日本的书店里也有。"
     },
     {
       "id": "s31",
       "ja": "英語の本をよく読みますか？中国語の本をよく読みますか？",
-      "meaning": "Do you often read books in English? In Chinese?"
+      "meaning": "Do you often read books in English? In Chinese?",
+      "zh": "常读英文书吗？常读中文书吗？"
     },
     {
       "id": "s32",
       "ja": "中国語の本は速く読めます",
-      "meaning": "I can read Chinese books quickly."
+      "meaning": "I can read Chinese books quickly.",
+      "zh": "中文书能读得很快。"
     },
     {
       "id": "s33",
       "ja": "トライしましたけど、諦めました",
-      "meaning": "I tried, but I gave up."
+      "meaning": "I tried, but I gave up.",
+      "zh": "试过，但放弃了。"
     },
     {
       "id": "s34",
       "ja": "特にいないです。いろいろな作家の本を読みます。",
-      "meaning": "No one in particular. I read books by many writers."
+      "meaning": "No one in particular. I read books by many writers.",
+      "zh": "没有特别喜欢的（作家），各种作家的书都读。"
     },
     {
       "id": "s35",
       "ja": "最近読んだ本は、Never Let Me Goです。",
-      "meaning": "A book I read recently is Never Let Me Go."
+      "meaning": "A book I read recently is Never Let Me Go.",
+      "zh": "最近读的书是《别让我走》。"
     }
   ]
 }

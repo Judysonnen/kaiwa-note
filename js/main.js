@@ -189,6 +189,22 @@ function vocabCard(v) {
   return card;
 }
 
+// Examples were plain strings before translations were added.
+function exJa(ex) { return typeof ex === 'string' ? ex : ex.ja; }
+function exZh(ex) { return typeof ex === 'string' ? null : ex.zh; }
+
+function exampleLine(ex) {
+  const line = el('div', 'gex-line');
+  line.appendChild(speakButton(exJa(ex)));
+  const body = el('div', 'gex-body');
+  const ja = el('div', 'gex', exJa(ex));
+  ja.lang = 'ja';
+  body.appendChild(ja);
+  if (exZh(ex)) body.appendChild(el('div', 'gex-zh', exZh(ex)));
+  line.appendChild(body);
+  return line;
+}
+
 function grammarCard(g) {
   const card = el('div', 'tcard tcard-wide');
   const pattern = el('div', 'word pattern', g.pattern);
@@ -197,12 +213,8 @@ function grammarCard(g) {
   card.appendChild(el('div', 'mean', g.explanation));
   if (g.detail) card.appendChild(el('div', 'detail', g.detail));
   for (const ex of g.examples || []) {
-    card.appendChild(el('div', 'gex', ex));
+    card.appendChild(exampleLine(ex));
   }
-  const foot = el('div', 'tcard-foot');
-  foot.appendChild(el('span', 'kind kind-grammar', '文法'));
-  if (g.examples?.length) foot.appendChild(speakButton(g.examples[0]));
-  card.appendChild(foot);
   return card;
 }
 
@@ -241,7 +253,7 @@ async function renderLesson(id) {
     const ja = el('div', 'sentence-ja', s.ja);
     ja.lang = 'ja';
     wrap.appendChild(ja);
-    wrap.appendChild(el('div', 'sentence-en', s.meaning));
+    wrap.appendChild(el('div', 'sentence-en', s.zh || s.meaning));
     li.appendChild(wrap);
     ul.appendChild(li);
   }
@@ -305,8 +317,8 @@ async function renderReview() {
 
     let front;
     if (kind === 'sentence') {
-      // Production practice: English prompt, say it in Japanese, then check.
-      front = el('div', 'card-front is-sentence', data.meaning);
+      // Production practice: Chinese prompt, say it in Japanese, then check.
+      front = el('div', 'card-front is-sentence', data.zh || data.meaning);
       card.appendChild(front);
       card.appendChild(el('div', 'card-hint', '日本語で言ってみましょう'));
     } else {
@@ -327,9 +339,8 @@ async function renderReview() {
       back.appendChild(el('div', 'meaning', data.explanation));
       if (data.detail) back.appendChild(el('div', 'detail', data.detail));
       for (const ex of (data.examples || []).slice(0, 2)) {
-        back.appendChild(el('div', 'example', ex));
+        back.appendChild(exampleLine(ex));
       }
-      if (data.examples?.length) back.appendChild(speakButton(data.examples[0]));
     } else {
       const answer = el('div', 'sentence-answer', data.ja);
       answer.lang = 'ja';
