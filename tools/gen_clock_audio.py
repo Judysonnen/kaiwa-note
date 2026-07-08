@@ -61,4 +61,6 @@ def clock_texts() -> list[str]:
 
 
 if __name__ == '__main__':
-    asyncio.run(generate(clock_texts()))
+    # Normal speaking rate: these clips are chained at playback, and the
+    # lesson-clip -10% slowdown makes chained speech drag.
+    asyncio.run(generate(clock_texts(), rate='+0%', force=True))

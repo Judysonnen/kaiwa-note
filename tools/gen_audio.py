@@ -56,13 +56,14 @@ def lesson_texts(lesson: dict) -> list[str]:
     return unique
 
 
-async def generate(texts: list[str]) -> None:
+async def generate(texts: list[str], rate: str = RATE, force: bool = False) -> None:
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
     todo = [(t, AUDIO_DIR / f"{fnv1a32(t)}.mp3") for t in texts]
-    todo = [(t, p) for t, p in todo if not p.exists()]
+    if not force:
+        todo = [(t, p) for t, p in todo if not p.exists()]
     print(f"{len(texts)} texts, {len(todo)} to generate")
     for i, (text, path) in enumerate(todo, 1):
-        communicate = edge_tts.Communicate(text, VOICE, rate=RATE)
+        communicate = edge_tts.Communicate(text, VOICE, rate=rate)
         await communicate.save(str(path))
         print(f"[{i}/{len(todo)}] {path.name}  {text[:36]}")
 
