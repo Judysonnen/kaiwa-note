@@ -108,6 +108,27 @@ export function dueCount(items, now = new Date()) {
   return buildQueue(items, now).length;
 }
 
+// An extra set of fresh cards beyond the daily quota, same small mix,
+// for "learn more" after today's stack is done.
+export function bonusQueue(items) {
+  const store = loadJson(STORE_KEY);
+  const fresh = { grammar: [], sentence: [], vocab: [] };
+  for (const item of items) {
+    if (!store[item.itemId]) fresh[item.kind]?.push(item);
+  }
+  const queue = [];
+  for (const kind of KIND_ORDER) {
+    queue.push(...fresh[kind].slice(0, NEW_MIX[kind]));
+  }
+  return queue;
+}
+
+// How many cards have ever been studied (for the running total).
+export function studiedCount(items) {
+  const store = loadJson(STORE_KEY);
+  return items.filter(i => store[i.itemId]).length;
+}
+
 // How many unseen cards exist in total (tomorrow's material and beyond).
 export function unseenCount(items) {
   const store = loadJson(STORE_KEY);

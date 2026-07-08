@@ -1,7 +1,7 @@
 import { renderPitch } from './pitch.js';
 import { speakJa, speakButton } from './tts.js';
 import {
-  buildQueue, grade, dueCount, unseenCount, nextDueDate,
+  buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
   addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
 } from './srs.js';
 
@@ -112,6 +112,11 @@ async function renderToday() {
     if (unseen > 0) sub = `あしたは新しいカードが${Math.min(NEW_PER_DAY, unseen)}枚とどきます`;
     else if (next) sub = `つぎの復習は ${todayKey(next)} です`;
     if (sub) hero.appendChild(el('p', 'today-sub', sub));
+    if (unseen > 0) {
+      const more = el('a', 'bonus-btn', `もっとやる（+${Math.min(NEW_PER_DAY, unseen)}枚）`);
+      more.href = '#/review';
+      hero.appendChild(more);
+    }
   } else {
     hero.appendChild(el('div', 'today-label', 'きょうのぶん'));
     const big = el('div', 'today-big');
@@ -272,22 +277,59 @@ const GRADES = [
   { rating: Rating.Good, label: 'できた', cls: 'b-good' },
 ];
 
+const PRAISE = [
+  'おつかれさま！', 'ナイス！', '完璧だ！', '今日も勝ち。',
+  '継続は力なり。', 'すばらしい！', 'その調子！', 'やるじゃん！',
+];
+
+function confetti() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const box = el('div', 'confetti');
+  const colors = ['#FF4D00', '#101010', '#8A8A85'];
+  for (let i = 0; i < 36; i++) {
+    const bit = el('span', 'confetti-bit');
+    bit.style.left = `${Math.random() * 100}%`;
+    bit.style.background = colors[i % colors.length];
+    bit.style.animationDelay = `${Math.random() * 0.4}s`;
+    bit.style.animationDuration = `${1.1 + Math.random() * 0.9}s`;
+    bit.style.transform = `rotate(${Math.random() * 360}deg)`;
+    box.appendChild(bit);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 2600);
+}
+
 async function renderReview() {
   const items = await getAllReviewItems();
   let queue = buildQueue(items);
   let sessionTotal = queue.length;
   let done = 0;
+  let combo = 0;
 
   function showDone() {
-    if (done > 0) addStamp();
+    if (done > 0) { addStamp(); confetti(); }
     view.replaceChildren();
     const doneBox = el('div', 'review-done');
     if (done > 0) {
       doneBox.appendChild(el('div', 'big-stamp', '話'));
-      doneBox.appendChild(el('div', 'done-title', 'きょうのぶん、おしまい！'));
-      doneBox.appendChild(el('p', 'sub', `${done}枚できました。スタンプを押しました 🎉`));
+      doneBox.appendChild(el('div', 'done-title', PRAISE[Math.floor(Math.random() * PRAISE.length)]));
+      doneBox.appendChild(el('p', 'sub',
+        `${done}枚できました ・ 通算 ${studiedCount(items)}枚 ・ 🔥 ${streakLength()}日連続`));
     } else {
       doneBox.appendChild(el('div', 'done-title', 'きょうは何もありません'));
+    }
+    const bonus = bonusQueue(items);
+    if (bonus.length) {
+      const more = el('button', 'bonus-btn', `もっとやる（+${bonus.length}枚）`);
+      more.type = 'button';
+      more.addEventListener('click', () => {
+        queue = bonus;
+        sessionTotal = bonus.length;
+        done = 0;
+        combo = 0;
+        showCard();
+      });
+      doneBox.appendChild(more);
     }
     const home = el('a', 'note-link', '← きょうのページへ');
     home.href = '#/';
@@ -307,7 +349,9 @@ async function renderReview() {
     fill.style.width = `${Math.round((done / Math.max(1, sessionTotal)) * 100)}%`;
     progress.appendChild(fill);
     view.appendChild(progress);
-    view.appendChild(el('p', 'review-status', `のこり ${queue.length} 枚`));
+    const status = el('p', 'review-status', `のこり ${queue.length} 枚`);
+    if (combo >= 3) status.appendChild(el('span', 'combo', ` 🔥 ${combo}連続！`));
+    view.appendChild(status);
 
     const TAG = { vocab: '単語', grammar: '文法', sentence: '例文' };
     const card = el('div', 'bigcard');
@@ -364,8 +408,10 @@ async function renderReview() {
         if (g.rating === Rating.Again) {
           // Back of today's stack; it doesn't count as done yet.
           queue.push({ itemId, kind, data });
+          combo = 0;
         } else {
           done += 1;
+          combo += 1;
         }
         showCard();
       });
