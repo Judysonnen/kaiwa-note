@@ -1,5 +1,6 @@
 import { renderPitch } from './pitch.js';
 import { speakJa, speakButton } from './tts.js';
+import { dateInfo, timeInfo } from './clock.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
   isSeen, addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
@@ -130,6 +131,44 @@ async function renderToday() {
   }
   view.appendChild(hero);
   view.appendChild(stampCalendar());
+  view.appendChild(clockLine());
+}
+
+// A quiet date/time line: tap either part to hear it read in Japanese and
+// see the kana reading, for learning how dates and times are said.
+function clockLine() {
+  const wrap = el('div', 'clock-line');
+  const row = el('div', 'clock-row');
+  const kana = el('div', 'clock-kana');
+  kana.hidden = true;
+
+  function makeSeg(getInfo) {
+    const btn = el('button', 'clock-seg');
+    btn.type = 'button';
+    btn.title = '日本語で読み上げ';
+    btn.textContent = getInfo().display;
+    btn.addEventListener('click', () => {
+      const info = getInfo();
+      speakJa(info.speech);
+      kana.textContent = info.kana;
+      kana.hidden = false;
+    });
+    return btn;
+  }
+
+  const dateSeg = makeSeg(dateInfo);
+  const timeSeg = makeSeg(timeInfo);
+  row.appendChild(dateSeg);
+  row.appendChild(el('span', 'clock-sep', '・'));
+  row.appendChild(timeSeg);
+  wrap.appendChild(row);
+  wrap.appendChild(kana);
+
+  const tick = setInterval(() => {
+    if (!wrap.isConnected) { clearInterval(tick); return; }
+    timeSeg.textContent = timeInfo().display;
+  }, 15000);
+  return wrap;
 }
 
 // ---------- lessons list ----------
