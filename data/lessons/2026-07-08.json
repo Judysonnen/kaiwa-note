@@ -10,7 +10,8 @@
       "accent": null,
       "meaning": "hot pot",
       "note": "アメリカ人はあまり行きません",
-      "note_zh": "美国人不太去。"
+      "note_zh": "美国人不太去。",
+      "meaning_zh": "火锅"
     },
     {
       "id": "v02",
@@ -19,7 +20,8 @@
       "accent": null,
       "meaning": "topping",
       "note": "どんなトッピングが好きですか？",
-      "note_zh": "你喜欢什么样的配料？"
+      "note_zh": "你喜欢什么样的配料？",
+      "meaning_zh": "配料、加料"
     },
     {
       "id": "v03",
@@ -27,7 +29,8 @@
       "reading": "えび",
       "accent": 0,
       "meaning": "shrimp 🍤",
-      "note": null
+      "note": null,
+      "meaning_zh": "虾"
     },
     {
       "id": "v04",
@@ -35,7 +38,8 @@
       "reading": "えのき",
       "accent": null,
       "meaning": "enoki mushroom",
-      "note": null
+      "note": null,
+      "meaning_zh": "金针菇"
     },
     {
       "id": "v05",
@@ -44,7 +48,8 @@
       "accent": null,
       "meaning": "one week",
       "note": "ふつうの1週間でした",
-      "note_zh": "是很普通的一周。"
+      "note_zh": "是很普通的一周。",
+      "meaning_zh": "一周"
     },
     {
       "id": "v06",
@@ -52,7 +57,8 @@
       "reading": "スタジアム",
       "accent": null,
       "meaning": "stadium",
-      "note": null
+      "note": null,
+      "meaning_zh": "体育场"
     },
     {
       "id": "v07",
@@ -60,7 +66,8 @@
       "reading": "そつぎょうする",
       "accent": 0,
       "meaning": "to graduate",
-      "note": null
+      "note": null,
+      "meaning_zh": "毕业"
     },
     {
       "id": "v08",
@@ -68,7 +75,8 @@
       "reading": "だいがく",
       "accent": 0,
       "meaning": "university",
-      "note": null
+      "note": null,
+      "meaning_zh": "大学"
     },
     {
       "id": "v09",
@@ -76,7 +84,8 @@
       "reading": "だいがくいん",
       "accent": null,
       "meaning": "graduate school",
-      "note": null
+      "note": null,
+      "meaning_zh": "研究生院"
     },
     {
       "id": "v10",
@@ -84,7 +93,8 @@
       "reading": "エンジニアリング",
       "accent": null,
       "meaning": "engineering",
-      "note": null
+      "note": null,
+      "meaning_zh": "工程学"
     },
     {
       "id": "v11",
@@ -92,7 +102,8 @@
       "reading": "コンピューターサイエンス",
       "accent": null,
       "meaning": "computer science",
-      "note": null
+      "note": null,
+      "meaning_zh": "计算机科学"
     },
     {
       "id": "v12",
@@ -101,7 +112,8 @@
       "accent": null,
       "meaning": "near, vicinity",
       "note": "サンフランシスコの近くです",
-      "note_zh": "在旧金山附近。"
+      "note_zh": "在旧金山附近。",
+      "meaning_zh": "附近"
     },
     {
       "id": "v13",
@@ -110,7 +122,8 @@
       "accent": 0,
       "meaning": "major (field of study)",
       "note": "専攻に似ています",
-      "note_zh": "和我的专业很接近。"
+      "note_zh": "和我的专业很接近。",
+      "meaning_zh": "专业"
     },
     {
       "id": "v14",
@@ -118,7 +131,8 @@
       "reading": "にている",
       "accent": null,
       "meaning": "to resemble, to be similar",
-      "note": null
+      "note": null,
+      "meaning_zh": "相似、像"
     },
     {
       "id": "v15",
@@ -127,7 +141,8 @@
       "accent": null,
       "meaning": "coding",
       "note": "毎日コーディングします",
-      "note_zh": "每天写代码。"
+      "note_zh": "每天写代码。",
+      "meaning_zh": "写代码"
     },
     {
       "id": "v16",
@@ -135,7 +150,8 @@
       "reading": "ワシントン",
       "accent": 1,
       "meaning": "Washington",
-      "note": null
+      "note": null,
+      "meaning_zh": "华盛顿"
     },
     {
       "id": "v17",
@@ -144,7 +160,8 @@
       "accent": null,
       "meaning": "how long / how much",
       "note": "どれぐらい？1年？3年？",
-      "note_zh": "多久？一年？三年？"
+      "note_zh": "多久？一年？三年？",
+      "meaning_zh": "多久、多少"
     },
     {
       "id": "v18",
@@ -152,7 +169,8 @@
       "reading": "ねんれい",
       "accent": 0,
       "meaning": "age",
-      "note": null
+      "note": null,
+      "meaning_zh": "年龄"
     },
     {
       "id": "v19",
@@ -160,7 +178,8 @@
       "reading": "しつもん",
       "accent": 0,
       "meaning": "question",
-      "note": null
+      "note": null,
+      "meaning_zh": "问题、提问"
     },
     {
       "id": "v20",
@@ -168,7 +187,8 @@
       "reading": "しゅみ",
       "accent": 1,
       "meaning": "hobby",
-      "note": null
+      "note": null,
+      "meaning_zh": "爱好"
     },
     {
       "id": "v21",
@@ -176,7 +196,8 @@
       "reading": "じつは",
       "accent": null,
       "meaning": "actually, to tell the truth",
-      "note": null
+      "note": null,
+      "meaning_zh": "其实、说实话"
     },
     {
       "id": "v22",
@@ -184,7 +205,8 @@
       "reading": "バイオリン",
       "accent": 0,
       "meaning": "violin",
-      "note": null
+      "note": null,
+      "meaning_zh": "小提琴"
     },
     {
       "id": "v23",
@@ -192,7 +214,8 @@
       "reading": "ギター",
       "accent": 1,
       "meaning": "guitar",
-      "note": null
+      "note": null,
+      "meaning_zh": "吉他"
     },
     {
       "id": "v24",
@@ -201,7 +224,8 @@
       "accent": 0,
       "meaning": "to play (strings / piano)",
       "note": "バイオリンとギターを弾きます",
-      "note_zh": "拉小提琴、弹吉他。"
+      "note_zh": "拉小提琴、弹吉他。",
+      "meaning_zh": "弹奏（弦乐器/钢琴）"
     },
     {
       "id": "v25",
@@ -210,7 +234,8 @@
       "accent": 2,
       "meaning": "to learn from a teacher",
       "note": "ピアノも習いたいです",
-      "note_zh": "也想学钢琴。"
+      "note_zh": "也想学钢琴。",
+      "meaning_zh": "（跟老师）学"
     },
     {
       "id": "v26",
@@ -218,7 +243,8 @@
       "reading": "よねんまえ",
       "accent": null,
       "meaning": "four years ago",
-      "note": null
+      "note": null,
+      "meaning_zh": "四年前"
     },
     {
       "id": "v27",
@@ -227,7 +253,8 @@
       "accent": null,
       "meaning": "by oneself",
       "note": "自分で勉強しました",
-      "note_zh": "是自学的。"
+      "note_zh": "是自学的。",
+      "meaning_zh": "自己（做）"
     },
     {
       "id": "v28",
@@ -235,7 +262,8 @@
       "reading": "エレキギター",
       "accent": null,
       "meaning": "electric guitar 🎸",
-      "note": null
+      "note": null,
+      "meaning_zh": "电吉他"
     },
     {
       "id": "v29",
@@ -243,7 +271,8 @@
       "reading": "アコースティックギター",
       "accent": null,
       "meaning": "acoustic guitar",
-      "note": null
+      "note": null,
+      "meaning_zh": "木吉他"
     },
     {
       "id": "v30",
@@ -252,7 +281,8 @@
       "accent": 0,
       "meaning": "(not) at all; completely",
       "note": "全然ちがいます",
-      "note_zh": "完全不一样。"
+      "note_zh": "完全不一样。",
+      "meaning_zh": "完全（不）"
     },
     {
       "id": "v31",
@@ -260,7 +290,8 @@
       "reading": "ちがう",
       "accent": 0,
       "meaning": "to be different",
-      "note": null
+      "note": null,
+      "meaning_zh": "不同、不一样"
     },
     {
       "id": "v32",
@@ -269,7 +300,8 @@
       "accent": null,
       "meaning": "a little more",
       "note": "POPはもう少しかんたんです",
-      "note_zh": "流行乐要简单一些。"
+      "note_zh": "流行乐要简单一些。",
+      "meaning_zh": "再……一点"
     },
     {
       "id": "v33",
@@ -277,7 +309,8 @@
       "reading": "かんたん",
       "accent": 0,
       "meaning": "easy, simple",
-      "note": null
+      "note": null,
+      "meaning_zh": "简单"
     },
     {
       "id": "v34",
@@ -286,7 +319,8 @@
       "accent": 3,
       "meaning": "few, little",
       "note": "コードが少ないです",
-      "note_zh": "和弦比较少。"
+      "note_zh": "和弦比较少。",
+      "meaning_zh": "少"
     },
     {
       "id": "v35",
@@ -294,7 +328,8 @@
       "reading": "コード",
       "accent": 1,
       "meaning": "chord",
-      "note": null
+      "note": null,
+      "meaning_zh": "和弦"
     },
     {
       "id": "v36",
@@ -302,7 +337,8 @@
       "reading": "せん",
       "accent": 1,
       "meaning": "line; string",
-      "note": null
+      "note": null,
+      "meaning_zh": "线；弦"
     },
     {
       "id": "v37",
@@ -311,7 +347,8 @@
       "accent": 0,
       "meaning": "popularity; popular",
       "note": "とても人気です",
-      "note_zh": "非常受欢迎。"
+      "note_zh": "非常受欢迎。",
+      "meaning_zh": "受欢迎"
     },
     {
       "id": "v38",
@@ -320,7 +357,8 @@
       "accent": 0,
       "meaning": "novel",
       "note": "ミステリー小説",
-      "note_zh": "推理小说。"
+      "note_zh": "推理小说。",
+      "meaning_zh": "小说"
     },
     {
       "id": "v39",
@@ -328,7 +366,8 @@
       "reading": "ミステリー",
       "accent": 1,
       "meaning": "mystery",
-      "note": null
+      "note": null,
+      "meaning_zh": "推理、悬疑"
     },
     {
       "id": "v40",
@@ -336,7 +375,8 @@
       "reading": "しんりがく",
       "accent": null,
       "meaning": "psychology",
-      "note": null
+      "note": null,
+      "meaning_zh": "心理学"
     },
     {
       "id": "v41",
@@ -344,7 +384,8 @@
       "reading": "ノンフィクション",
       "accent": null,
       "meaning": "nonfiction",
-      "note": null
+      "note": null,
+      "meaning_zh": "非虚构"
     },
     {
       "id": "v42",
@@ -352,7 +393,8 @@
       "reading": "ドキュメンタリー",
       "accent": null,
       "meaning": "documentary",
-      "note": null
+      "note": null,
+      "meaning_zh": "纪录片"
     },
     {
       "id": "v43",
@@ -360,7 +402,8 @@
       "reading": "でんき",
       "accent": null,
       "meaning": "biography",
-      "note": null
+      "note": null,
+      "meaning_zh": "传记"
     },
     {
       "id": "v44",
@@ -369,7 +412,8 @@
       "accent": 1,
       "meaning": "bookstore",
       "note": "日本の本屋さんにもあります",
-      "note_zh": "日本的书店里也有。"
+      "note_zh": "日本的书店里也有。",
+      "meaning_zh": "书店"
     },
     {
       "id": "v45",
@@ -377,7 +421,8 @@
       "reading": "ぶんか",
       "accent": 1,
       "meaning": "culture",
-      "note": null
+      "note": null,
+      "meaning_zh": "文化"
     },
     {
       "id": "v46",
@@ -385,7 +430,8 @@
       "reading": "さっか",
       "accent": 0,
       "meaning": "writer, author",
-      "note": null
+      "note": null,
+      "meaning_zh": "作家"
     },
     {
       "id": "v47",
@@ -394,7 +440,8 @@
       "accent": 4,
       "meaning": "to give up",
       "note": "トライしましたけど、諦めました",
-      "note_zh": "试过，但放弃了。"
+      "note_zh": "试过，但放弃了。",
+      "meaning_zh": "放弃"
     },
     {
       "id": "v48",
@@ -402,7 +449,8 @@
       "reading": "ひゃくねんのこどく",
       "accent": null,
       "meaning": "One Hundred Years of Solitude (novel)",
-      "note": null
+      "note": null,
+      "meaning_zh": "《百年孤独》"
     },
     {
       "id": "v49",
@@ -410,7 +458,8 @@
       "reading": "ひがしの けいご",
       "accent": null,
       "meaning": "Higashino Keigo (mystery writer)",
-      "note": null
+      "note": null,
+      "meaning_zh": "东野圭吾（作家）"
     },
     {
       "id": "v50",
@@ -418,7 +467,8 @@
       "reading": "ほうじょう きえ",
       "accent": null,
       "meaning": "Hōjō Kie (mystery writer)",
-      "note": null
+      "note": null,
+      "meaning_zh": "方丈贵惠（作家）"
     }
   ],
   "grammar": [

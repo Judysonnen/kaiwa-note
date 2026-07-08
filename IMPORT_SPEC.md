@@ -35,7 +35,8 @@ entry (with the sentence in `note`) and a sentence entry.
 
 ## Fields
 
-Vocab: `{ id, word, reading, accent, meaning, note, note_zh }`
+Vocab: `{ id, word, reading, accent, meaning, meaning_zh, note, note_zh }`
+(`meaning_zh` is the Chinese gloss, used as the recall-card prompt)
 
 - `id`: `v01`, `v02`, ... in note order; grammar `g01...`; sentences `s01...`.
 - `reading`: kana. For katakana words, repeat the word.

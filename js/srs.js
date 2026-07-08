@@ -57,6 +57,11 @@ function reviveCard(raw) {
   return card;
 }
 
+// Whether this card has been studied before (first pass = learning mode).
+export function isSeen(itemId) {
+  return Boolean(loadJson(STORE_KEY)[itemId]);
+}
+
 export function getCard(itemId) {
   const store = loadJson(STORE_KEY);
   return store[itemId] ? reviveCard(store[itemId]) : createEmptyCard(new Date());

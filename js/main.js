@@ -2,7 +2,7 @@ import { renderPitch } from './pitch.js';
 import { speakJa, speakButton } from './tts.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
-  addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
+  isSeen, addStamp, getStamps, streakLength, todayKey, Rating, NEW_PER_DAY,
 } from './srs.js';
 
 const view = document.getElementById('view');
@@ -354,25 +354,44 @@ async function renderReview() {
     view.appendChild(status);
 
     const TAG = { vocab: '単語', grammar: '文法', sentence: '例文' };
+    const learning = !isSeen(itemId); // first pass: show everything, no quiz
     const card = el('div', 'bigcard');
-    card.appendChild(el('div', `card-tag tag-${kind}`, TAG[kind]));
+    card.appendChild(el('div', `card-tag tag-${kind}`, TAG[kind] + (learning ? ' ・ NEW' : '')));
 
-    let front;
-    if (kind === 'sentence') {
-      // Production practice: Chinese prompt, say it in Japanese, then check.
-      front = el('div', 'card-front is-sentence', data.zh || data.meaning);
-      card.appendChild(front);
-      card.appendChild(el('div', 'card-hint', '日本語で言ってみましょう'));
-    } else {
-      front = el('div', `card-front${kind === 'grammar' ? ' is-grammar' : ''}`,
-        kind === 'vocab' ? data.word : data.pattern);
+    // Front: on first pass it's the Japanese itself; on reviews it's the
+    // Chinese prompt (vocab, sentences) or the pattern (grammar).
+    if (kind === 'vocab') {
+      if (learning) {
+        const front = el('div', 'card-front', data.word);
+        front.lang = 'ja';
+        card.appendChild(front);
+      } else {
+        card.appendChild(el('div', 'card-front is-sentence', data.meaning_zh || data.meaning));
+        card.appendChild(el('div', 'card-hint', '日本語は？'));
+      }
+    } else if (kind === 'grammar') {
+      const front = el('div', 'card-front is-grammar', data.pattern);
       front.lang = 'ja';
       card.appendChild(front);
+    } else {
+      if (learning) {
+        const front = el('div', 'card-front is-grammar', data.ja);
+        front.lang = 'ja';
+        card.appendChild(front);
+      } else {
+        card.appendChild(el('div', 'card-front is-sentence', data.zh || data.meaning));
+        card.appendChild(el('div', 'card-hint', '日本語で言ってみましょう'));
+      }
     }
 
     const back = el('div', 'card-back');
-    back.hidden = true;
+    back.hidden = !learning;
     if (kind === 'vocab') {
+      if (!learning) {
+        const answer = el('div', 'sentence-answer', data.word);
+        answer.lang = 'ja';
+        back.appendChild(answer);
+      }
       back.appendChild(renderPitch(data.reading, data.accent));
       back.appendChild(el('div', 'meaning', data.meaning));
       back.appendChild(speakButton(data.word));
@@ -384,13 +403,40 @@ async function renderReview() {
         back.appendChild(exampleLine(ex));
       }
     } else {
-      const answer = el('div', 'sentence-answer', data.ja);
-      answer.lang = 'ja';
-      back.appendChild(answer);
+      if (!learning) {
+        const answer = el('div', 'sentence-answer', data.ja);
+        answer.lang = 'ja';
+        back.appendChild(answer);
+      } else {
+        back.appendChild(el('div', 'meaning', data.zh || data.meaning));
+      }
       back.appendChild(speakButton(data.ja));
     }
     card.appendChild(back);
     view.appendChild(card);
+
+    function answer(rating) {
+      grade(itemId, rating, kind);
+      queue.shift();
+      if (rating === Rating.Again) {
+        // Back of today's stack; it doesn't count as done yet.
+        queue.push({ itemId, kind, data });
+        combo = 0;
+      } else {
+        done += 1;
+        combo += 1;
+      }
+      showCard();
+    }
+
+    if (learning) {
+      // First exposure: read it, listen, move on. No self-test yet.
+      const next = el('button', 'reveal-btn', 'つぎへ');
+      next.type = 'button';
+      next.addEventListener('click', () => answer(Rating.Good));
+      view.appendChild(next);
+      return;
+    }
 
     const revealBtn = el('button', 'reveal-btn', '答えを見る');
     revealBtn.type = 'button';
@@ -402,19 +448,7 @@ async function renderReview() {
       const btn = el('button', `grade-btn ${g.cls}`);
       btn.type = 'button';
       btn.textContent = g.label;
-      btn.addEventListener('click', () => {
-        grade(itemId, g.rating, kind);
-        queue.shift();
-        if (g.rating === Rating.Again) {
-          // Back of today's stack; it doesn't count as done yet.
-          queue.push({ itemId, kind, data });
-          combo = 0;
-        } else {
-          done += 1;
-          combo += 1;
-        }
-        showCard();
-      });
+      btn.addEventListener('click', () => answer(g.rating));
       gradeRow.appendChild(btn);
     }
     view.appendChild(gradeRow);
