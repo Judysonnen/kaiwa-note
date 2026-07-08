@@ -11,7 +11,10 @@ follows this spec so every lesson comes out in the same shape.
 2. Save the raw notes verbatim to `data/raw/YYYY-MM-DD.txt`.
 3. Parse them into `data/lessons/YYYY-MM-DD.json` following the rules below.
 4. Add the lesson to `data/manifest.json` (append, keep chronological order).
-5. Commit with message `Add lesson YYYY-MM-DD` (English) and push. Cloudflare
+5. Generate audio: `python3 tools/gen_audio.py data/lessons/YYYY-MM-DD.json`
+   (needs `edge-tts` installed and network; writes mp3 clips to `data/audio/`).
+   If it fails, continue anyway — the site falls back to browser speech.
+6. Commit with message `Add lesson YYYY-MM-DD` (English) and push. Cloudflare
    Pages deploys automatically.
 
 ## Classification rules
