@@ -342,6 +342,25 @@ button { font-family: inherit; cursor: pointer; }
 
 .gex { font-size: 0.92rem; margin-top: 0.25rem; }
 
+/* grammar 讲解 block */
+.detail {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  background: #F5F1E4;
+  border-left: 3px solid var(--sun);
+  border-radius: 0 8px 8px 0;
+  padding: 0.45rem 0.7rem;
+  margin: 0.45rem 0 0.3rem;
+  line-height: 1.75;
+}
+
+/* grammar cards need room for the explanation */
+.grid-wide { grid-template-columns: 1fr; }
+
+@media (min-width: 640px) {
+  .grid-wide { grid-template-columns: 1fr 1fr; }
+}
+
 .gex::before { content: "・"; color: var(--coral); font-weight: 800; }
 
 .tcard-foot { display: flex; align-items: center; margin-top: auto; padding-top: 0.6rem; }
@@ -479,6 +498,14 @@ button { font-family: inherit; cursor: pointer; }
 
 .tag-vocab { background: var(--teal); color: var(--ink); }
 .tag-grammar { background: var(--coral); color: #fff; }
+.tag-sentence { background: var(--sun); color: var(--ink); }
+
+/* sentence production card: English prompt on the front */
+.card-front.is-sentence { font-size: 1.35rem; font-weight: 700; line-height: 1.6; }
+
+.card-hint { color: var(--muted); font-size: 0.82rem; }
+
+.sentence-answer { font-size: 1.5rem; font-weight: 800; line-height: 1.6; }
 
 .card-back { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
 

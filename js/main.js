@@ -29,17 +29,21 @@ async function getLesson(id) {
   return lessonCache.get(id);
 }
 
-// Flatten every reviewable entry (vocab + grammar) across all lessons.
+// Flatten every reviewable entry across all lessons. Grammar and sentences
+// are the core material; vocab supports them.
 async function getAllReviewItems() {
   const { lessons } = await getManifest();
   const items = [];
   for (const meta of lessons) {
     const lesson = await getLesson(meta.id);
-    for (const v of lesson.vocab) {
-      items.push({ itemId: `${lesson.id}/${v.id}`, kind: 'vocab', data: v, lessonId: lesson.id });
-    }
     for (const g of lesson.grammar) {
       items.push({ itemId: `${lesson.id}/${g.id}`, kind: 'grammar', data: g, lessonId: lesson.id });
+    }
+    for (const s of lesson.sentences) {
+      items.push({ itemId: `${lesson.id}/${s.id}`, kind: 'sentence', data: s, lessonId: lesson.id });
+    }
+    for (const v of lesson.vocab) {
+      items.push({ itemId: `${lesson.id}/${v.id}`, kind: 'vocab', data: v, lessonId: lesson.id });
     }
   }
   return items;
@@ -186,11 +190,12 @@ function vocabCard(v) {
 }
 
 function grammarCard(g) {
-  const card = el('div', 'tcard');
+  const card = el('div', 'tcard tcard-wide');
   const pattern = el('div', 'word pattern', g.pattern);
   pattern.lang = 'ja';
   card.appendChild(pattern);
   card.appendChild(el('div', 'mean', g.explanation));
+  if (g.detail) card.appendChild(el('div', 'detail', g.detail));
   for (const ex of g.examples || []) {
     card.appendChild(el('div', 'gex', ex));
   }
@@ -222,13 +227,8 @@ async function renderLesson(id) {
   head.appendChild(el('span', 'lesson-date', lesson.date));
   view.appendChild(head);
 
-  view.appendChild(sectionChip('単語', 'vocab', lesson.vocab.length));
-  const vGrid = el('div', 'grid');
-  for (const v of lesson.vocab) vGrid.appendChild(vocabCard(v));
-  view.appendChild(vGrid);
-
   view.appendChild(sectionChip('文法', 'grammar', lesson.grammar.length));
-  const gGrid = el('div', 'grid');
+  const gGrid = el('div', 'grid grid-wide');
   for (const g of lesson.grammar) gGrid.appendChild(grammarCard(g));
   view.appendChild(gGrid);
 
@@ -246,6 +246,11 @@ async function renderLesson(id) {
     ul.appendChild(li);
   }
   view.appendChild(ul);
+
+  view.appendChild(sectionChip('単語', 'vocab', lesson.vocab.length));
+  const vGrid = el('div', 'grid');
+  for (const v of lesson.vocab) vGrid.appendChild(vocabCard(v));
+  view.appendChild(vGrid);
 }
 
 // ---------- review ----------
@@ -294,12 +299,22 @@ async function renderReview() {
     view.appendChild(progress);
     view.appendChild(el('p', 'review-status', `のこり ${queue.length} 枚`));
 
+    const TAG = { vocab: '単語', grammar: '文法', sentence: '例文' };
     const card = el('div', 'bigcard');
-    card.appendChild(el('div', `card-tag tag-${kind}`, kind === 'vocab' ? '単語' : '文法'));
-    const front = el('div', `card-front${kind === 'grammar' ? ' is-grammar' : ''}`,
-      kind === 'vocab' ? data.word : data.pattern);
-    front.lang = 'ja';
-    card.appendChild(front);
+    card.appendChild(el('div', `card-tag tag-${kind}`, TAG[kind]));
+
+    let front;
+    if (kind === 'sentence') {
+      // Production practice: English prompt, say it in Japanese, then check.
+      front = el('div', 'card-front is-sentence', data.meaning);
+      card.appendChild(front);
+      card.appendChild(el('div', 'card-hint', '日本語で言ってみましょう'));
+    } else {
+      front = el('div', `card-front${kind === 'grammar' ? ' is-grammar' : ''}`,
+        kind === 'vocab' ? data.word : data.pattern);
+      front.lang = 'ja';
+      card.appendChild(front);
+    }
 
     const back = el('div', 'card-back');
     back.hidden = true;
@@ -308,12 +323,18 @@ async function renderReview() {
       back.appendChild(el('div', 'meaning', data.meaning));
       if (data.note) back.appendChild(el('div', 'example', data.note));
       back.appendChild(speakButton(data.word));
-    } else {
+    } else if (kind === 'grammar') {
       back.appendChild(el('div', 'meaning', data.explanation));
+      if (data.detail) back.appendChild(el('div', 'detail', data.detail));
       for (const ex of (data.examples || []).slice(0, 2)) {
         back.appendChild(el('div', 'example', ex));
       }
       if (data.examples?.length) back.appendChild(speakButton(data.examples[0]));
+    } else {
+      const answer = el('div', 'sentence-answer', data.ja);
+      answer.lang = 'ja';
+      back.appendChild(answer);
+      back.appendChild(speakButton(data.ja));
     }
     card.appendChild(back);
     view.appendChild(card);
@@ -329,7 +350,7 @@ async function renderReview() {
       btn.type = 'button';
       btn.textContent = g.label;
       btn.addEventListener('click', () => {
-        grade(itemId, g.rating);
+        grade(itemId, g.rating, kind);
         queue.shift();
         if (g.rating === Rating.Again) {
           // Back of today's stack; it doesn't count as done yet.
@@ -348,6 +369,7 @@ async function renderReview() {
       revealBtn.hidden = true;
       gradeRow.hidden = false;
       if (kind === 'vocab') speakJa(data.word);
+      if (kind === 'sentence') speakJa(data.ja);
     });
   }
 

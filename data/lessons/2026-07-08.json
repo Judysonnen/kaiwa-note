@@ -3,108 +3,713 @@
   "date": "2026-07-08",
   "title": "趣味と読書の話",
   "vocab": [
-    { "id": "v01", "word": "火鍋", "reading": "ひなべ", "accent": null, "meaning": "hot pot", "note": "アメリカ人はあまり行きません" },
-    { "id": "v02", "word": "トッピング", "reading": "トッピング", "accent": null, "meaning": "topping", "note": "どんなトッピングが好きですか？" },
-    { "id": "v03", "word": "えび", "reading": "えび", "accent": 0, "meaning": "shrimp 🍤", "note": null },
-    { "id": "v04", "word": "えのき", "reading": "えのき", "accent": null, "meaning": "enoki mushroom", "note": null },
-    { "id": "v05", "word": "一週間", "reading": "いっしゅうかん", "accent": null, "meaning": "one week", "note": "ふつうの1週間でした" },
-    { "id": "v06", "word": "スタジアム", "reading": "スタジアム", "accent": null, "meaning": "stadium", "note": null },
-    { "id": "v07", "word": "卒業する", "reading": "そつぎょうする", "accent": 0, "meaning": "to graduate", "note": null },
-    { "id": "v08", "word": "大学", "reading": "だいがく", "accent": 0, "meaning": "university", "note": null },
-    { "id": "v09", "word": "大学院", "reading": "だいがくいん", "accent": null, "meaning": "graduate school", "note": null },
-    { "id": "v10", "word": "エンジニアリング", "reading": "エンジニアリング", "accent": null, "meaning": "engineering", "note": null },
-    { "id": "v11", "word": "コンピューターサイエンス", "reading": "コンピューターサイエンス", "accent": null, "meaning": "computer science", "note": null },
-    { "id": "v12", "word": "近く", "reading": "ちかく", "accent": null, "meaning": "near, vicinity", "note": "サンフランシスコの近くです" },
-    { "id": "v13", "word": "専攻", "reading": "せんこう", "accent": 0, "meaning": "major (field of study)", "note": "専攻に似ています" },
-    { "id": "v14", "word": "似ている", "reading": "にている", "accent": null, "meaning": "to resemble, to be similar", "note": null },
-    { "id": "v15", "word": "コーディング", "reading": "コーディング", "accent": null, "meaning": "coding", "note": "毎日コーディングします" },
-    { "id": "v16", "word": "ワシントン", "reading": "ワシントン", "accent": 1, "meaning": "Washington", "note": null },
-    { "id": "v17", "word": "どれぐらい", "reading": "どれぐらい", "accent": null, "meaning": "how long / how much", "note": "どれぐらい？1年？3年？" },
-    { "id": "v18", "word": "年齢", "reading": "ねんれい", "accent": 0, "meaning": "age", "note": null },
-    { "id": "v19", "word": "質問", "reading": "しつもん", "accent": 0, "meaning": "question", "note": null },
-    { "id": "v20", "word": "趣味", "reading": "しゅみ", "accent": 1, "meaning": "hobby", "note": null },
-    { "id": "v21", "word": "実は", "reading": "じつは", "accent": null, "meaning": "actually, to tell the truth", "note": null },
-    { "id": "v22", "word": "バイオリン", "reading": "バイオリン", "accent": 0, "meaning": "violin", "note": null },
-    { "id": "v23", "word": "ギター", "reading": "ギター", "accent": 1, "meaning": "guitar", "note": null },
-    { "id": "v24", "word": "弾く", "reading": "ひく", "accent": 0, "meaning": "to play (strings / piano)", "note": "バイオリンとギターを弾きます" },
-    { "id": "v25", "word": "習う", "reading": "ならう", "accent": 2, "meaning": "to learn from a teacher", "note": "ピアノも習いたいです" },
-    { "id": "v26", "word": "4年前", "reading": "よねんまえ", "accent": null, "meaning": "four years ago", "note": null },
-    { "id": "v27", "word": "自分で", "reading": "じぶんで", "accent": null, "meaning": "by oneself", "note": "自分で勉強しました" },
-    { "id": "v28", "word": "エレキギター", "reading": "エレキギター", "accent": null, "meaning": "electric guitar 🎸", "note": null },
-    { "id": "v29", "word": "アコースティックギター", "reading": "アコースティックギター", "accent": null, "meaning": "acoustic guitar", "note": null },
-    { "id": "v30", "word": "全然", "reading": "ぜんぜん", "accent": 0, "meaning": "(not) at all; completely", "note": "全然ちがいます" },
-    { "id": "v31", "word": "ちがう", "reading": "ちがう", "accent": 0, "meaning": "to be different", "note": null },
-    { "id": "v32", "word": "もう少し", "reading": "もうすこし", "accent": null, "meaning": "a little more", "note": "POPはもう少しかんたんです" },
-    { "id": "v33", "word": "簡単", "reading": "かんたん", "accent": 0, "meaning": "easy, simple", "note": null },
-    { "id": "v34", "word": "少ない", "reading": "すくない", "accent": 3, "meaning": "few, little", "note": "コードが少ないです" },
-    { "id": "v35", "word": "コード", "reading": "コード", "accent": 1, "meaning": "chord", "note": null },
-    { "id": "v36", "word": "線", "reading": "せん", "accent": 1, "meaning": "line; string", "note": null },
-    { "id": "v37", "word": "人気", "reading": "にんき", "accent": 0, "meaning": "popularity; popular", "note": "とても人気です" },
-    { "id": "v38", "word": "小説", "reading": "しょうせつ", "accent": 0, "meaning": "novel", "note": "ミステリー小説" },
-    { "id": "v39", "word": "ミステリー", "reading": "ミステリー", "accent": 1, "meaning": "mystery", "note": null },
-    { "id": "v40", "word": "心理学", "reading": "しんりがく", "accent": null, "meaning": "psychology", "note": null },
-    { "id": "v41", "word": "ノンフィクション", "reading": "ノンフィクション", "accent": null, "meaning": "nonfiction", "note": null },
-    { "id": "v42", "word": "ドキュメンタリー", "reading": "ドキュメンタリー", "accent": null, "meaning": "documentary", "note": null },
-    { "id": "v43", "word": "伝記", "reading": "でんき", "accent": null, "meaning": "biography", "note": null },
-    { "id": "v44", "word": "本屋", "reading": "ほんや", "accent": 1, "meaning": "bookstore", "note": "日本の本屋さんにもあります" },
-    { "id": "v45", "word": "文化", "reading": "ぶんか", "accent": 1, "meaning": "culture", "note": null },
-    { "id": "v46", "word": "作家", "reading": "さっか", "accent": 0, "meaning": "writer, author", "note": null },
-    { "id": "v47", "word": "諦める", "reading": "あきらめる", "accent": 4, "meaning": "to give up", "note": "トライしましたけど、諦めました" },
-    { "id": "v48", "word": "百年の孤独", "reading": "ひゃくねんのこどく", "accent": null, "meaning": "One Hundred Years of Solitude (novel)", "note": null },
-    { "id": "v49", "word": "東野圭吾", "reading": "ひがしの けいご", "accent": null, "meaning": "Higashino Keigo (mystery writer)", "note": null },
-    { "id": "v50", "word": "方丈貴恵", "reading": "ほうじょう きえ", "accent": null, "meaning": "Hōjō Kie (mystery writer)", "note": null }
+    {
+      "id": "v01",
+      "word": "火鍋",
+      "reading": "ひなべ",
+      "accent": null,
+      "meaning": "hot pot",
+      "note": "アメリカ人はあまり行きません"
+    },
+    {
+      "id": "v02",
+      "word": "トッピング",
+      "reading": "トッピング",
+      "accent": null,
+      "meaning": "topping",
+      "note": "どんなトッピングが好きですか？"
+    },
+    {
+      "id": "v03",
+      "word": "えび",
+      "reading": "えび",
+      "accent": 0,
+      "meaning": "shrimp 🍤",
+      "note": null
+    },
+    {
+      "id": "v04",
+      "word": "えのき",
+      "reading": "えのき",
+      "accent": null,
+      "meaning": "enoki mushroom",
+      "note": null
+    },
+    {
+      "id": "v05",
+      "word": "一週間",
+      "reading": "いっしゅうかん",
+      "accent": null,
+      "meaning": "one week",
+      "note": "ふつうの1週間でした"
+    },
+    {
+      "id": "v06",
+      "word": "スタジアム",
+      "reading": "スタジアム",
+      "accent": null,
+      "meaning": "stadium",
+      "note": null
+    },
+    {
+      "id": "v07",
+      "word": "卒業する",
+      "reading": "そつぎょうする",
+      "accent": 0,
+      "meaning": "to graduate",
+      "note": null
+    },
+    {
+      "id": "v08",
+      "word": "大学",
+      "reading": "だいがく",
+      "accent": 0,
+      "meaning": "university",
+      "note": null
+    },
+    {
+      "id": "v09",
+      "word": "大学院",
+      "reading": "だいがくいん",
+      "accent": null,
+      "meaning": "graduate school",
+      "note": null
+    },
+    {
+      "id": "v10",
+      "word": "エンジニアリング",
+      "reading": "エンジニアリング",
+      "accent": null,
+      "meaning": "engineering",
+      "note": null
+    },
+    {
+      "id": "v11",
+      "word": "コンピューターサイエンス",
+      "reading": "コンピューターサイエンス",
+      "accent": null,
+      "meaning": "computer science",
+      "note": null
+    },
+    {
+      "id": "v12",
+      "word": "近く",
+      "reading": "ちかく",
+      "accent": null,
+      "meaning": "near, vicinity",
+      "note": "サンフランシスコの近くです"
+    },
+    {
+      "id": "v13",
+      "word": "専攻",
+      "reading": "せんこう",
+      "accent": 0,
+      "meaning": "major (field of study)",
+      "note": "専攻に似ています"
+    },
+    {
+      "id": "v14",
+      "word": "似ている",
+      "reading": "にている",
+      "accent": null,
+      "meaning": "to resemble, to be similar",
+      "note": null
+    },
+    {
+      "id": "v15",
+      "word": "コーディング",
+      "reading": "コーディング",
+      "accent": null,
+      "meaning": "coding",
+      "note": "毎日コーディングします"
+    },
+    {
+      "id": "v16",
+      "word": "ワシントン",
+      "reading": "ワシントン",
+      "accent": 1,
+      "meaning": "Washington",
+      "note": null
+    },
+    {
+      "id": "v17",
+      "word": "どれぐらい",
+      "reading": "どれぐらい",
+      "accent": null,
+      "meaning": "how long / how much",
+      "note": "どれぐらい？1年？3年？"
+    },
+    {
+      "id": "v18",
+      "word": "年齢",
+      "reading": "ねんれい",
+      "accent": 0,
+      "meaning": "age",
+      "note": null
+    },
+    {
+      "id": "v19",
+      "word": "質問",
+      "reading": "しつもん",
+      "accent": 0,
+      "meaning": "question",
+      "note": null
+    },
+    {
+      "id": "v20",
+      "word": "趣味",
+      "reading": "しゅみ",
+      "accent": 1,
+      "meaning": "hobby",
+      "note": null
+    },
+    {
+      "id": "v21",
+      "word": "実は",
+      "reading": "じつは",
+      "accent": null,
+      "meaning": "actually, to tell the truth",
+      "note": null
+    },
+    {
+      "id": "v22",
+      "word": "バイオリン",
+      "reading": "バイオリン",
+      "accent": 0,
+      "meaning": "violin",
+      "note": null
+    },
+    {
+      "id": "v23",
+      "word": "ギター",
+      "reading": "ギター",
+      "accent": 1,
+      "meaning": "guitar",
+      "note": null
+    },
+    {
+      "id": "v24",
+      "word": "弾く",
+      "reading": "ひく",
+      "accent": 0,
+      "meaning": "to play (strings / piano)",
+      "note": "バイオリンとギターを弾きます"
+    },
+    {
+      "id": "v25",
+      "word": "習う",
+      "reading": "ならう",
+      "accent": 2,
+      "meaning": "to learn from a teacher",
+      "note": "ピアノも習いたいです"
+    },
+    {
+      "id": "v26",
+      "word": "4年前",
+      "reading": "よねんまえ",
+      "accent": null,
+      "meaning": "four years ago",
+      "note": null
+    },
+    {
+      "id": "v27",
+      "word": "自分で",
+      "reading": "じぶんで",
+      "accent": null,
+      "meaning": "by oneself",
+      "note": "自分で勉強しました"
+    },
+    {
+      "id": "v28",
+      "word": "エレキギター",
+      "reading": "エレキギター",
+      "accent": null,
+      "meaning": "electric guitar 🎸",
+      "note": null
+    },
+    {
+      "id": "v29",
+      "word": "アコースティックギター",
+      "reading": "アコースティックギター",
+      "accent": null,
+      "meaning": "acoustic guitar",
+      "note": null
+    },
+    {
+      "id": "v30",
+      "word": "全然",
+      "reading": "ぜんぜん",
+      "accent": 0,
+      "meaning": "(not) at all; completely",
+      "note": "全然ちがいます"
+    },
+    {
+      "id": "v31",
+      "word": "ちがう",
+      "reading": "ちがう",
+      "accent": 0,
+      "meaning": "to be different",
+      "note": null
+    },
+    {
+      "id": "v32",
+      "word": "もう少し",
+      "reading": "もうすこし",
+      "accent": null,
+      "meaning": "a little more",
+      "note": "POPはもう少しかんたんです"
+    },
+    {
+      "id": "v33",
+      "word": "簡単",
+      "reading": "かんたん",
+      "accent": 0,
+      "meaning": "easy, simple",
+      "note": null
+    },
+    {
+      "id": "v34",
+      "word": "少ない",
+      "reading": "すくない",
+      "accent": 3,
+      "meaning": "few, little",
+      "note": "コードが少ないです"
+    },
+    {
+      "id": "v35",
+      "word": "コード",
+      "reading": "コード",
+      "accent": 1,
+      "meaning": "chord",
+      "note": null
+    },
+    {
+      "id": "v36",
+      "word": "線",
+      "reading": "せん",
+      "accent": 1,
+      "meaning": "line; string",
+      "note": null
+    },
+    {
+      "id": "v37",
+      "word": "人気",
+      "reading": "にんき",
+      "accent": 0,
+      "meaning": "popularity; popular",
+      "note": "とても人気です"
+    },
+    {
+      "id": "v38",
+      "word": "小説",
+      "reading": "しょうせつ",
+      "accent": 0,
+      "meaning": "novel",
+      "note": "ミステリー小説"
+    },
+    {
+      "id": "v39",
+      "word": "ミステリー",
+      "reading": "ミステリー",
+      "accent": 1,
+      "meaning": "mystery",
+      "note": null
+    },
+    {
+      "id": "v40",
+      "word": "心理学",
+      "reading": "しんりがく",
+      "accent": null,
+      "meaning": "psychology",
+      "note": null
+    },
+    {
+      "id": "v41",
+      "word": "ノンフィクション",
+      "reading": "ノンフィクション",
+      "accent": null,
+      "meaning": "nonfiction",
+      "note": null
+    },
+    {
+      "id": "v42",
+      "word": "ドキュメンタリー",
+      "reading": "ドキュメンタリー",
+      "accent": null,
+      "meaning": "documentary",
+      "note": null
+    },
+    {
+      "id": "v43",
+      "word": "伝記",
+      "reading": "でんき",
+      "accent": null,
+      "meaning": "biography",
+      "note": null
+    },
+    {
+      "id": "v44",
+      "word": "本屋",
+      "reading": "ほんや",
+      "accent": 1,
+      "meaning": "bookstore",
+      "note": "日本の本屋さんにもあります"
+    },
+    {
+      "id": "v45",
+      "word": "文化",
+      "reading": "ぶんか",
+      "accent": 1,
+      "meaning": "culture",
+      "note": null
+    },
+    {
+      "id": "v46",
+      "word": "作家",
+      "reading": "さっか",
+      "accent": 0,
+      "meaning": "writer, author",
+      "note": null
+    },
+    {
+      "id": "v47",
+      "word": "諦める",
+      "reading": "あきらめる",
+      "accent": 4,
+      "meaning": "to give up",
+      "note": "トライしましたけど、諦めました"
+    },
+    {
+      "id": "v48",
+      "word": "百年の孤独",
+      "reading": "ひゃくねんのこどく",
+      "accent": null,
+      "meaning": "One Hundred Years of Solitude (novel)",
+      "note": null
+    },
+    {
+      "id": "v49",
+      "word": "東野圭吾",
+      "reading": "ひがしの けいご",
+      "accent": null,
+      "meaning": "Higashino Keigo (mystery writer)",
+      "note": null
+    },
+    {
+      "id": "v50",
+      "word": "方丈貴恵",
+      "reading": "ほうじょう きえ",
+      "accent": null,
+      "meaning": "Hōjō Kie (mystery writer)",
+      "note": null
+    }
   ],
   "grammar": [
-    { "id": "g01", "pattern": "Verb + たいです", "explanation": "want to do something", "examples": ["食べたいです", "ピアノも習いたいです"] },
-    { "id": "g02", "pattern": "〜ています", "explanation": "て-form + います: ongoing action or habit", "examples": ["4歳から弾いています", "ブログを書いています"] },
-    { "id": "g03", "pattern": "（理由）〜から、〜", "explanation": "gives a reason: because (reason), (statement)", "examples": ["私は大学院に行きましたから、その学生より年齢が上です", "働いていますから、時間があまりありません"] },
-    { "id": "g04", "pattern": "〜ので", "explanation": "gives a reason, softer than から", "examples": ["働いていて時間があまりないので、最近はブログを書いていません"] },
-    { "id": "g05", "pattern": "います / あります", "explanation": "います for people and animals, あります for things", "examples": ["人がたくさんいました"] },
-    { "id": "g06", "pattern": "〜か + わかりません", "explanation": "embedded question: I don't know (what / whether) ...", "examples": ["どんな仕事が好きかわかりません"] },
-    { "id": "g07", "pattern": "〜かどうか", "explanation": "whether or not", "examples": ["ベストセラーかどうかわかりません"] },
-    { "id": "g08", "pattern": "〜だけじゃなくて…も", "explanation": "not only ... but also ...", "examples": ["ミステリーだけじゃなくてノンフィクションも読みます"] },
-    { "id": "g09", "pattern": "〜によってちがいます", "explanation": "it depends on ...", "examples": ["何を弾きたいかによってちがいます"] },
-    { "id": "g10", "pattern": "Potential form（読める）", "explanation": "can do: 読む → 読めます", "examples": ["中国語の本は速く読めます"] },
-    { "id": "g11", "pattern": "おいくつですか？", "explanation": "polite way to ask age: いくつですか / おいくつですか = 何歳ですか", "examples": ["おいくつですか？"] },
-    { "id": "g12", "pattern": "特にないです", "explanation": "nothing in particular; ≠ 別に, which can sound curt", "examples": ["特にいないです。いろいろな作家の本を読みます。"] },
-    { "id": "g13", "pattern": "AはBより〜", "explanation": "comparison: A is more ... than B; 年齢が上です = older", "examples": ["私は大学院に行きましたから、その学生より年齢が上です"] },
-    { "id": "g14", "pattern": "Plain past + noun（読んだ本）", "explanation": "plain past verb modifies a noun: the book (I) read", "examples": ["最近読んだ本は、Never Let Me Goです"] }
+    {
+      "id": "g01",
+      "pattern": "Verb + たいです",
+      "explanation": "want to do something",
+      "examples": [
+        "食べたいです",
+        "ピアノも習いたいです"
+      ],
+      "detail": "接续：动词ます形去掉ます＋たい。表示第一人称「想做某事」（疑问句可用于第二人称）。たい本身按い形容词变化：食べたくないです（不想吃）、食べたかったです（当时想吃）。"
+    },
+    {
+      "id": "g02",
+      "pattern": "〜ています",
+      "explanation": "て-form + います: ongoing action or habit",
+      "examples": [
+        "4歳から弾いています",
+        "ブログを書いています"
+      ],
+      "detail": "接续：动词て形＋います。两个核心用法：①动作正在进行（ブログを書いています＝在写博客/有写博客的习惯）；②从过去持续到现在的状态或习惯（4歳から弾いています＝从4岁一直弹到现在）。"
+    },
+    {
+      "id": "g03",
+      "pattern": "（理由）〜から、〜",
+      "explanation": "gives a reason: because (reason), (statement)",
+      "examples": [
+        "私は大学院に行きましたから、その学生より年齢が上です",
+        "働いていますから、時間があまりありません"
+      ],
+      "detail": "接续：句子（可以是です/ます礼貌形）＋から，先说理由再说结论。から直接接在礼貌形后面是它和ので的一个区别，口语中主观、直接。"
+    },
+    {
+      "id": "g04",
+      "pattern": "〜ので",
+      "explanation": "gives a reason, softer than から",
+      "examples": [
+        "働いていて時間があまりないので、最近はブログを書いていません"
+      ],
+      "detail": "接续：普通形＋ので（な形容词和名词用〜なので）。同样表原因，但比から更客观柔和，用来委婉地解释情况，不显得在强调自己的主张。拒绝或道歉时用ので更礼貌。"
+    },
+    {
+      "id": "g05",
+      "pattern": "います / あります",
+      "explanation": "います for people and animals, あります for things",
+      "examples": [
+        "人がたくさんいました"
+      ],
+      "detail": "存在动词的分工：有生命的（人、动物）用います，无生命的（东西、植物、事件）用あります。人がたくさんいました＝当时有很多人。"
+    },
+    {
+      "id": "g06",
+      "pattern": "〜か + わかりません",
+      "explanation": "embedded question: I don't know (what / whether) ...",
+      "examples": [
+        "どんな仕事が好きかわかりません"
+      ],
+      "detail": "嵌入疑问句：疑问词的问句变普通形＋か，塞进大句子里。どんな仕事が好きか＋わかりません＝不知道自己喜欢什么样的工作。嵌入部分不用です/ます。"
+    },
+    {
+      "id": "g07",
+      "pattern": "〜かどうか",
+      "explanation": "whether or not",
+      "examples": [
+        "ベストセラーかどうかわかりません"
+      ],
+      "detail": "没有疑问词的「是否」用かどうか：普通形＋かどうか。ベストセラーかどうかわかりません＝不知道是不是畅销书。名词直接＋かどうか，不加だ。"
+    },
+    {
+      "id": "g08",
+      "pattern": "〜だけじゃなくて…も",
+      "explanation": "not only ... but also ...",
+      "examples": [
+        "ミステリーだけじゃなくてノンフィクションも読みます"
+      ],
+      "detail": "AだけじゃなくてBも＝不仅A而且B。じゃなくて是ではなくて的口语缩略。注意后半句用も呼应。"
+    },
+    {
+      "id": "g09",
+      "pattern": "〜によってちがいます",
+      "explanation": "it depends on ...",
+      "examples": [
+        "何を弾きたいかによってちがいます"
+      ],
+      "detail": "名词＋によって（ちがいます）＝因…而异。前面还可以接嵌入疑问句：何を弾きたいかによって＝取决于你想弹什么。"
+    },
+    {
+      "id": "g10",
+      "pattern": "Potential form（読める）",
+      "explanation": "can do: 読む → 読めます",
+      "examples": [
+        "中国語の本は速く読めます"
+      ],
+      "detail": "可能形变位：一类动词词尾う段→え段＋ます（読む→読めます）；二类动词去る＋られます（食べられます）；する→できます、来る→来られます。可能形句中宾语的を常改成が：本が読めます。"
+    },
+    {
+      "id": "g11",
+      "pattern": "おいくつですか？",
+      "explanation": "polite way to ask age: いくつですか / おいくつですか = 何歳ですか",
+      "examples": [
+        "おいくつですか？"
+      ],
+      "detail": "问年龄的礼貌层级：何歳ですか（直接）→ いくつですか → おいくつですか（最礼貌，加了美化语お）。对长辈或初次见面用おいくつですか。"
+    },
+    {
+      "id": "g12",
+      "pattern": "特にないです",
+      "explanation": "nothing in particular; ≠ 別に, which can sound curt",
+      "examples": [
+        "特にいないです。いろいろな作家の本を読みます。"
+      ],
+      "detail": "被问「有没有…」时，「没有特别的」用特にないです（人用特にいないです），自然又礼貌。别に（ないです）字面意思相近，但语气冷淡敷衍，容易失礼，会话中避免。"
+    },
+    {
+      "id": "g13",
+      "pattern": "AはBより〜",
+      "explanation": "comparison: A is more ... than B; 年齢が上です = older",
+      "examples": [
+        "私は大学院に行きましたから、その学生より年齢が上です"
+      ],
+      "detail": "比较句：BよりA（のほうが）〜＝A比B更…。例句里年齢が上です＝年纪更大（上/下用于年龄高低）。より前面是被比下去的那一方。"
+    },
+    {
+      "id": "g14",
+      "pattern": "Plain past + noun（読んだ本）",
+      "explanation": "plain past verb modifies a noun: the book (I) read",
+      "examples": [
+        "最近読んだ本は、Never Let Me Goです"
+      ],
+      "detail": "日语没有关系代词，动词普通形直接放在名词前面修饰它：読んだ本＝读过的书、最近読んだ本＝最近读的书。整个从句里不用です/ます。"
+    }
   ],
   "sentences": [
-    { "id": "s01", "ja": "アメリカ人はあまり行きません", "meaning": "Americans don't go there much." },
-    { "id": "s02", "ja": "どんなトッピングが好きですか？", "meaning": "What toppings do you like?" },
-    { "id": "s03", "ja": "ふつうの1週間でした", "meaning": "It was an ordinary week." },
-    { "id": "s04", "ja": "スタジアムでワールドカップを見ました", "meaning": "I watched the World Cup at a stadium." },
-    { "id": "s05", "ja": "人がたくさんいました", "meaning": "There were a lot of people." },
-    { "id": "s06", "ja": "大学でともだちとサッカーゲームをよく見ました", "meaning": "In college I often watched soccer games with friends." },
-    { "id": "s07", "ja": "大学は中国で卒業しました", "meaning": "I graduated from university in China." },
-    { "id": "s08", "ja": "大学院はアメリカで卒業しました", "meaning": "I finished graduate school in the US." },
-    { "id": "s09", "ja": "大学院は行きませんでした", "meaning": "(Example) I didn't go to graduate school." },
-    { "id": "s10", "ja": "サンフランシスコの近くです", "meaning": "It's near San Francisco." },
-    { "id": "s11", "ja": "どんな仕事をしていますか？", "meaning": "What kind of work do you do?" },
-    { "id": "s12", "ja": "専攻に似ています", "meaning": "It's similar to my major." },
-    { "id": "s13", "ja": "毎日コーディングします", "meaning": "I code every day." },
-    { "id": "s14", "ja": "嫌いじゃありません", "meaning": "I don't dislike it." },
-    { "id": "s15", "ja": "どんな仕事が好きかわかりません", "meaning": "I don't know what kind of work I like." },
-    { "id": "s16", "ja": "4歳から弾いています", "meaning": "I've been playing since I was four." },
-    { "id": "s17", "ja": "自分で勉強しました", "meaning": "I studied it on my own." },
-    { "id": "s18", "ja": "エレキギターとアコースティックギターは全然ちがいます", "meaning": "Electric and acoustic guitar are completely different." },
-    { "id": "s19", "ja": "何を弾きたいかによってちがいます", "meaning": "It depends on what you want to play." },
-    { "id": "s20", "ja": "POPはもう少しかんたんです", "meaning": "Pop is a bit easier." },
-    { "id": "s21", "ja": "コードが少ないです", "meaning": "There are fewer chords." },
-    { "id": "s22", "ja": "ほかに趣味はありますか？", "meaning": "Do you have any other hobbies?" },
-    { "id": "s23", "ja": "ブログを書いています", "meaning": "I write a blog." },
-    { "id": "s24", "ja": "働いていますから、時間があまりありません。", "meaning": "I'm working, so I don't have much time." },
-    { "id": "s25", "ja": "働いていて時間があまりないので、最近はブログを書いていません。", "meaning": "I'm working and don't have much time, so I haven't been blogging lately." },
-    { "id": "s26", "ja": "そして、とても人気です", "meaning": "And it's very popular." },
-    { "id": "s27", "ja": "本を読んで、レビューや考えたことを書きます", "meaning": "I read books and write reviews and thoughts." },
-    { "id": "s28", "ja": "ミステリーだけじゃなくてノンフィクションも読みます", "meaning": "I read not only mysteries but also nonfiction." },
-    { "id": "s29", "ja": "ベストセラーかどうかわかりません", "meaning": "I don't know whether it's a bestseller." },
-    { "id": "s30", "ja": "日本の本屋さんにもあります", "meaning": "Japanese bookstores have it too." },
-    { "id": "s31", "ja": "英語の本をよく読みますか？中国語の本をよく読みますか？", "meaning": "Do you often read books in English? In Chinese?" },
-    { "id": "s32", "ja": "中国語の本は速く読めます", "meaning": "I can read Chinese books quickly." },
-    { "id": "s33", "ja": "トライしましたけど、諦めました", "meaning": "I tried, but I gave up." },
-    { "id": "s34", "ja": "特にいないです。いろいろな作家の本を読みます。", "meaning": "No one in particular. I read books by many writers." },
-    { "id": "s35", "ja": "最近読んだ本は、Never Let Me Goです。", "meaning": "A book I read recently is Never Let Me Go." }
+    {
+      "id": "s01",
+      "ja": "アメリカ人はあまり行きません",
+      "meaning": "Americans don't go there much."
+    },
+    {
+      "id": "s02",
+      "ja": "どんなトッピングが好きですか？",
+      "meaning": "What toppings do you like?"
+    },
+    {
+      "id": "s03",
+      "ja": "ふつうの1週間でした",
+      "meaning": "It was an ordinary week."
+    },
+    {
+      "id": "s04",
+      "ja": "スタジアムでワールドカップを見ました",
+      "meaning": "I watched the World Cup at a stadium."
+    },
+    {
+      "id": "s05",
+      "ja": "人がたくさんいました",
+      "meaning": "There were a lot of people."
+    },
+    {
+      "id": "s06",
+      "ja": "大学でともだちとサッカーゲームをよく見ました",
+      "meaning": "In college I often watched soccer games with friends."
+    },
+    {
+      "id": "s07",
+      "ja": "大学は中国で卒業しました",
+      "meaning": "I graduated from university in China."
+    },
+    {
+      "id": "s08",
+      "ja": "大学院はアメリカで卒業しました",
+      "meaning": "I finished graduate school in the US."
+    },
+    {
+      "id": "s09",
+      "ja": "大学院は行きませんでした",
+      "meaning": "(Example) I didn't go to graduate school."
+    },
+    {
+      "id": "s10",
+      "ja": "サンフランシスコの近くです",
+      "meaning": "It's near San Francisco."
+    },
+    {
+      "id": "s11",
+      "ja": "どんな仕事をしていますか？",
+      "meaning": "What kind of work do you do?"
+    },
+    {
+      "id": "s12",
+      "ja": "専攻に似ています",
+      "meaning": "It's similar to my major."
+    },
+    {
+      "id": "s13",
+      "ja": "毎日コーディングします",
+      "meaning": "I code every day."
+    },
+    {
+      "id": "s14",
+      "ja": "嫌いじゃありません",
+      "meaning": "I don't dislike it."
+    },
+    {
+      "id": "s15",
+      "ja": "どんな仕事が好きかわかりません",
+      "meaning": "I don't know what kind of work I like."
+    },
+    {
+      "id": "s16",
+      "ja": "4歳から弾いています",
+      "meaning": "I've been playing since I was four."
+    },
+    {
+      "id": "s17",
+      "ja": "自分で勉強しました",
+      "meaning": "I studied it on my own."
+    },
+    {
+      "id": "s18",
+      "ja": "エレキギターとアコースティックギターは全然ちがいます",
+      "meaning": "Electric and acoustic guitar are completely different."
+    },
+    {
+      "id": "s19",
+      "ja": "何を弾きたいかによってちがいます",
+      "meaning": "It depends on what you want to play."
+    },
+    {
+      "id": "s20",
+      "ja": "POPはもう少しかんたんです",
+      "meaning": "Pop is a bit easier."
+    },
+    {
+      "id": "s21",
+      "ja": "コードが少ないです",
+      "meaning": "There are fewer chords."
+    },
+    {
+      "id": "s22",
+      "ja": "ほかに趣味はありますか？",
+      "meaning": "Do you have any other hobbies?"
+    },
+    {
+      "id": "s23",
+      "ja": "ブログを書いています",
+      "meaning": "I write a blog."
+    },
+    {
+      "id": "s24",
+      "ja": "働いていますから、時間があまりありません。",
+      "meaning": "I'm working, so I don't have much time."
+    },
+    {
+      "id": "s25",
+      "ja": "働いていて時間があまりないので、最近はブログを書いていません。",
+      "meaning": "I'm working and don't have much time, so I haven't been blogging lately."
+    },
+    {
+      "id": "s26",
+      "ja": "そして、とても人気です",
+      "meaning": "And it's very popular."
+    },
+    {
+      "id": "s27",
+      "ja": "本を読んで、レビューや考えたことを書きます",
+      "meaning": "I read books and write reviews and thoughts."
+    },
+    {
+      "id": "s28",
+      "ja": "ミステリーだけじゃなくてノンフィクションも読みます",
+      "meaning": "I read not only mysteries but also nonfiction."
+    },
+    {
+      "id": "s29",
+      "ja": "ベストセラーかどうかわかりません",
+      "meaning": "I don't know whether it's a bestseller."
+    },
+    {
+      "id": "s30",
+      "ja": "日本の本屋さんにもあります",
+      "meaning": "Japanese bookstores have it too."
+    },
+    {
+      "id": "s31",
+      "ja": "英語の本をよく読みますか？中国語の本をよく読みますか？",
+      "meaning": "Do you often read books in English? In Chinese?"
+    },
+    {
+      "id": "s32",
+      "ja": "中国語の本は速く読めます",
+      "meaning": "I can read Chinese books quickly."
+    },
+    {
+      "id": "s33",
+      "ja": "トライしましたけど、諦めました",
+      "meaning": "I tried, but I gave up."
+    },
+    {
+      "id": "s34",
+      "ja": "特にいないです。いろいろな作家の本を読みます。",
+      "meaning": "No one in particular. I read books by many writers."
+    },
+    {
+      "id": "s35",
+      "ja": "最近読んだ本は、Never Let Me Goです。",
+      "meaning": "A book I read recently is Never Let Me Go."
+    }
   ]
 }

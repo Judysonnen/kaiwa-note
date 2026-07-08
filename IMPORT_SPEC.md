@@ -42,10 +42,18 @@ Vocab: `{ id, word, reading, accent, meaning, note }`
   the teacher used.
 - `note`: an example or teacher remark from the notes, else `null`.
 
-Grammar: `{ id, pattern, explanation, examples }` where `examples` is an array
-of Japanese sentences from the notes.
+Grammar: `{ id, pattern, explanation, examples, detail }` where `examples` is
+an array of Japanese sentences from the notes, and `detail` is a Chinese
+explanation (讲解) written at import time: 接续方式 (how the pattern attaches
+or conjugates), core usage, and any nuance the teacher pointed out. Two to
+four sentences, aimed at a beginner.
 
-Sentences: `{ id, ja, meaning }` with a short English translation.
+Sentences: `{ id, ja, meaning }` with a short English translation. Sentences
+are reviewed as production cards (English front, Japanese back), so `meaning`
+should read as a natural prompt for saying the Japanese.
+
+Grammar and sentences are the core review material; vocab is supporting. The
+daily new-card mix lives in `js/srs.js` (`NEW_MIX`).
 
 ## Style
 

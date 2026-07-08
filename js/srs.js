@@ -2,14 +2,18 @@
 // localStorage, keyed by "<lessonId>/<entryId>"; lesson content itself
 // stays in the repo's JSON files.
 //
-// New cards are drip-fed: at most NEW_PER_DAY unseen cards enter the queue
-// per calendar day, so a full lesson spreads itself over about a week.
+// New cards are drip-fed with a per-kind daily mix. Grammar and sentences
+// are the core of conversation practice, vocab is supporting material, so the mix
+// weights them accordingly and the queue serves grammar/sentences first.
 
 import { fsrs, createEmptyCard, Rating } from './vendor/ts-fsrs.mjs';
 
 const STORE_KEY = 'kaiwa-note:srs:v1';
 const META_KEY = 'kaiwa-note:meta:v1';
-export const NEW_PER_DAY = 8;
+
+export const NEW_MIX = { grammar: 3, sentence: 4, vocab: 3 };
+export const NEW_PER_DAY = Object.values(NEW_MIX).reduce((a, b) => a + b, 0);
+const KIND_ORDER = ['grammar', 'sentence', 'vocab'];
 
 const scheduler = fsrs();
 
@@ -34,9 +38,16 @@ export function todayKey(now = new Date()) {
 
 function loadMeta() {
   const meta = loadJson(META_KEY);
-  meta.intro = meta.intro || {};   // dateKey -> new cards introduced that day
+  meta.intro = meta.intro || {};   // dateKey -> { kind: count } introduced that day
   meta.stamps = meta.stamps || []; // dateKeys with a completed session
   return meta;
+}
+
+function introToday(meta, now) {
+  const raw = meta.intro[todayKey(now)];
+  // Older versions stored a plain number; treat it as already-used allowance.
+  if (typeof raw === 'number') return { grammar: raw, sentence: raw, vocab: raw };
+  return raw || {};
 }
 
 function reviveCard(raw) {
@@ -51,13 +62,15 @@ export function getCard(itemId) {
   return store[itemId] ? reviveCard(store[itemId]) : createEmptyCard(new Date());
 }
 
-export function grade(itemId, rating, now = new Date()) {
+export function grade(itemId, rating, kind = 'vocab', now = new Date()) {
   const store = loadJson(STORE_KEY);
   if (!store[itemId]) {
-    // First time this card is studied: count it against today's new-card quota.
+    // First study of this card: count it against today's per-kind quota.
     const meta = loadMeta();
     const key = todayKey(now);
-    meta.intro[key] = (meta.intro[key] || 0) + 1;
+    const day = introToday(meta, now);
+    day[kind] = (day[kind] || 0) + 1;
+    meta.intro[key] = day;
     saveJson(META_KEY, meta);
   }
   const card = store[itemId] ? reviveCard(store[itemId]) : createEmptyCard(now);
@@ -67,21 +80,28 @@ export function grade(itemId, rating, now = new Date()) {
   return result.card;
 }
 
-// Today's queue: every due card, plus unseen cards up to today's remaining
-// new-card allowance (in lesson order).
+// Today's queue: every due card (oldest first), then fresh cards by kind
+// priority (grammar, sentence, vocab), each capped by its daily allowance.
 export function buildQueue(items, now = new Date()) {
   const store = loadJson(STORE_KEY);
   const meta = loadMeta();
-  const allowance = Math.max(0, NEW_PER_DAY - (meta.intro[todayKey(now)] || 0));
+  const used = introToday(meta, now);
+
   const due = [];
-  const fresh = [];
+  const fresh = { grammar: [], sentence: [], vocab: [] };
   for (const item of items) {
     const raw = store[item.itemId];
-    if (!raw) fresh.push(item);
+    if (!raw) fresh[item.kind]?.push(item);
     else if (new Date(raw.due) <= now) due.push({ item, due: new Date(raw.due) });
   }
   due.sort((a, b) => a.due - b.due);
-  return [...due.map(d => d.item), ...fresh.slice(0, allowance)];
+
+  const queue = due.map(d => d.item);
+  for (const kind of KIND_ORDER) {
+    const allowance = Math.max(0, NEW_MIX[kind] - (used[kind] || 0));
+    queue.push(...fresh[kind].slice(0, allowance));
+  }
+  return queue;
 }
 
 export function dueCount(items, now = new Date()) {
