@@ -70,6 +70,11 @@ UI_TEXTS = [
     '継続は力なり。', 'すばらしい！', 'その調子！', 'やるじゃん！',
 ]
 
+# Dynamic lines have a small bounded range: generate every variant so the
+# exact string always resolves to a clip (strings must match js/main.js).
+UI_TEXTS += [f'あしたは新しいカードが{n}枚とどきます' for n in range(1, 11)]
+UI_TEXTS += [f'約{m}分でおわります' for m in range(1, 21)]
+
 if __name__ == '__main__':
     # Normal speaking rate: these clips are chained at playback, and the
     # lesson-clip -10% slowdown makes chained speech drag.
