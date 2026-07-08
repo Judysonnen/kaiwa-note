@@ -19,7 +19,10 @@ export const NEW_MIX = { grammar: 0, sentence: 5, vocab: 0 };
 export const NEW_PER_DAY = Object.values(NEW_MIX).reduce((a, b) => a + b, 0);
 const KIND_ORDER = ['grammar', 'sentence', 'vocab'];
 
-const scheduler = fsrs();
+// No short-term learning steps: a card studied today comes back tomorrow at
+// the earliest, not ten minutes later. Same-day repeats only happen when the
+// session itself requeues a もう一度 card.
+const scheduler = fsrs({ enable_short_term: false });
 
 export { Rating };
 
