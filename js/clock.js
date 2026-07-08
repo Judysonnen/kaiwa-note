@@ -49,6 +49,8 @@ export function dateInfo(now = new Date()) {
     display: `${m + 1}月${d}日（${WEEK_KANJI[w]}）`,
     kana: `${MONTH_KANA[m]} ${dayKana(d)}、${WEEK_KANA[w]}`,
     speech: `きょうは、${MONTH_KANA[m]}${dayKana(d)}、${WEEK_KANA[w]}です。`,
+    // Pre-generated clip components, chained at playback (see tools/gen_clock_audio.py).
+    parts: ['きょうは', MONTH_KANA[m], dayKana(d), `${WEEK_KANA[w]}です`],
   };
 }
 
@@ -66,5 +68,6 @@ export function timeInfo(now = new Date()) {
     kana: `${half} ${hourK} ${minK}`,
     speech: `いまは、${half}${hourK}${min === 0 ? 'ちょうど' : minK}です。`,
     kanji: `${halfKanji}${h12}時${min === 0 ? '' : `${min}分`}`,
+    parts: ['いまは', half, hourK, `${minK}です`],
   };
 }

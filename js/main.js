@@ -1,5 +1,5 @@
 import { renderPitch } from './pitch.js';
-import { speakJa, speakButton } from './tts.js';
+import { speakJa, speakSeq, speakButton } from './tts.js';
 import { dateInfo, timeInfo } from './clock.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
@@ -149,7 +149,7 @@ function clockLine() {
     btn.textContent = getInfo().display;
     btn.addEventListener('click', () => {
       const info = getInfo();
-      speakJa(info.speech);
+      speakSeq(info.parts, info.speech);
       kana.textContent = info.kana;
       kana.hidden = false;
     });

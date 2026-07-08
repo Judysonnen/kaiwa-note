@@ -68,6 +68,35 @@ export function speakJa(text) {
   });
 }
 
+function playClip(text) {
+  return new Promise(resolve => {
+    const audio = new Audio(`data/audio/${fnv1a32(text)}.mp3`);
+    current = audio;
+    audio.addEventListener('ended', () => resolve(true));
+    audio.addEventListener('error', () => resolve(false));
+    audio.play().catch(() => resolve(false));
+  });
+}
+
+let seqToken = 0;
+
+// Play pre-generated clips back to back (dates/times are assembled from
+// component clips); if any component is missing, speak the whole fallback
+// sentence with the system voice instead.
+export async function speakSeq(parts, fallbackText) {
+  const token = ++seqToken;
+  if (current) { current.pause(); current = null; }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+  for (const part of parts) {
+    if (token !== seqToken) return;
+    const ok = await playClip(part);
+    if (!ok) {
+      if (token === seqToken && fallbackText) speakSynth(fallbackText);
+      return;
+    }
+  }
+}
+
 export function speakButton(text, label = '発音を聞く') {
   const btn = document.createElement('button');
   btn.className = 'speak';
