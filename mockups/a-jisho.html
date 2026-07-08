@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案A・辞書スタイル</title>
+<style>
+:root {
+  --paper: #FCFBF7;
+  --ink: #1B1D22;
+  --ink-soft: #4A4D55;
+  --muted: #9A968B;
+  --rule: #D9D5C9;
+  --aka: #C33C2E; /* dictionary red: pitch numbers, emphasis */
+  --tab: #2E4057;
+  --serif: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --sans: "Hiragino Sans", -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--serif); line-height: 1.75; }
+
+.frame { display: flex; max-width: 62rem; margin: 0 auto; min-height: 100dvh; }
+
+/* thumb index: lessons as dictionary edge tabs */
+.thumb-index {
+  width: 4.2rem;
+  border-right: 1px solid var(--rule);
+  padding-top: 1rem;
+  flex-shrink: 0;
+  position: sticky; top: 0; height: 100dvh;
+}
+.brand {
+  writing-mode: vertical-rl;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  font-size: 1rem;
+  margin: 0.5rem auto 1.5rem;
+  display: block;
+  text-align: center;
+}
+.tab {
+  display: block;
+  writing-mode: vertical-rl;
+  background: var(--tab);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  padding: 0.7rem 0.28rem;
+  margin: 0.4rem 0 0.4rem auto;
+  border-radius: 4px 0 0 4px;
+  text-decoration: none;
+}
+.tab.active { background: var(--aka); }
+.tab-review { background: transparent; color: var(--tab); border: 1px solid var(--tab); }
+
+main { flex: 1; padding: 2rem 2.2rem 4rem; min-width: 0; }
+
+.lesson-head { border-bottom: 3px double var(--ink); padding-bottom: 0.6rem; margin-bottom: 1.4rem; display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.lesson-head h1 { font-size: 1.4rem; font-weight: 600; letter-spacing: 0.05em; }
+.lesson-head .date { font-family: var(--sans); color: var(--muted); font-size: 0.8rem; }
+.lesson-head .counts { margin-left: auto; font-family: var(--sans); font-size: 0.75rem; color: var(--muted); }
+
+h2.hdr {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.35em;
+  color: var(--paper);
+  background: var(--ink);
+  display: inline-block;
+  padding: 0.05rem 0.9rem 0.05rem 1.05rem;
+  margin: 1.8rem 0 0.9rem;
+}
+
+/* dense two-column dictionary entries */
+.entries { columns: 2; column-gap: 2.2rem; column-rule: 1px solid var(--rule); }
+.e { break-inside: avoid; padding: 0.32rem 0; border-bottom: 1px dotted var(--rule); font-size: 0.95rem; }
+.hw { font-weight: 600; font-size: 1.12rem; }
+.hw rt { font-size: 0.58rem; font-family: var(--sans); font-weight: 400; color: var(--ink-soft); }
+.pitch-n {
+  display: inline-block; font-family: var(--sans); font-size: 0.66rem; color: var(--aka);
+  border: 1px solid var(--aka); border-radius: 50%; width: 1.15rem; height: 1.15rem;
+  text-align: center; line-height: 1.1rem; vertical-align: 0.15em; margin: 0 0.3em;
+}
+.gloss { color: var(--ink-soft); font-size: 0.85rem; font-family: var(--sans); }
+.ex { display: block; color: var(--muted); font-size: 0.82rem; padding-left: 1em; }
+.spk { border: none; background: none; cursor: pointer; font-size: 0.8rem; color: var(--tab); padding: 0 0.2em; }
+
+/* grammar: boxed 囲み column notes */
+.gbox { border: 1.5px solid var(--ink); padding: 0.7rem 1rem; margin-bottom: 0.8rem; position: relative; }
+.gbox::before { content: "文型"; position: absolute; top: -0.7rem; left: 0.8rem; background: var(--paper); font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.25em; color: var(--aka); padding: 0 0.4em; }
+.gpat { font-weight: 600; font-size: 1.08rem; }
+.gexp { font-family: var(--sans); font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.2rem; }
+.gex { font-size: 0.9rem; color: var(--ink-soft); padding-left: 1em; }
+.gex::before { content: "▸ "; color: var(--aka); }
+
+.sent { padding: 0.3rem 0; border-bottom: 1px dotted var(--rule); }
+.sent .ja { font-size: 1rem; }
+.sent .en { font-family: var(--sans); font-size: 0.78rem; color: var(--muted); }
+
+/* review strip preview */
+.review-card {
+  max-width: 26rem; margin: 1rem auto; border: 1.5px solid var(--ink); padding: 2rem 1.5rem;
+  text-align: center; background: #fff;
+}
+.review-card .front { font-size: 2rem; font-weight: 600; }
+.review-card .tag { font-family: var(--sans); font-size: 0.65rem; letter-spacing: 0.3em; color: var(--aka); }
+.grade { display: flex; gap: 0.5rem; justify-content: center; margin-top: 1.2rem; font-family: var(--sans); }
+.grade button { border: 1px solid var(--ink); background: none; padding: 0.4rem 1rem; font-size: 0.8rem; cursor: pointer; }
+@media (max-width: 700px) { .entries { columns: 1; } .thumb-index { display: none; } }
+</style>
+</head>
+<body>
+<div class="frame">
+  <nav class="thumb-index">
+    <span class="brand">かいわノート</span>
+    <a class="tab active" href="#">7月8日</a>
+    <a class="tab" href="#">復習 12</a>
+  </nav>
+  <main>
+    <div class="lesson-head">
+      <h1>趣味と読書の話</h1><span class="date">2026-07-08</span>
+      <span class="counts">単語 50 ／ 文法 14 ／ 例文 35</span>
+    </div>
+
+    <h2 class="hdr">単語</h2>
+    <div class="entries">
+      <div class="e"><span class="hw"><ruby>趣味<rt>しゅみ</rt></ruby></span><span class="pitch-n">1</span><span class="gloss">hobby</span><button class="spk">🔊</button></div>
+      <div class="e"><span class="hw"><ruby>卒業<rt>そつぎょう</rt></ruby>する</span><span class="pitch-n">0</span><span class="gloss">to graduate</span><button class="spk">🔊</button></div>
+      <div class="e"><span class="hw"><ruby>習<rt>なら</rt></ruby>う</span><span class="pitch-n">2</span><span class="gloss">to learn from a teacher</span><button class="spk">🔊</button><span class="ex">ピアノも習いたいです</span></div>
+      <div class="e"><span class="hw"><ruby>諦<rt>あきら</rt></ruby>める</span><span class="pitch-n">4</span><span class="gloss">to give up</span><button class="spk">🔊</button><span class="ex">トライしましたけど、諦めました</span></div>
+      <div class="e"><span class="hw">エレキギター</span><span class="gloss">electric guitar 🎸</span><button class="spk">🔊</button></div>
+      <div class="e"><span class="hw"><ruby>作家<rt>さっか</rt></ruby></span><span class="pitch-n">0</span><span class="gloss">writer, author</span><button class="spk">🔊</button></div>
+      <div class="e"><span class="hw"><ruby>本屋<rt>ほんや</rt></ruby></span><span class="pitch-n">1</span><span class="gloss">bookstore</span><button class="spk">🔊</button><span class="ex">日本の本屋さんにもあります</span></div>
+      <div class="e"><span class="hw"><ruby>人気<rt>にんき</rt></ruby></span><span class="pitch-n">0</span><span class="gloss">popularity; popular</span><button class="spk">🔊</button></div>
+    </div>
+
+    <h2 class="hdr">文法</h2>
+    <div class="gbox">
+      <div class="gpat">Verb + たいです</div>
+      <div class="gexp">want to do something</div>
+      <div class="gex">食べたいです</div>
+      <div class="gex">ピアノも習いたいです</div>
+    </div>
+    <div class="gbox">
+      <div class="gpat">〜かどうか</div>
+      <div class="gexp">whether or not</div>
+      <div class="gex">ベストセラーかどうかわかりません</div>
+    </div>
+
+    <h2 class="hdr">例文</h2>
+    <div class="sent"><div class="ja">🔊 ミステリーだけじゃなくてノンフィクションも読みます</div><div class="en">I read not only mysteries but also nonfiction.</div></div>
+    <div class="sent"><div class="ja">🔊 中国語の本は速く読めます</div><div class="en">I can read Chinese books quickly.</div></div>
+
+    <h2 class="hdr">復習（イメージ）</h2>
+    <div class="review-card">
+      <div class="tag">単語</div>
+      <div class="front">諦める</div>
+      <div class="grade"><button>もう一度</button><button>難しい</button><button>普通</button><button>簡単</button></div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

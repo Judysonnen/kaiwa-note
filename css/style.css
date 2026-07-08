@@ -1,18 +1,16 @@
 :root {
-  --bg: #F1F4F7;
-  --surface: #FFFFFF;
-  --ink: #1F2B33;
-  --ink-soft: #4E5C66;
-  --muted: #8996A0;
-  --line: #DDE4EA;
-  --vocab: #3D74C6;
-  --vocab-soft: #E4EDFA;
-  --grammar: #D9527E;
-  --grammar-soft: #FBE8EF;
-  --sentence: #2F9573;
-  --sentence-soft: #E1F3EC;
-  --marker: #FFD84D;
-  --jp-round: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
+  --bg: #20242D;
+  --bg-soft: #2A2F3B;
+  --card: #FFFDF6;
+  --ink: #23262E;
+  --ink-soft: #545A66;
+  --cream-ink: #E9EAF0;
+  --muted: #8D93A5;
+  --card-line: #E7E3D4;
+  --coral: #FF6B5E;
+  --teal: #2EC4B6;
+  --sun: #FFC53D;
+  --round: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,19 +18,19 @@
 html { background: var(--bg); }
 
 body {
-  font-family: var(--jp-round);
-  color: var(--ink);
+  font-family: var(--round);
+  color: var(--cream-ink);
   line-height: 1.7;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-a { color: var(--vocab); text-decoration: none; }
+a { color: var(--teal); text-decoration: none; }
 
 button { font-family: inherit; cursor: pointer; }
 
-:focus-visible { outline: 3px solid var(--vocab); outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: 4px; }
 
 /* ---------- header ---------- */
 
@@ -41,8 +39,8 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.9rem 1.25rem;
-  max-width: 46rem;
+  padding: 1rem 1.25rem;
+  max-width: 48rem;
   width: 100%;
   margin: 0 auto;
 }
@@ -50,54 +48,44 @@ button { font-family: inherit; cursor: pointer; }
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: var(--ink);
-  font-weight: 700;
-  font-size: 1.1rem;
+  gap: 0.55rem;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.15rem;
   letter-spacing: 0.04em;
 }
 
-/* highlighter sweep behind the wordmark */
-.wordmark-text {
-  background: linear-gradient(transparent 55%, var(--marker) 55%, var(--marker) 92%, transparent 92%);
-  padding: 0 0.15em;
-}
-
+/* the binder ring */
 .hanko {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 1.8rem;
   height: 1.8rem;
-  border-radius: 10px;
-  background: var(--ink);
-  color: var(--marker);
-  font-size: 1rem;
-  font-weight: 700;
-  transform: none;
+  border-radius: 50%;
+  border: 3px solid var(--sun);
+  color: var(--sun);
+  font-size: 0.85rem;
+  font-weight: 800;
+  background: transparent;
 }
 
 .site-nav { display: flex; gap: 0.5rem; font-size: 0.92rem; }
 
 .site-nav a {
-  color: var(--ink-soft);
-  font-weight: 600;
-  padding: 0.35rem 0.9rem;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 0.35rem 1rem;
   border-radius: 999px;
-  border: 2px solid transparent;
 }
 
-.site-nav a.active {
-  background: var(--surface);
-  border-color: var(--ink);
-  color: var(--ink);
-}
+.site-nav a.active { background: var(--sun); color: var(--ink); }
 
 .due-badge {
   display: inline-block;
   min-width: 1.4em;
   text-align: center;
-  background: var(--grammar);
+  background: var(--coral);
   color: #fff;
   border-radius: 999px;
   font-size: 0.72rem;
@@ -105,129 +93,288 @@ button { font-family: inherit; cursor: pointer; }
   vertical-align: 0.18em;
 }
 
+.site-nav a.active .due-badge { background: var(--ink); color: var(--sun); }
+
 /* ---------- layout ---------- */
 
 .view {
   flex: 1;
   width: 100%;
-  max-width: 46rem;
+  max-width: 48rem;
   margin: 0 auto;
-  padding: 1.2rem 1.25rem 3rem;
+  padding: 1rem 1.25rem 3.5rem;
 }
 
 .site-footer {
   text-align: center;
   color: var(--muted);
   font-size: 0.8rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   padding: 1.2rem 0 1.6rem;
 }
 
-.section-label {
+.page-title { color: #fff; font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem; }
+
+.empty-note { color: var(--muted); text-align: center; padding: 3rem 0; }
+
+.note-link { display: inline-block; margin-top: 1.6rem; font-weight: 700; }
+
+/* ---------- today ---------- */
+
+.today-hero { text-align: center; padding: 2.2rem 0 1.6rem; }
+
+.today-label {
   display: inline-block;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  font-weight: 700;
-  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--ink);
+  background: var(--sun);
   border-radius: 999px;
-  padding: 0.15rem 1rem;
-  margin: 2.2rem 0 1rem;
+  padding: 0.15rem 1.1rem 0.15rem 1.4rem;
 }
 
-.section-label:first-of-type { margin-top: 0.4rem; }
+.today-big { color: #fff; margin: 0.4rem 0 0.2rem; }
 
-/* color-code the three sections like textbook tabs */
-.section-label[data-kind="vocab"] { background: var(--vocab); }
-.section-label[data-kind="grammar"] { background: var(--grammar); }
-.section-label[data-kind="sentence"] { background: var(--sentence); }
+.today-count { font-size: 4.6rem; font-weight: 800; line-height: 1.1; }
 
-.section-label .count { font-weight: 400; margin-left: 0.5em; letter-spacing: 0; opacity: 0.85; }
+.today-unit { font-size: 1.4rem; font-weight: 700; color: var(--muted); margin-left: 0.2em; }
+
+.today-done-big { color: #fff; font-size: 1.6rem; font-weight: 800; padding: 1rem 0 0.4rem; }
+
+.today-sub { color: var(--muted); font-size: 0.95rem; }
+
+.start-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: var(--coral);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 0.85rem 3.5rem;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+.start-btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35); }
+
+/* stamp card, like a radio-taiso attendance sheet */
+
+.stamp-card {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 16px 24px 16px 16px;
+  padding: 1.1rem 1.2rem 1.2rem;
+  margin-top: 1.6rem;
+  position: relative;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+.stamp-card::before {
+  content: "";
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--bg);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.stamp-month {
+  font-weight: 800;
+  font-size: 0.95rem;
+  margin: 0 0 0.7rem 1.2rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.streak { color: var(--coral); font-size: 0.82rem; font-weight: 700; }
+
+.stamp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.35rem;
+}
+
+.stamp-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border: 1.5px dashed var(--card-line);
+}
+
+.stamp-day.today { border: 2px solid var(--ink); color: var(--ink); font-weight: 800; }
+
+.stamp-day.stamped {
+  border: 2.5px solid var(--coral);
+  color: var(--coral);
+  font-weight: 800;
+  font-size: 1rem;
+  transform: rotate(-8deg);
+  border-style: solid;
+}
 
 /* ---------- lesson list ---------- */
 
-.lesson-list { list-style: none; display: grid; gap: 0.8rem; }
+.lesson-list { list-style: none; display: grid; gap: 0.9rem; }
 
 .lesson-link {
   display: flex;
   align-items: baseline;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 1rem 1.2rem;
+  padding: 1.1rem 1.3rem;
   color: var(--ink);
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: 16px;
+  background: var(--card);
+  border-radius: 14px 22px 14px 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  position: relative;
 }
 
-.lesson-link:hover { border-color: var(--vocab); }
+.lesson-link::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--bg);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.lesson-link:hover { transform: translateY(-2px); }
 
 .lesson-date {
   font-variant-numeric: tabular-nums;
   color: var(--muted);
   font-size: 0.85rem;
   white-space: nowrap;
+  margin-left: 1.1rem;
 }
 
-.lesson-title { font-weight: 700; font-size: 1.08rem; }
+.lesson-title { font-weight: 800; font-size: 1.08rem; }
 
 .lesson-counts { margin-left: auto; color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
 
-.empty-note { color: var(--muted); text-align: center; padding: 3rem 0; }
+/* ---------- section chips ---------- */
 
-/* ---------- vocab entries ---------- */
-
-.entry {
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-left: 6px solid var(--vocab);
-  border-radius: 14px;
-  padding: 0.8rem 1rem;
-  margin-bottom: 0.7rem;
-}
-
-.entry-head { display: flex; align-items: flex-end; gap: 0.9rem; flex-wrap: wrap; }
-
-.headword {
-  font-size: 1.55rem;
-  font-weight: 700;
-  line-height: 1.35;
-}
-
-.headword ruby rt {
-  font-size: 0.6rem;
-  font-weight: 400;
-  color: var(--ink-soft);
-}
-
-.entry-meaning { color: var(--ink-soft); font-size: 0.95rem; }
-
-.entry-note {
-  color: var(--ink-soft);
-  font-size: 0.85rem;
-  margin-top: 0.35rem;
-  background: var(--vocab-soft);
-  border-radius: 8px;
-  padding: 0.2rem 0.6rem;
+.section-chip {
   display: inline-block;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  font-weight: 800;
+  border-radius: 999px;
+  padding: 0.18rem 1.1rem;
+  margin: 2rem 0 1rem;
 }
+
+.section-chip[data-kind="vocab"] { background: var(--teal); color: var(--ink); }
+.section-chip[data-kind="grammar"] { background: var(--coral); color: #fff; }
+.section-chip[data-kind="sentence"] { background: var(--sun); color: var(--ink); }
+
+.section-chip .count { font-weight: 400; margin-left: 0.5em; letter-spacing: 0; opacity: 0.8; }
+
+/* ---------- tango cards ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
+  gap: 1rem;
+}
+
+.tcard {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 14px 22px 14px 14px;
+  padding: 1rem 1.1rem 0.8rem 1.35rem;
+  position: relative;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+  transform: rotate(-0.4deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.tcard:nth-child(2n) { transform: rotate(0.5deg); }
+.tcard:nth-child(3n) { transform: rotate(-0.15deg); }
+
+/* punched hole + half ring */
+.tcard::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0.55rem;
+  width: 0.62rem;
+  height: 0.62rem;
+  background: var(--bg);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.tcard::after {
+  content: "";
+  position: absolute;
+  top: -0.55rem;
+  left: 0.28rem;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 3px solid #B9BEC9;
+  border-radius: 50%;
+  clip-path: inset(0 0 52% 0);
+}
+
+.word { font-size: 1.45rem; font-weight: 800; line-height: 1.45; }
+
+.word ruby rt { font-size: 0.58rem; font-weight: 400; color: var(--ink-soft); }
+
+.word.pattern { font-size: 1.15rem; }
+
+.mean { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.1rem; }
+
+.note { color: var(--ink-soft); font-size: 0.82rem; margin-top: 0.3rem; }
+
+.gex { font-size: 0.92rem; margin-top: 0.25rem; }
+
+.gex::before { content: "・"; color: var(--coral); font-weight: 800; }
+
+.tcard-foot { display: flex; align-items: center; margin-top: auto; padding-top: 0.6rem; }
+
+.kind {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  padding: 0.05rem 0.6rem;
+  border-radius: 999px;
+}
+
+.kind-vocab { background: var(--teal); color: var(--ink); }
+.kind-grammar { background: var(--coral); color: #fff; }
 
 /* pitch accent: overline on high morae, tick on the drop */
 
-.pitch { display: inline-flex; align-items: baseline; font-size: 1rem; padding-bottom: 0.15rem; }
+.pitch { display: inline-flex; align-items: baseline; font-size: 0.95rem; margin-left: 0.45em; font-weight: 400; }
 
 .pitch .mora { padding: 0.1em 0.02em; border-top: 2.5px solid transparent; }
 
-.pitch .hi { border-top-color: var(--vocab); }
+.pitch .hi { border-top-color: var(--coral); }
 
-.pitch .drop { border-right: 2.5px solid var(--vocab); }
+.pitch .drop { border-right: 2.5px solid var(--coral); }
 
-.accent-num { color: var(--vocab); font-size: 0.72rem; vertical-align: super; margin-left: 0.15em; font-weight: 700; }
+.accent-num { color: var(--coral); font-size: 0.68rem; vertical-align: super; margin-left: 0.15em; font-weight: 800; }
 
 /* ---------- speak button ---------- */
 
 .speak {
-  border: 2px solid var(--line);
-  background: var(--surface);
+  margin-left: auto;
+  border: 2px solid var(--card-line);
+  background: #fff;
   border-radius: 999px;
   width: 2.1rem;
   height: 2.1rem;
@@ -240,157 +387,184 @@ button { font-family: inherit; cursor: pointer; }
 
 .speak:active { transform: scale(0.92); }
 
-/* ---------- grammar ---------- */
-
-.grammar-card {
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-left: 6px solid var(--grammar);
-  border-radius: 14px;
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 0.7rem;
-}
-
-.pattern {
-  font-size: 1.2rem;
-  font-weight: 700;
-  background: linear-gradient(transparent 60%, var(--grammar-soft) 60%);
-  display: inline;
-}
-
-.grammar-exp { color: var(--ink-soft); font-size: 0.92rem; margin-top: 0.5rem; }
-
-.grammar-examples { list-style: none; margin-top: 0.55rem; }
-
-.grammar-examples li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1rem;
-  padding: 0.2rem 0;
-}
-
 /* ---------- sentences ---------- */
 
-.sentence-list { list-style: none; }
+.sentence-list { list-style: none; display: grid; gap: 0.7rem; }
 
 .sentence-list li {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-left: 6px solid var(--sentence);
-  border-radius: 14px;
-  padding: 0.6rem 0.9rem;
-  margin-bottom: 0.6rem;
+  gap: 0.7rem;
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-.sentence-ja { font-size: 1.05rem; font-weight: 600; }
+.sentence-list .speak { margin-left: 0; }
 
-.sentence-en { color: var(--muted); font-size: 0.85rem; }
+.sentence-ja { font-size: 1.02rem; font-weight: 700; }
+
+.sentence-en { color: var(--ink-soft); font-size: 0.84rem; }
+
+/* ---------- lesson detail header ---------- */
+
+.lesson-head { margin-bottom: 0.3rem; }
+
+.lesson-head .page-title { margin-bottom: 0.1rem; }
+
+.lesson-head .lesson-date { display: block; margin-left: 0; }
+
+.back-link { font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
 
 /* ---------- review ---------- */
 
-.review-status { color: var(--muted); font-size: 0.85rem; text-align: center; margin-bottom: 1.2rem; }
+.progress {
+  height: 0.5rem;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 0.6rem;
+}
 
-.card {
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: 20px;
-  padding: 2.6rem 1.5rem;
+.progress-fill {
+  height: 100%;
+  background: var(--teal);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.review-status { color: var(--muted); font-size: 0.85rem; text-align: center; margin-bottom: 1rem; }
+
+.bigcard {
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 18px 30px 18px 18px;
+  padding: 2.8rem 1.5rem 2.2rem;
   text-align: center;
   min-height: 16rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  box-shadow: 0 4px 0 var(--line);
+  position: relative;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
-.card-front { font-size: 2.2rem; font-weight: 700; line-height: 1.4; }
-
-.card-front.is-grammar {
-  font-size: 1.55rem;
-  background: linear-gradient(transparent 60%, var(--grammar-soft) 60%);
-  display: inline;
-  align-self: center;
+.bigcard::before {
+  content: "";
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  background: var(--bg);
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
 }
+
+.card-front { font-size: 2.5rem; font-weight: 800; line-height: 1.4; }
+
+.card-front.is-grammar { font-size: 1.6rem; }
 
 .card-tag {
   align-self: center;
-  color: #fff;
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
   border-radius: 999px;
-  padding: 0.1rem 0.8rem;
-  font-weight: 700;
+  padding: 0.1rem 0.85rem;
+  font-weight: 800;
 }
 
-.card-tag[data-kind="vocab"] { background: var(--vocab); }
-.card-tag[data-kind="grammar"] { background: var(--grammar); }
+.tag-vocab { background: var(--teal); color: var(--ink); }
+.tag-grammar { background: var(--coral); color: #fff; }
 
 .card-back { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
 
-.card-back .pitch { font-size: 1.25rem; }
+.card-back .pitch { font-size: 1.3rem; margin-left: 0; }
 
 .card-back .meaning { font-size: 1.05rem; color: var(--ink-soft); }
 
 .card-back .example { color: var(--ink-soft); font-size: 0.95rem; }
 
-.reveal-btn, .grade-btn {
-  border: 2px solid var(--line);
-  background: var(--surface);
-  border-radius: 14px;
-  padding: 0.7rem 1rem;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--ink);
-}
+.card-back .speak { margin-left: 0; }
 
 .reveal-btn {
-  margin-top: 1.4rem;
+  margin-top: 1.3rem;
   width: 100%;
-  background: var(--ink);
-  border-color: var(--ink);
-  color: #fff;
+  border: none;
+  background: var(--sun);
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 800;
+  border-radius: 14px;
+  padding: 0.85rem 1rem;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
 }
 
-.reveal-btn:active { transform: translateY(1px); }
+.reveal-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); }
 
 .grade-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.6rem;
-  margin-top: 1.4rem;
+  margin-top: 1.3rem;
 }
 
-.grade-btn small { display: block; color: var(--muted); font-size: 0.7rem; margin-top: 0.15rem; font-weight: 400; }
+.grade-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 0.3rem;
+  font-weight: 800;
+  font-size: 0.92rem;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+}
 
-.grade-btn:hover { border-color: var(--ink); }
+.grade-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); }
 
-.grade-btn.again { border-color: var(--grammar-soft); }
+.b-again { background: var(--coral); color: #fff; }
+.b-hard { background: var(--bg-soft); color: var(--cream-ink); }
+.b-good { background: #fff; color: var(--ink); }
+.b-easy { background: var(--teal); color: var(--ink); }
 
-.grade-btn.again:hover { border-color: var(--grammar); color: var(--grammar); }
+/* ---------- review done ---------- */
 
-.review-done { text-align: center; padding: 4rem 0; font-size: 1.25rem; font-weight: 700; }
+.review-done { text-align: center; padding: 3rem 0; }
 
-.review-done .sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.8rem; font-weight: 400; }
+.big-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--coral);
+  border-radius: 50%;
+  color: var(--coral);
+  font-size: 2.6rem;
+  font-weight: 800;
+  transform: rotate(-10deg);
+  margin-bottom: 1.2rem;
+  animation: stamp-in 0.35s cubic-bezier(0.2, 1.6, 0.4, 1);
+}
 
-/* ---------- lesson detail header ---------- */
+@keyframes stamp-in {
+  from { transform: rotate(-10deg) scale(2.2); opacity: 0; }
+  to { transform: rotate(-10deg) scale(1); opacity: 1; }
+}
 
-.lesson-head { margin-bottom: 0.5rem; }
+.done-title { color: #fff; font-size: 1.4rem; font-weight: 800; }
 
-.lesson-head h1 { font-size: 1.45rem; font-weight: 700; }
+.review-done .sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem; }
 
-.lesson-head .lesson-date { display: block; margin-top: 0.15rem; }
-
-.back-link { font-size: 0.85rem; font-weight: 600; display: inline-block; margin-bottom: 1rem; }
+/* ---------- responsive & a11y ---------- */
 
 @media (max-width: 480px) {
-  .headword { font-size: 1.35rem; }
-  .card-front { font-size: 1.8rem; }
+  .today-count { font-size: 3.6rem; }
+  .card-front { font-size: 1.9rem; }
   .grade-row { grid-template-columns: repeat(2, 1fr); }
+  .grid { grid-template-columns: 1fr 1fr; }
+  .word { font-size: 1.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

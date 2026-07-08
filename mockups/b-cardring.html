@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案B・単語カードスタイル</title>
+<style>
+:root {
+  --bg: #20242D;
+  --bg-soft: #2A2F3B;
+  --card: #FFFDF6;
+  --card-back: #FFF6D9;
+  --ink: #23262E;
+  --cream-ink: #E9EAF0;
+  --muted: #8D93A5;
+  --coral: #FF6B5E;
+  --teal: #2EC4B6;
+  --sun: #FFC53D;
+  --round: "Hiragino Maru Gothic ProN", "Hiragino Sans", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--cream-ink); font-family: var(--round); line-height: 1.7; padding-bottom: 5rem; }
+
+header { display: flex; align-items: center; gap: 1rem; max-width: 56rem; margin: 0 auto; padding: 1.1rem 1.25rem; }
+.logo { font-weight: 800; font-size: 1.2rem; color: #fff; }
+.logo .ring { color: var(--sun); }
+nav { margin-left: auto; display: flex; gap: 0.6rem; }
+nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 700; padding: 0.3rem 0.9rem; border-radius: 999px; }
+nav a.active { background: var(--sun); color: var(--ink); }
+
+.wrap { max-width: 56rem; margin: 0 auto; padding: 0.5rem 1.25rem; }
+
+.lesson-bar { display: flex; align-items: baseline; gap: 0.9rem; margin: 0.8rem 0 1.4rem; }
+.lesson-bar h1 { font-size: 1.3rem; color: #fff; }
+.lesson-bar .date { color: var(--muted); font-size: 0.85rem; }
+
+.filter { display: flex; gap: 0.5rem; margin-bottom: 1.4rem; }
+.chip { border: none; border-radius: 999px; padding: 0.35rem 1.1rem; font-weight: 800; font-size: 0.85rem; cursor: pointer; font-family: inherit; }
+.chip.all { background: #fff; color: var(--ink); }
+.chip.v { background: var(--teal); color: var(--ink); }
+.chip.g { background: var(--coral); color: #fff; }
+.chip.s { background: var(--sun); color: var(--ink); }
+
+/* the card grid: each card is a tango-cho ring card with a punched hole */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); gap: 1rem; }
+.tcard {
+  background: var(--card); color: var(--ink);
+  border-radius: 14px 22px 14px 14px;
+  padding: 1.1rem 1.1rem 0.9rem 1.4rem;
+  position: relative;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+  transform: rotate(-0.4deg);
+}
+.tcard:nth-child(2n) { transform: rotate(0.5deg); }
+.tcard:nth-child(3n) { transform: rotate(-0.2deg); }
+/* punched hole + ring */
+.tcard::before {
+  content: ""; position: absolute; top: 0.55rem; left: 0.55rem; width: 0.62rem; height: 0.62rem;
+  background: var(--bg); border-radius: 50%; box-shadow: inset 0 1px 2px rgba(0,0,0,0.6);
+}
+.tcard::after {
+  content: ""; position: absolute; top: -0.55rem; left: 0.28rem; width: 1.15rem; height: 1.15rem;
+  border: 3px solid #B9BEC9; border-radius: 50%; clip-path: inset(0 0 52% 0);
+}
+.word { font-size: 1.5rem; font-weight: 800; }
+.word rt { font-size: 0.6rem; font-weight: 400; color: #6C7280; }
+.pitch { display: inline-flex; font-size: 0.92rem; margin-left: 0.4em; }
+.pitch .m { border-top: 2.5px solid transparent; padding: 0 0.02em; }
+.pitch .hi { border-top-color: var(--coral); }
+.pitch .drop { border-right: 2.5px solid var(--coral); }
+.mean { color: #545A66; font-size: 0.9rem; margin-top: 0.15rem; }
+.foot { display: flex; align-items: center; margin-top: 0.5rem; }
+.kind { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.2em; padding: 0.05rem 0.6rem; border-radius: 999px; }
+.kind.v { background: var(--teal); color: var(--ink); }
+.kind.g { background: var(--coral); color: #fff; }
+.spk { margin-left: auto; border: 2px solid #E3E0D2; background: #fff; border-radius: 999px; width: 2rem; height: 2rem; cursor: pointer; }
+
+.gcard-exp { font-size: 0.85rem; color: #545A66; }
+.gcard-ex { font-size: 0.92rem; margin-top: 0.3rem; color: var(--ink); }
+.gcard-ex::before { content: "・"; color: var(--coral); }
+
+/* review: one big card on the ring, flip preview */
+.review-zone { margin: 2.5rem auto 0; max-width: 30rem; text-align: center; }
+.review-zone h2 { color: #fff; font-size: 1rem; letter-spacing: 0.3em; margin-bottom: 1rem; }
+.flip { position: relative; }
+.bigcard {
+  background: var(--card); color: var(--ink); border-radius: 18px 30px 18px 18px;
+  padding: 3rem 1.5rem 2.2rem; box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+  position: relative;
+}
+.bigcard::before { content: ""; position: absolute; top: 0.8rem; left: 0.8rem; width: 0.8rem; height: 0.8rem; background: var(--bg); border-radius: 50%; }
+.bigcard .front { font-size: 2.6rem; font-weight: 800; }
+.bigcard .hint { color: var(--muted); font-size: 0.8rem; margin-top: 0.8rem; }
+.grade { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.6rem; margin-top: 1.2rem; }
+.grade button { border: none; border-radius: 12px; padding: 0.7rem 0; font-weight: 800; font-family: inherit; font-size: 0.9rem; cursor: pointer; }
+.grade .b1 { background: var(--coral); color: #fff; }
+.grade .b2 { background: var(--bg-soft); color: var(--cream-ink); }
+.grade .b3 { background: #fff; color: var(--ink); }
+.grade .b4 { background: var(--teal); color: var(--ink); }
+</style>
+</head>
+<body>
+<header>
+  <span class="logo"><span class="ring">◯</span> かいわノート</span>
+  <nav><a class="active" href="#">カード</a><a href="#">復習 <b style="color:var(--coral)">12</b></a></nav>
+</header>
+<div class="wrap">
+  <div class="lesson-bar"><h1>趣味と読書の話</h1><span class="date">2026-07-08</span></div>
+  <div class="filter">
+    <button class="chip all">ぜんぶ</button>
+    <button class="chip v">単語 50</button>
+    <button class="chip g">文法 14</button>
+    <button class="chip s">例文 35</button>
+  </div>
+
+  <div class="grid">
+    <div class="tcard">
+      <div class="word"><ruby>趣味<rt>しゅみ</rt></ruby><span class="pitch"><span class="m hi drop">しゅ</span><span class="m">み</span></span></div>
+      <div class="mean">hobby</div>
+      <div class="foot"><span class="kind v">単語</span><button class="spk">🔊</button></div>
+    </div>
+    <div class="tcard">
+      <div class="word"><ruby>諦<rt>あきら</rt></ruby>める<span class="pitch"><span class="m">あ</span><span class="m hi">き</span><span class="m hi">ら</span><span class="m hi drop">め</span><span class="m">る</span></span></div>
+      <div class="mean">to give up</div>
+      <div class="foot"><span class="kind v">単語</span><button class="spk">🔊</button></div>
+    </div>
+    <div class="tcard">
+      <div class="word" style="font-size:1.2rem">Verb + たいです</div>
+      <div class="gcard-exp">want to do something</div>
+      <div class="gcard-ex">ピアノも習いたいです</div>
+      <div class="foot"><span class="kind g">文法</span><button class="spk">🔊</button></div>
+    </div>
+    <div class="tcard">
+      <div class="word"><ruby>本屋<rt>ほんや</rt></ruby><span class="pitch"><span class="m hi drop">ほ</span><span class="m">ん</span><span class="m">や</span></span></div>
+      <div class="mean">bookstore</div>
+      <div class="foot"><span class="kind v">単語</span><button class="spk">🔊</button></div>
+    </div>
+    <div class="tcard">
+      <div class="word" style="font-size:1.2rem">〜かどうか</div>
+      <div class="gcard-exp">whether or not</div>
+      <div class="gcard-ex">ベストセラーかどうかわかりません</div>
+      <div class="foot"><span class="kind g">文法</span><button class="spk">🔊</button></div>
+    </div>
+    <div class="tcard">
+      <div class="word"><ruby>作家<rt>さっか</rt></ruby><span class="pitch"><span class="m">さっ</span><span class="m hi">か</span></span></div>
+      <div class="mean">writer, author</div>
+      <div class="foot"><span class="kind v">単語</span><button class="spk">🔊</button></div>
+    </div>
+  </div>
+
+  <div class="review-zone">
+    <h2>復習カード</h2>
+    <div class="bigcard">
+      <div class="front">諦める</div>
+      <div class="hint">タップして答えを見る</div>
+      <div class="grade">
+        <button class="b1">もう一度</button><button class="b2">難しい</button><button class="b3">普通</button><button class="b4">簡単</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

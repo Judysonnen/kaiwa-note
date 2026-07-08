@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>案C・手帳スタイル</title>
+<style>
+:root {
+  --paper: #FDFDFB;
+  --grid: #DCE8F0;
+  --ink: #2B3A48;
+  --pencil: #5D6B78;
+  --muted: #93A1AD;
+  --akapen: #E0524D;   /* red pen */
+  --aopen: #3D74C6;    /* blue pen */
+  --tape-pink: rgba(255, 160, 180, 0.55);
+  --tape-mint: rgba(140, 220, 190, 0.55);
+  --tape-sun: rgba(255, 214, 100, 0.6);
+  --hand: "Klee", "Hiragino Maru Gothic ProN", sans-serif;
+  --sans: "Hiragino Sans", -apple-system, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  color: var(--ink); font-family: var(--hand); line-height: 1.8;
+  background: var(--paper);
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.page { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1.5rem 4rem; }
+
+header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.8rem; }
+.title { font-size: 1.5rem; font-weight: 700; position: relative; display: inline-block; padding: 0 0.4rem; }
+/* washi tape over the title */
+.title::before {
+  content: ""; position: absolute; left: -1rem; right: -1rem; top: 0.35em; height: 1.15em;
+  background: var(--tape-sun); transform: rotate(-1.2deg); z-index: -1;
+}
+nav { margin-left: auto; font-size: 0.95rem; display: flex; gap: 1.2rem; }
+nav a { color: var(--aopen); text-decoration: none; }
+nav a.active { border-bottom: 2px solid var(--akapen); color: var(--ink); }
+.badge { color: var(--akapen); font-weight: 700; }
+
+/* date rail on the left like a planner */
+.day { display: flex; gap: 1.2rem; }
+.rail { flex-shrink: 0; width: 4rem; text-align: center; }
+.rail .d { background: var(--akapen); color: #fff; border-radius: 50%; width: 3rem; height: 3rem; display: flex; align-items: center; justify-content: center; flex-direction: column; margin: 0 auto; font-family: var(--sans); }
+.rail .d b { font-size: 1.1rem; line-height: 1; }
+.rail .d span { font-size: 0.55rem; }
+.rail .line { width: 2px; background: var(--grid); height: calc(100% - 3.4rem); margin: 0.4rem auto 0; }
+.content { flex: 1; min-width: 0; }
+.content h1 { font-size: 1.25rem; margin-bottom: 1rem; }
+
+.box { background: rgba(255,255,255,0.85); border: 1.5px solid var(--grid); border-radius: 6px; padding: 1rem 1.2rem; margin-bottom: 1.6rem; position: relative; }
+.box::before {
+  content: ""; position: absolute; top: -0.7rem; left: 1.2rem; width: 5.5rem; height: 1.3rem;
+  transform: rotate(-2deg);
+}
+.box.vocab::before { background: var(--tape-mint); }
+.box.grammar::before { background: var(--tape-pink); }
+.box.sent::before { background: var(--tape-sun); }
+.box h2 { font-size: 0.95rem; letter-spacing: 0.25em; color: var(--pencil); margin-bottom: 0.7rem; }
+.box h2 .n { color: var(--muted); font-size: 0.75rem; letter-spacing: 0; }
+
+.vrow { display: flex; align-items: baseline; gap: 0.7rem; flex-wrap: wrap; padding: 0.35rem 0; border-bottom: 1px dashed var(--grid); }
+.vrow:last-child { border-bottom: none; }
+.w { font-size: 1.3rem; font-weight: 700; }
+.w rt { font-size: 0.55rem; color: var(--pencil); }
+.pitch { display: inline-flex; font-size: 0.95rem; }
+.pitch .m { border-top: 2px solid transparent; padding: 0 0.02em; }
+.pitch .hi { border-top-color: var(--akapen); }
+.pitch .drop { border-right: 2px solid var(--akapen); }
+.mean { color: var(--pencil); font-size: 0.9rem; }
+.spk { border: none; background: none; cursor: pointer; font-size: 0.9rem; }
+
+/* grammar: red-pen circled pattern + handwritten note */
+.gpat { display: inline-block; font-size: 1.15rem; font-weight: 700; border: 2px solid var(--akapen); border-radius: 50% 45% 50% 48% / 60% 55% 60% 50%; padding: 0.1rem 0.9rem; margin-bottom: 0.3rem; }
+.gexp { color: var(--pencil); font-size: 0.9rem; }
+.gex { color: var(--ink); font-size: 1rem; }
+.gex::before { content: "✎ "; color: var(--aopen); }
+
+.sline { padding: 0.3rem 0; }
+.sline .ja { font-size: 1.05rem; background: linear-gradient(transparent 62%, var(--tape-sun) 62%, var(--tape-sun) 90%, transparent 90%); display: inline; }
+.sline .en { color: var(--muted); font-size: 0.82rem; display: block; }
+
+/* review: sticky-note stack */
+.sticky-zone { text-align: center; margin-top: 2.5rem; }
+.sticky {
+  display: inline-block; background: #FFF7B1; padding: 2.2rem 3rem; transform: rotate(-1.5deg);
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.12); position: relative; min-width: 18rem;
+}
+.sticky::before { content: ""; position: absolute; top: -0.6rem; left: 50%; transform: translateX(-50%) rotate(1deg); width: 6rem; height: 1.2rem; background: var(--tape-pink); }
+.sticky .front { font-size: 2.1rem; font-weight: 700; }
+.sticky .tag { font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.3em; color: var(--pencil); }
+.grade { display: flex; gap: 0.6rem; justify-content: center; margin-top: 1.1rem; }
+.grade button { font-family: var(--hand); font-size: 0.9rem; border: 1.5px solid var(--pencil); background: rgba(255,255,255,0.9); border-radius: 4px; padding: 0.4rem 0.9rem; cursor: pointer; }
+.grade .again { border-color: var(--akapen); color: var(--akapen); }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <span class="title">かいわノート</span>
+    <nav><a class="active" href="#">ノート</a><a href="#">復習 <span class="badge">12</span></a></nav>
+  </header>
+
+  <div class="day">
+    <div class="rail">
+      <div class="d"><b>8</b><span>JUL</span></div>
+      <div class="line"></div>
+    </div>
+    <div class="content">
+      <h1>趣味と読書の話</h1>
+
+      <div class="box vocab">
+        <h2>単語 <span class="n">50こ</span></h2>
+        <div class="vrow"><span class="w"><ruby>趣味<rt>しゅみ</rt></ruby></span><span class="pitch"><span class="m hi drop">しゅ</span><span class="m">み</span></span><span class="mean">hobby</span><button class="spk">🔊</button></div>
+        <div class="vrow"><span class="w"><ruby>習<rt>なら</rt></ruby>う</span><span class="pitch"><span class="m">な</span><span class="m hi drop">ら</span><span class="m">う</span></span><span class="mean">to learn from a teacher</span><button class="spk">🔊</button></div>
+        <div class="vrow"><span class="w"><ruby>諦<rt>あきら</rt></ruby>める</span><span class="pitch"><span class="m">あ</span><span class="m hi">き</span><span class="m hi">ら</span><span class="m hi drop">め</span><span class="m">る</span></span><span class="mean">to give up</span><button class="spk">🔊</button></div>
+        <div class="vrow"><span class="w">エレキギター</span><span class="mean">electric guitar 🎸</span><button class="spk">🔊</button></div>
+      </div>
+
+      <div class="box grammar">
+        <h2>文法 <span class="n">14こ</span></h2>
+        <div style="margin-bottom:1rem">
+          <span class="gpat">Verb + たいです</span>
+          <div class="gexp">want to do something</div>
+          <div class="gex">ピアノも習いたいです</div>
+        </div>
+        <div>
+          <span class="gpat">〜かどうか</span>
+          <div class="gexp">whether or not</div>
+          <div class="gex">ベストセラーかどうかわかりません</div>
+        </div>
+      </div>
+
+      <div class="box sent">
+        <h2>例文 <span class="n">35こ</span></h2>
+        <div class="sline"><span class="ja">ミステリーだけじゃなくてノンフィクションも読みます</span><span class="en">I read not only mysteries but also nonfiction.</span></div>
+        <div class="sline"><span class="ja">中国語の本は速く読めます</span><span class="en">I can read Chinese books quickly.</span></div>
+        <div class="sline"><span class="ja">トライしましたけど、諦めました</span><span class="en">I tried, but I gave up.</span></div>
+      </div>
+
+      <div class="sticky-zone">
+        <div class="sticky">
+          <div class="tag">単語</div>
+          <div class="front">諦める</div>
+          <div class="grade">
+            <button class="again">もう一度</button><button>難しい</button><button>普通</button><button>簡単</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
