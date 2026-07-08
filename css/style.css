@@ -307,6 +307,28 @@ button { font-family: inherit; cursor: pointer; }
 
 .note::before { content: "→ "; color: var(--punch); font-weight: 900; }
 
+/* per-sentence grammar breakdown */
+
+.breakdown {
+  list-style: none;
+  margin-top: 0.45rem;
+  border-left: 4px solid var(--punch);
+  background: var(--paper);
+  padding: 0.45rem 0.85rem;
+}
+
+.breakdown li {
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  padding-left: 1em;
+  text-indent: -1em;
+}
+
+.breakdown li::before { content: "・"; color: var(--punch); font-weight: 900; }
+
+.card-back .breakdown { text-align: left; max-width: 30rem; width: 100%; }
+
 /* grammar 讲解 block */
 .detail {
   font-size: 0.85rem;

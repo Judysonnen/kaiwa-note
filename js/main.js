@@ -30,21 +30,16 @@ async function getLesson(id) {
   return lessonCache.get(id);
 }
 
-// Flatten every reviewable entry across all lessons. Grammar and sentences
-// are the core material; vocab supports them.
+// Review runs on sentences only: they are the unit of conversation practice,
+// and each card's breakdown carries the grammar. Vocab and grammar stay in
+// the notebook for reference.
 async function getAllReviewItems() {
   const { lessons } = await getManifest();
   const items = [];
   for (const meta of lessons) {
     const lesson = await getLesson(meta.id);
-    for (const g of lesson.grammar) {
-      items.push({ itemId: `${lesson.id}/${g.id}`, kind: 'grammar', data: g, lessonId: lesson.id });
-    }
     for (const s of lesson.sentences) {
       items.push({ itemId: `${lesson.id}/${s.id}`, kind: 'sentence', data: s, lessonId: lesson.id });
-    }
-    for (const v of lesson.vocab) {
-      items.push({ itemId: `${lesson.id}/${v.id}`, kind: 'vocab', data: v, lessonId: lesson.id });
     }
   }
   return items;
@@ -232,6 +227,13 @@ function vocabCard(v) {
   return card;
 }
 
+// Per-sentence grammar walkthrough (the 讲解 for beginners).
+function breakdownList(points) {
+  const ul = el('ul', 'breakdown');
+  for (const p of points) ul.appendChild(el('li', null, p));
+  return ul;
+}
+
 // Examples were plain strings before translations were added.
 function exJa(ex) { return typeof ex === 'string' ? ex : ex.ja; }
 function exZh(ex) { return typeof ex === 'string' ? null : ex.zh; }
@@ -297,6 +299,7 @@ async function renderLesson(id) {
     ja.lang = 'ja';
     wrap.appendChild(ja);
     wrap.appendChild(el('div', 'sentence-en', s.zh || s.meaning));
+    if (s.breakdown?.length) wrap.appendChild(breakdownList(s.breakdown));
     li.appendChild(wrap);
     ul.appendChild(li);
   }
@@ -450,6 +453,7 @@ async function renderReview() {
         back.appendChild(el('div', 'meaning', data.zh || data.meaning));
       }
       back.appendChild(speakButton(data.ja));
+      if (data.breakdown?.length) back.appendChild(breakdownList(data.breakdown));
     }
     card.appendChild(back);
     view.appendChild(card);

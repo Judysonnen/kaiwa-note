@@ -55,13 +55,17 @@ import time: 接续方式 (how the pattern attaches or conjugates), core usage,
 and any nuance the teacher pointed out. Two to four sentences, aimed at a
 beginner.
 
-Sentences: `{ id, ja, meaning, zh }` with a short English gloss (`meaning`)
-and a Chinese translation (`zh`). Sentences are reviewed as production cards
-(Chinese front, Japanese back), so `zh` should read as a natural prompt for
-saying the Japanese.
+Sentences: `{ id, ja, meaning, zh, breakdown }` with a short English gloss
+(`meaning`), a Chinese translation (`zh`), and `breakdown`: an array of 1-4
+Chinese strings walking through the sentence's grammar for a beginner — why
+each conjugation/particle/form is used (e.g. why て-form here, why plain ない
+before ので). Write these at import time; assume Di has NOT seen the pattern
+before. Sentences are reviewed as production cards (Chinese front, Japanese
+back), so `zh` should read as a natural prompt for saying the Japanese.
 
-Grammar and sentences are the core review material; vocab is supporting. The
-daily new-card mix lives in `js/srs.js` (`NEW_MIX`).
+Review is sentences-only (`NEW_MIX` in `js/srs.js`); grammar and vocab are
+notebook reference material, and their content should be woven into the
+sentence breakdowns.
 
 ## Style
 

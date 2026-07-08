@@ -11,7 +11,10 @@ import { fsrs, createEmptyCard, Rating } from './vendor/ts-fsrs.mjs';
 const STORE_KEY = 'kaiwa-note:srs:v1';
 const META_KEY = 'kaiwa-note:meta:v1';
 
-export const NEW_MIX = { grammar: 3, sentence: 4, vocab: 3 };
+// Review is sentences-only (Di's call: sentences are the unit of conversation
+// practice; grammar and vocab live in the notebook and inside the sentence
+// breakdowns). Other kinds keep a slot here in case they come back.
+export const NEW_MIX = { grammar: 0, sentence: 5, vocab: 0 };
 export const NEW_PER_DAY = Object.values(NEW_MIX).reduce((a, b) => a + b, 0);
 const KIND_ORDER = ['grammar', 'sentence', 'vocab'];
 
