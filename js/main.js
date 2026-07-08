@@ -58,8 +58,9 @@ function el(tag, className, text) {
   return node;
 }
 
-function sectionLabel(text, count) {
+function sectionLabel(text, kind, count) {
   const label = el('h2', 'section-label', text);
+  if (kind) label.dataset.kind = kind;
   if (count !== undefined) label.appendChild(el('span', 'count', String(count)));
   return label;
 }
@@ -67,7 +68,7 @@ function sectionLabel(text, count) {
 // ---------- lessons list ----------
 
 async function renderLessonList() {
-  view.replaceChildren(sectionLabel('レッスン'));
+  view.replaceChildren(sectionLabel('レッスン', 'vocab'));
   const { lessons } = await getManifest();
   if (!lessons.length) {
     view.appendChild(el('p', 'empty-note', 'まだレッスンがありません。ノートを貼り付けて追加してください。'));
@@ -159,13 +160,13 @@ async function renderLesson(id) {
   head.appendChild(el('span', 'lesson-date', lesson.date));
   view.appendChild(head);
 
-  view.appendChild(sectionLabel('単語', lesson.vocab.length));
+  view.appendChild(sectionLabel('単語', 'vocab', lesson.vocab.length));
   for (const v of lesson.vocab) view.appendChild(vocabEntry(v));
 
-  view.appendChild(sectionLabel('文法', lesson.grammar.length));
+  view.appendChild(sectionLabel('文法', 'grammar', lesson.grammar.length));
   for (const g of lesson.grammar) view.appendChild(grammarCard(g));
 
-  view.appendChild(sectionLabel('例文', lesson.sentences.length));
+  view.appendChild(sectionLabel('例文', 'sentence', lesson.sentences.length));
   const ul = el('ul', 'sentence-list');
   for (const s of lesson.sentences) {
     const li = el('li');
@@ -212,7 +213,9 @@ async function renderReview() {
     view.appendChild(el('p', 'review-status', `のこり ${queue.length} 枚 ・ すんだ ${done} 枚`));
 
     const card = el('div', 'card');
-    card.appendChild(el('div', 'card-tag', kind === 'vocab' ? '単語' : '文法'));
+    const tag = el('div', 'card-tag', kind === 'vocab' ? '単語' : '文法');
+    tag.dataset.kind = kind;
+    card.appendChild(tag);
     const front = el('div', `card-front${kind === 'grammar' ? ' is-grammar' : ''}`,
       kind === 'vocab' ? data.word : data.pattern);
     front.lang = 'ja';
