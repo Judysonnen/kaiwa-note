@@ -1,36 +1,36 @@
 :root {
-  --bg: #20242D;
-  --bg-soft: #2A2F3B;
-  --card: #FFFDF6;
-  --ink: #23262E;
-  --ink-soft: #545A66;
-  --cream-ink: #E9EAF0;
-  --muted: #8D93A5;
-  --card-line: #E7E3D4;
-  --coral: #FF6B5E;
-  --teal: #2EC4B6;
-  --sun: #FFC53D;
-  --round: "Hiragino Maru Gothic ProN", "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
+  --paper: #FBFAF6;
+  --sheet: #FFFFFF;
+  --ink: #1B1D22;
+  --ink-soft: #4A4D55;
+  --muted: #98948A;
+  --rule: #DEDACD;
+  --rule-dot: #CFCaBB;
+  --aka: #C33C2E;   /* dictionary vermilion: stamps, pitch, emphasis */
+  --aka-soft: #F7E9E6;
+  --ai: #2E4057;    /* indigo: links, tabs */
+  --serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", serif;
+  --sans: "Hiragino Sans", "Noto Sans JP", -apple-system, sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { background: var(--bg); }
+html { background: var(--paper); }
 
 body {
-  font-family: var(--round);
-  color: var(--cream-ink);
-  line-height: 1.7;
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.75;
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
 }
 
-a { color: var(--teal); text-decoration: none; }
+a { color: var(--ai); text-decoration: none; }
 
 button { font-family: inherit; cursor: pointer; }
 
-:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; border-radius: 4px; }
+:focus-visible { outline: 2px solid var(--aka); outline-offset: 2px; }
 
 /* ---------- header ---------- */
 
@@ -39,8 +39,9 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 1.25rem;
-  max-width: 48rem;
+  padding: 1.1rem 1.25rem 0.9rem;
+  border-bottom: 3px double var(--ink);
+  max-width: 46rem;
   width: 100%;
   margin: 0 auto;
 }
@@ -48,155 +49,174 @@ button { font-family: inherit; cursor: pointer; }
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  color: #fff;
-  font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: 0.04em;
+  gap: 0.6rem;
+  color: var(--ink);
 }
 
-/* the binder ring */
+.wordmark-text {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+}
+
 .hanko {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 50%;
-  border: 3px solid var(--sun);
-  color: var(--sun);
-  font-size: 0.85rem;
-  font-weight: 800;
-  background: transparent;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 3px;
+  background: var(--aka);
+  color: #fff;
+  font-family: var(--serif);
+  font-size: 1rem;
+  transform: rotate(-2deg);
 }
 
-.site-nav { display: flex; gap: 0.5rem; font-size: 0.92rem; }
+.site-nav { display: flex; gap: 1.4rem; font-size: 0.92rem; }
 
 .site-nav a {
-  color: var(--muted);
-  font-weight: 700;
-  padding: 0.35rem 1rem;
-  border-radius: 999px;
+  color: var(--ink-soft);
+  letter-spacing: 0.1em;
+  padding-bottom: 0.15rem;
+  border-bottom: 2px solid transparent;
 }
 
-.site-nav a.active { background: var(--sun); color: var(--ink); }
+.site-nav a.active { color: var(--ink); border-bottom-color: var(--aka); }
 
 .due-badge {
   display: inline-block;
   min-width: 1.4em;
   text-align: center;
-  background: var(--coral);
+  background: var(--aka);
   color: #fff;
   border-radius: 999px;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   padding: 0.08em 0.42em;
   vertical-align: 0.18em;
 }
-
-.site-nav a.active .due-badge { background: var(--ink); color: var(--sun); }
 
 /* ---------- layout ---------- */
 
 .view {
   flex: 1;
   width: 100%;
-  max-width: 48rem;
+  max-width: 46rem;
   margin: 0 auto;
-  padding: 1rem 1.25rem 3.5rem;
+  padding: 1.6rem 1.25rem 3.5rem;
 }
 
 .site-footer {
   text-align: center;
   color: var(--muted);
+  font-family: var(--serif);
   font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  padding: 1.2rem 0 1.6rem;
+  letter-spacing: 0.22em;
+  padding: 1.4rem 0 1.8rem;
+  border-top: 1px solid var(--rule);
+  max-width: 46rem;
+  width: 100%;
+  margin: 0 auto;
 }
 
-.page-title { color: #fff; font-size: 1.35rem; font-weight: 800; margin-bottom: 1rem; }
+.page-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: 0.04em; margin-bottom: 1rem; }
 
 .empty-note { color: var(--muted); text-align: center; padding: 3rem 0; }
 
-.note-link { display: inline-block; margin-top: 1.6rem; font-weight: 700; }
+.note-link { display: inline-block; margin-top: 1.6rem; font-size: 0.9rem; letter-spacing: 0.08em; }
+
+/* ---------- section bars ---------- */
+
+.section-chip {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.08rem 0.9rem 0.08rem 1.15rem;
+  margin: 2.2rem 0 1rem;
+}
+
+.section-chip:first-of-type { margin-top: 0.4rem; }
+
+.section-chip[data-kind="grammar"] { background: var(--aka); }
+
+.section-chip .count { font-weight: 300; margin-left: 0.7em; letter-spacing: 0.05em; opacity: 0.85; }
 
 /* ---------- today ---------- */
 
-.today-hero { text-align: center; padding: 2.2rem 0 1.6rem; }
+.today-hero { text-align: center; padding: 2.4rem 0 1.8rem; }
 
 .today-label {
   display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.3em;
-  color: var(--ink);
-  background: var(--sun);
-  border-radius: 999px;
-  padding: 0.15rem 1.1rem 0.15rem 1.4rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  color: var(--paper);
+  background: var(--ink);
+  padding: 0.08rem 0.9rem 0.08rem 1.25rem;
 }
 
-.today-big { color: #fff; margin: 0.4rem 0 0.2rem; }
+.today-big { font-family: var(--serif); margin: 0.5rem 0 0.1rem; }
 
-.today-count { font-size: 4.6rem; font-weight: 800; line-height: 1.1; }
+.today-count { font-size: 4.8rem; font-weight: 600; line-height: 1.15; font-variant-numeric: tabular-nums; }
 
-.today-unit { font-size: 1.4rem; font-weight: 700; color: var(--muted); margin-left: 0.2em; }
+.today-unit { font-size: 1.5rem; color: var(--ink-soft); margin-left: 0.15em; }
 
-.today-done-big { color: #fff; font-size: 1.6rem; font-weight: 800; padding: 1rem 0 0.4rem; }
+.today-done-big { font-family: var(--serif); font-size: 1.6rem; font-weight: 600; padding: 1rem 0 0.4rem; }
 
-.today-sub { color: var(--muted); font-size: 0.95rem; }
+.today-sub { color: var(--muted); font-size: 0.92rem; letter-spacing: 0.05em; }
 
 .start-btn {
   display: inline-block;
-  margin-top: 1.5rem;
-  background: var(--coral);
+  margin-top: 1.6rem;
+  background: var(--aka);
   color: #fff;
-  font-size: 1.15rem;
-  font-weight: 800;
-  border-radius: 999px;
-  padding: 0.85rem 3.5rem;
-  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.35);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  padding: 0.8rem 2.6rem 0.8rem 3.05rem;
+  border-radius: 3px;
 }
 
-.start-btn:active { transform: translateY(3px); box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35); }
+.start-btn:hover { background: #A93227; }
 
-/* stamp card, like a radio-taiso attendance sheet */
+.start-btn:active { transform: translateY(1px); }
+
+/* stamp card: an attendance sheet */
 
 .stamp-card {
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 16px 24px 16px 16px;
-  padding: 1.1rem 1.2rem 1.2rem;
-  margin-top: 1.6rem;
-  position: relative;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-}
-
-.stamp-card::before {
-  content: "";
-  position: absolute;
-  top: 0.6rem;
-  left: 0.6rem;
-  width: 0.65rem;
-  height: 0.65rem;
-  background: var(--bg);
-  border-radius: 50%;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
+  background: var(--sheet);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+  padding: 1.1rem 1.3rem 1.3rem;
+  margin: 1.8rem 0.25rem 0;
 }
 
 .stamp-month {
-  font-weight: 800;
-  font-size: 0.95rem;
-  margin: 0 0 0.7rem 1.2rem;
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.15em;
   display: flex;
   align-items: baseline;
-  gap: 0.8rem;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.45rem;
 }
 
-.streak { color: var(--coral); font-size: 0.82rem; font-weight: 700; }
+.streak { color: var(--aka); font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.05em; }
 
 .stamp-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .stamp-day {
@@ -204,394 +224,304 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--muted);
-  border: 1.5px dashed var(--card-line);
+  border-bottom: 1px dotted var(--rule-dot);
 }
 
-.stamp-day.today { border: 2px solid var(--ink); color: var(--ink); font-weight: 800; }
+.stamp-day.today { border: 1.5px solid var(--ink); color: var(--ink); font-weight: 600; }
 
 .stamp-day.stamped {
-  border: 2.5px solid var(--coral);
-  color: var(--coral);
-  font-weight: 800;
-  font-size: 1rem;
+  font-family: var(--serif);
+  color: var(--aka);
+  border: 2px solid var(--aka);
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 600;
   transform: rotate(-8deg);
-  border-style: solid;
 }
 
 /* ---------- lesson list ---------- */
 
-.lesson-list { list-style: none; display: grid; gap: 0.9rem; }
+.lesson-list { list-style: none; }
+
+.lesson-list li { border-bottom: 1px solid var(--rule); }
 
 .lesson-link {
   display: flex;
   align-items: baseline;
   gap: 1rem;
   flex-wrap: wrap;
-  padding: 1.1rem 1.3rem;
+  padding: 1rem 0.2rem;
   color: var(--ink);
-  background: var(--card);
-  border-radius: 14px 22px 14px 14px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-  position: relative;
 }
 
-.lesson-link::before {
-  content: "";
-  position: absolute;
-  top: 0.55rem;
-  left: 0.55rem;
-  width: 0.6rem;
-  height: 0.6rem;
-  background: var(--bg);
-  border-radius: 50%;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-}
-
-.lesson-link:hover { transform: translateY(-2px); }
+.lesson-link:hover { background: var(--sheet); }
 
 .lesson-date {
   font-variant-numeric: tabular-nums;
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   white-space: nowrap;
-  margin-left: 1.1rem;
 }
 
-.lesson-title { font-weight: 800; font-size: 1.08rem; }
+.lesson-title { font-family: var(--serif); font-weight: 600; font-size: 1.12rem; letter-spacing: 0.03em; }
 
-.lesson-counts { margin-left: auto; color: var(--muted); font-size: 0.8rem; white-space: nowrap; }
+.lesson-counts { margin-left: auto; color: var(--muted); font-size: 0.78rem; white-space: nowrap; }
 
-/* ---------- section chips ---------- */
+/* ---------- dictionary entries (vocab) ---------- */
 
-.section-chip {
-  display: inline-block;
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
-  font-weight: 800;
-  border-radius: 999px;
-  padding: 0.18rem 1.1rem;
-  margin: 2rem 0 1rem;
-}
+.grid { display: block; }
 
-.section-chip[data-kind="vocab"] { background: var(--teal); color: var(--ink); }
-.section-chip[data-kind="grammar"] { background: var(--coral); color: #fff; }
-.section-chip[data-kind="sentence"] { background: var(--sun); color: var(--ink); }
-
-.section-chip .count { font-weight: 400; margin-left: 0.5em; letter-spacing: 0; opacity: 0.8; }
-
-/* ---------- tango cards ---------- */
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(14.5rem, 1fr));
-  gap: 1rem;
+/* two dense columns on wide screens, like a dictionary spread */
+@media (min-width: 640px) {
+  .grid:not(.grid-wide) { columns: 2; column-gap: 2.4rem; column-rule: 1px solid var(--rule); }
 }
 
 .tcard {
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 14px 22px 14px 14px;
-  padding: 1rem 1.1rem 0.8rem 1.35rem;
-  position: relative;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-  transform: rotate(-0.4deg);
-  display: flex;
-  flex-direction: column;
+  break-inside: avoid;
+  padding: 0.45rem 0.1rem;
+  border-bottom: 1px dotted var(--rule-dot);
 }
 
-.tcard:nth-child(2n) { transform: rotate(0.5deg); }
-.tcard:nth-child(3n) { transform: rotate(-0.15deg); }
+.word { font-family: var(--serif); font-size: 1.22rem; font-weight: 600; line-height: 1.6; }
 
-/* punched hole + half ring */
-.tcard::before {
-  content: "";
-  position: absolute;
-  top: 0.55rem;
-  left: 0.55rem;
-  width: 0.62rem;
-  height: 0.62rem;
-  background: var(--bg);
-  border-radius: 50%;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6);
-}
+.word ruby rt { font-family: var(--sans); font-size: 0.56rem; font-weight: 400; color: var(--ink-soft); }
 
-.tcard::after {
-  content: "";
-  position: absolute;
-  top: -0.55rem;
-  left: 0.28rem;
-  width: 1.15rem;
-  height: 1.15rem;
-  border: 3px solid #B9BEC9;
-  border-radius: 50%;
-  clip-path: inset(0 0 52% 0);
-}
+.word.pattern { font-size: 1.12rem; }
 
-.word { font-size: 1.45rem; font-weight: 800; line-height: 1.45; }
+.mean { display: inline; color: var(--ink-soft); font-size: 0.86rem; margin-left: 0.6em; }
 
-.word ruby rt { font-size: 0.58rem; font-weight: 400; color: var(--ink-soft); }
+.note { color: var(--muted); font-size: 0.82rem; padding-left: 1.1em; font-family: var(--serif); }
 
-.word.pattern { font-size: 1.15rem; }
+.note::before { content: "▸ "; color: var(--aka); font-family: var(--sans); }
 
-.mean { color: var(--ink-soft); font-size: 0.9rem; margin-top: 0.1rem; }
+.gex { font-family: var(--serif); font-size: 0.95rem; padding-left: 1.1em; margin-top: 0.15rem; }
 
-.note { color: var(--ink-soft); font-size: 0.82rem; margin-top: 0.3rem; }
-
-.gex { font-size: 0.92rem; margin-top: 0.25rem; }
+.gex::before { content: "▸ "; color: var(--aka); font-family: var(--sans); }
 
 /* grammar 讲解 block */
 .detail {
-  font-size: 0.84rem;
+  font-size: 0.85rem;
   color: var(--ink-soft);
-  background: #F5F1E4;
-  border-left: 3px solid var(--sun);
-  border-radius: 0 8px 8px 0;
-  padding: 0.45rem 0.7rem;
-  margin: 0.45rem 0 0.3rem;
-  line-height: 1.75;
+  background: var(--paper);
+  border-left: 2px solid var(--aka);
+  padding: 0.45rem 0.8rem;
+  margin: 0.5rem 0 0.35rem;
+  line-height: 1.85;
 }
 
-/* grammar cards need room for the explanation */
-.grid-wide { grid-template-columns: 1fr; }
+/* grammar boxes: 囲み notes, one per row */
+.grid-wide { display: block; }
 
-@media (min-width: 640px) {
-  .grid-wide { grid-template-columns: 1fr 1fr; }
+.grid-wide .tcard {
+  background: var(--sheet);
+  border: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding: 0.9rem 1.15rem 0.8rem;
+  margin-bottom: 1.1rem;
+  position: relative;
 }
 
-.gex::before { content: "・"; color: var(--coral); font-weight: 800; }
-
-.tcard-foot { display: flex; align-items: center; margin-top: auto; padding-top: 0.6rem; }
-
-.kind {
-  font-size: 0.6rem;
-  font-weight: 800;
-  letter-spacing: 0.2em;
-  padding: 0.05rem 0.6rem;
-  border-radius: 999px;
+.grid-wide .tcard::before {
+  content: "文型";
+  position: absolute;
+  top: -0.75rem;
+  left: 0.9rem;
+  background: var(--sheet);
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  color: var(--aka);
+  padding: 0 0.5em 0 0.8em;
 }
 
-.kind-vocab { background: var(--teal); color: var(--ink); }
-.kind-grammar { background: var(--coral); color: #fff; }
+.tcard-foot { display: inline-flex; align-items: center; gap: 0.4rem; margin-left: 0.4em; vertical-align: middle; }
 
-/* pitch accent: overline on high morae, tick on the drop */
+.kind { display: none; } /* section bars already say what things are */
 
-.pitch { display: inline-flex; align-items: baseline; font-size: 0.95rem; margin-left: 0.45em; font-weight: 400; }
+/* pitch accent: red overline on high morae, tick on the drop */
 
-.pitch .mora { padding: 0.1em 0.02em; border-top: 2.5px solid transparent; }
+.pitch { display: inline-flex; align-items: baseline; font-family: var(--sans); font-size: 0.9rem; margin-left: 0.5em; font-weight: 400; }
 
-.pitch .hi { border-top-color: var(--coral); }
+.pitch .mora { padding: 0.1em 0.02em; border-top: 2px solid transparent; }
 
-.pitch .drop { border-right: 2.5px solid var(--coral); }
+.pitch .hi { border-top-color: var(--aka); }
 
-.accent-num { color: var(--coral); font-size: 0.68rem; vertical-align: super; margin-left: 0.15em; font-weight: 800; }
+.pitch .drop { border-right: 2px solid var(--aka); }
+
+.accent-num { color: var(--aka); font-size: 0.68rem; vertical-align: super; margin-left: 0.2em; }
 
 /* ---------- speak button ---------- */
 
 .speak {
-  margin-left: auto;
-  border: 2px solid var(--card-line);
-  background: #fff;
-  border-radius: 999px;
-  width: 2.1rem;
-  height: 2.1rem;
-  font-size: 0.95rem;
+  border: 1px solid var(--rule);
+  background: var(--sheet);
+  border-radius: 50%;
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 0.8rem;
   line-height: 1;
+  color: var(--ai);
   flex-shrink: 0;
+  vertical-align: middle;
 }
 
-.speak:hover { border-color: var(--ink); }
+.speak:hover { border-color: var(--ai); }
 
-.speak:active { transform: scale(0.92); }
+.speak:active { transform: scale(0.93); }
 
 /* ---------- sentences ---------- */
 
-.sentence-list { list-style: none; display: grid; gap: 0.7rem; }
+.sentence-list { list-style: none; }
 
 .sentence-list li {
   display: flex;
   align-items: flex-start;
   gap: 0.7rem;
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 12px;
-  padding: 0.7rem 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  padding: 0.6rem 0.1rem;
+  border-bottom: 1px dotted var(--rule-dot);
 }
 
-.sentence-list .speak { margin-left: 0; }
+.sentence-ja { font-family: var(--serif); font-size: 1.08rem; }
 
-.sentence-ja { font-size: 1.02rem; font-weight: 700; }
-
-.sentence-en { color: var(--ink-soft); font-size: 0.84rem; }
+.sentence-en { color: var(--muted); font-size: 0.82rem; }
 
 /* ---------- lesson detail header ---------- */
 
-.lesson-head { margin-bottom: 0.3rem; }
+.lesson-head { border-bottom: 3px double var(--ink); padding-bottom: 0.6rem; margin-bottom: 0.6rem; }
 
-.lesson-head .page-title { margin-bottom: 0.1rem; }
+.lesson-head .page-title { margin-bottom: 0; }
 
-.lesson-head .lesson-date { display: block; margin-left: 0; }
+.lesson-head .lesson-date { display: block; }
 
-.back-link { font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 1rem; }
+.back-link { font-size: 0.85rem; letter-spacing: 0.08em; display: inline-block; margin-bottom: 1.1rem; }
 
 /* ---------- review ---------- */
 
-.progress {
-  height: 0.5rem;
-  background: var(--bg-soft);
-  border-radius: 999px;
-  overflow: hidden;
-  margin-bottom: 0.6rem;
-}
+.progress { height: 3px; background: var(--rule); margin-bottom: 0.7rem; }
 
-.progress-fill {
-  height: 100%;
-  background: var(--teal);
-  border-radius: 999px;
-  transition: width 0.25s ease;
-}
+.progress-fill { height: 100%; background: var(--aka); transition: width 0.25s ease; }
 
-.review-status { color: var(--muted); font-size: 0.85rem; text-align: center; margin-bottom: 1rem; }
+.review-status { color: var(--muted); font-size: 0.82rem; text-align: center; letter-spacing: 0.1em; margin-bottom: 1.1rem; }
 
 .bigcard {
-  background: var(--card);
-  color: var(--ink);
-  border-radius: 18px 30px 18px 18px;
-  padding: 2.8rem 1.5rem 2.2rem;
+  background: var(--sheet);
+  border: 1.5px solid var(--ink);
+  padding: 2.8rem 1.5rem 2.4rem;
   text-align: center;
   min-height: 16rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1rem;
-  position: relative;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
 }
 
-.bigcard::before {
-  content: "";
-  position: absolute;
-  top: 0.8rem;
-  left: 0.8rem;
-  width: 0.8rem;
-  height: 0.8rem;
-  background: var(--bg);
-  border-radius: 50%;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
-}
+.card-front { font-family: var(--serif); font-size: 2.5rem; font-weight: 600; line-height: 1.5; }
 
-.card-front { font-size: 2.5rem; font-weight: 800; line-height: 1.4; }
+.card-front.is-grammar { font-size: 1.7rem; }
 
-.card-front.is-grammar { font-size: 1.6rem; }
+.card-front.is-sentence { font-family: var(--sans); font-size: 1.25rem; font-weight: 500; line-height: 1.7; color: var(--ink); }
+
+.card-hint { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.2em; }
 
 .card-tag {
   align-self: center;
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  border-radius: 999px;
-  padding: 0.1rem 0.85rem;
-  font-weight: 800;
+  font-size: 0.68rem;
+  letter-spacing: 0.4em;
+  color: var(--aka);
+  border: 1px solid var(--aka);
+  padding: 0.02rem 0.5rem 0.02rem 0.9rem;
 }
 
-.tag-vocab { background: var(--teal); color: var(--ink); }
-.tag-grammar { background: var(--coral); color: #fff; }
-.tag-sentence { background: var(--sun); color: var(--ink); }
-
-/* sentence production card: English prompt on the front */
-.card-front.is-sentence { font-size: 1.35rem; font-weight: 700; line-height: 1.6; }
-
-.card-hint { color: var(--muted); font-size: 0.82rem; }
-
-.sentence-answer { font-size: 1.5rem; font-weight: 800; line-height: 1.6; }
-
-.card-back { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
+.card-back { display: flex; flex-direction: column; gap: 0.55rem; align-items: center; }
 
 .card-back .pitch { font-size: 1.3rem; margin-left: 0; }
 
-.card-back .meaning { font-size: 1.05rem; color: var(--ink-soft); }
+.card-back .meaning { font-size: 1rem; color: var(--ink-soft); }
 
-.card-back .example { color: var(--ink-soft); font-size: 0.95rem; }
+.card-back .example { font-family: var(--serif); color: var(--ink-soft); font-size: 0.98rem; }
 
-.card-back .speak { margin-left: 0; }
+.card-back .detail { text-align: left; max-width: 30rem; }
+
+.sentence-answer { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; line-height: 1.6; }
 
 .reveal-btn {
-  margin-top: 1.3rem;
+  margin-top: 1.4rem;
   width: 100%;
-  border: none;
-  background: var(--sun);
-  color: var(--ink);
-  font-size: 1rem;
-  font-weight: 800;
-  border-radius: 14px;
-  padding: 0.85rem 1rem;
-  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.35);
+  border: 1.5px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.95rem;
+  letter-spacing: 0.4em;
+  padding: 0.8rem 1rem 0.8rem 1.4rem;
+  border-radius: 3px;
 }
 
-.reveal-btn:active { transform: translateY(3px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); }
+.reveal-btn:active { transform: translateY(1px); }
 
 .grade-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.6rem;
-  margin-top: 1.3rem;
+  margin-top: 1.4rem;
 }
 
 .grade-btn {
-  border: none;
-  border-radius: 12px;
-  padding: 0.75rem 0.3rem;
-  font-weight: 800;
+  border: 1.5px solid var(--ink);
+  background: var(--sheet);
+  color: var(--ink);
+  border-radius: 3px;
+  padding: 0.7rem 0.3rem;
   font-size: 0.92rem;
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.1em;
 }
 
-.grade-btn:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.35); }
+.grade-btn:hover { background: var(--paper); }
 
-.b-again { background: var(--coral); color: #fff; }
-.b-hard { background: var(--bg-soft); color: var(--cream-ink); }
-.b-good { background: #fff; color: var(--ink); }
-.b-easy { background: var(--teal); color: var(--ink); }
+.grade-btn:active { transform: translateY(1px); }
+
+.b-again { border-color: var(--aka); color: var(--aka); }
+
+.b-again:hover { background: var(--aka-soft); }
+
+.b-easy:hover { border-color: var(--ai); color: var(--ai); }
 
 /* ---------- review done ---------- */
 
-.review-done { text-align: center; padding: 3rem 0; }
+.review-done { text-align: center; padding: 3.5rem 0; }
 
 .big-stamp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 6rem;
-  height: 6rem;
-  border: 5px solid var(--coral);
+  width: 5.8rem;
+  height: 5.8rem;
+  border: 4px solid var(--aka);
   border-radius: 50%;
-  color: var(--coral);
-  font-size: 2.6rem;
-  font-weight: 800;
+  color: var(--aka);
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 600;
   transform: rotate(-10deg);
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.3rem;
   animation: stamp-in 0.35s cubic-bezier(0.2, 1.6, 0.4, 1);
 }
 
 @keyframes stamp-in {
-  from { transform: rotate(-10deg) scale(2.2); opacity: 0; }
+  from { transform: rotate(-10deg) scale(2.1); opacity: 0; }
   to { transform: rotate(-10deg) scale(1); opacity: 1; }
 }
 
-.done-title { color: #fff; font-size: 1.4rem; font-weight: 800; }
+.done-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 600; letter-spacing: 0.05em; }
 
-.review-done .sub { color: var(--muted); font-size: 0.9rem; margin-top: 0.6rem; }
+.review-done .sub { color: var(--muted); font-size: 0.88rem; margin-top: 0.6rem; }
 
 /* ---------- responsive & a11y ---------- */
 
 @media (max-width: 480px) {
-  .today-count { font-size: 3.6rem; }
-  .card-front { font-size: 1.9rem; }
+  .today-count { font-size: 3.8rem; }
+  .card-front { font-size: 2rem; }
   .grade-row { grid-template-columns: repeat(2, 1fr); }
-  .grid { grid-template-columns: 1fr 1fr; }
-  .word { font-size: 1.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
