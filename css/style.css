@@ -104,11 +104,13 @@ button { font-family: inherit; cursor: pointer; }
 
 .center-view .card-front.is-sentence { font-size: 1.6rem; }
 
+.center-view .card-front.is-ja-sentence { font-size: 2.3rem; }
+
 .center-view .sentence-answer { font-size: 2rem; }
 
 .center-view .card-back .meaning { font-size: 1.15rem; }
 
-.center-view .breakdown li { font-size: 0.92rem; }
+.center-view .breakdown li { font-size: 1.05rem; }
 
 .center-view .card-back .breakdown,
 .center-view .card-back .gex-line,
@@ -143,6 +145,10 @@ button { font-family: inherit; cursor: pointer; }
 .lp-fill { height: 100%; background: var(--ink); }
 
 .lp-text { color: var(--ink-soft); font-size: 0.8rem; font-weight: 600; margin-top: 0.35rem; text-align: center; }
+
+.learn-progress .jaline { text-align: center; margin-top: 0.4rem; }
+
+.lp-ja { font-size: 0.9rem; font-weight: 800; color: var(--ink); }
 
 .site-footer {
   background: var(--ink);
@@ -374,9 +380,9 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 .breakdown li {
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   color: var(--ink-soft);
-  line-height: 1.8;
+  line-height: 1.9;
   padding-left: 1em;
   text-indent: -1em;
 }
@@ -501,6 +507,8 @@ button { font-family: inherit; cursor: pointer; }
 .card-front.is-grammar { font-size: 1.8rem; }
 
 .card-front.is-sentence { font-size: 1.35rem; font-weight: 800; line-height: 1.7; }
+
+.card-front.is-ja-sentence { font-size: 2rem; line-height: 1.6; letter-spacing: -0.01em; }
 
 .card-hint { color: var(--muted); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.25em; }
 

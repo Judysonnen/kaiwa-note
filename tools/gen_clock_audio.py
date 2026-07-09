@@ -26,7 +26,8 @@ DAY_KANA = {
 }
 
 ONES_KANA = ['', 'いち', 'に', 'さん', 'よん', 'ご', 'ろく', 'なな', 'はち', 'きゅう']
-TENS_KANA = ['', 'じゅう', 'にじゅう', 'さんじゅう', 'よんじゅう', 'ごじゅう']
+TENS_KANA = ['', 'じゅう', 'にじゅう', 'さんじゅう', 'よんじゅう', 'ごじゅう',
+             'ろくじゅう', 'ななじゅう', 'はちじゅう', 'きゅうじゅう']
 
 HOUR_KANA = ['れいじ', 'いちじ', 'にじ', 'さんじ', 'よじ', 'ごじ', 'ろくじ',
              'しちじ', 'はちじ', 'くじ', 'じゅうじ', 'じゅういちじ', 'じゅうにじ']
@@ -74,6 +75,20 @@ UI_TEXTS = [
 # exact string always resolves to a clip (strings must match js/main.js).
 UI_TEXTS += [f'あしたは新しいカードが{n}枚とどきます' for n in range(1, 11)]
 UI_TEXTS += [f'約{m}分でおわります' for m in range(1, 21)]
+
+
+def num_kana(n: int) -> str:
+    if n == 0:
+        return 'ゼロ'
+    return TENS_KANA[n // 10] + ONES_KANA[n % 10]
+
+
+# Progress-line components: chained as
+# ぜんぶで / <num> / 勉強したのは / <num> / のこりは / <num>です
+UI_TEXTS += ['ぜんぶで', '勉強したのは', 'のこりは',
+             'ぜんぶ勉強しました！あとは復習だけです']
+UI_TEXTS += [num_kana(n) for n in range(1, 100)]
+UI_TEXTS += [f'{num_kana(n)}です' for n in range(1, 100)]
 
 if __name__ == '__main__':
     # Normal speaking rate: these clips are chained at playback, and the

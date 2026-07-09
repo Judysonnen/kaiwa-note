@@ -17,7 +17,14 @@ const DAY_KANA = {
 };
 
 const ONES_KANA = ['', 'いち', 'に', 'さん', 'よん', 'ご', 'ろく', 'なな', 'はち', 'きゅう'];
-const TENS_KANA = ['', 'じゅう', 'にじゅう', 'さんじゅう', 'よんじゅう', 'ごじゅう'];
+const TENS_KANA = ['', 'じゅう', 'にじゅう', 'さんじゅう', 'よんじゅう', 'ごじゅう',
+  'ろくじゅう', 'ななじゅう', 'はちじゅう', 'きゅうじゅう'];
+
+// Plain number reading, 0-99.
+export function numKana(n) {
+  if (n === 0) return 'ゼロ';
+  return TENS_KANA[Math.floor(n / 10)] + ONES_KANA[n % 10];
+}
 
 function dayKana(d) {
   if (DAY_KANA[d]) return DAY_KANA[d];

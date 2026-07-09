@@ -1,6 +1,6 @@
 import { renderPitch } from './pitch.js';
 import { speakJa, speakSeq, speakButton } from './tts.js';
-import { dateInfo, timeInfo } from './clock.js';
+import { dateInfo, timeInfo, numKana } from './clock.js';
 import { pull, push, getToken, setToken, test as syncTest } from './sync.js';
 import {
   buildQueue, bonusQueue, grade, dueCount, unseenCount, nextDueDate, studiedCount,
@@ -67,14 +67,15 @@ function sessionMinutes(n) {
 }
 
 // UI text in Japanese with a Chinese subtitle; tap the Japanese to hear it.
-// The interface itself doubles as reading practice.
-function jaLine(ja, zh, jaCls) {
+// The interface itself doubles as reading practice. Pass `parts` when the
+// sentence should be assembled from component clips (dynamic numbers).
+function jaLine(ja, zh, jaCls, parts) {
   const wrap = el('div', 'jaline');
   const btn = el('button', `jaline-ja ${jaCls || ''}`.trim(), ja);
   btn.type = 'button';
   btn.lang = 'ja';
   btn.title = '点击朗读';
-  btn.addEventListener('click', () => speakJa(ja));
+  btn.addEventListener('click', () => parts ? speakSeq(parts, ja) : speakJa(ja));
   wrap.appendChild(btn);
   if (zh) wrap.appendChild(el('div', 'jaline-zh', zh));
   return wrap;
@@ -101,10 +102,18 @@ function progressLine(items) {
   bar.appendChild(fill);
   wrap.appendChild(bar);
   const days = Math.ceil(left / NEW_PER_DAY);
-  wrap.appendChild(el('p', 'lp-text',
-    left > 0
-      ? `已学 ${seenN} / ${total} 句 ・ 还剩 ${left} 句（每天 ${NEW_PER_DAY} 句新的，约 ${days} 天学完）`
-      : `全部 ${total} 句都学过了，现在是纯复习模式`));
+  if (left > 0) {
+    wrap.appendChild(jaLine(
+      `ぜんぶで${total}文・勉強したのは${seenN}文・のこりは${left}文`,
+      `共 ${total} 句 ・ 已学 ${seenN} 句 ・ 还剩 ${left} 句（每天 ${NEW_PER_DAY} 句新的，约 ${days} 天学完）`,
+      'lp-ja',
+      ['ぜんぶで', numKana(total), '勉強したのは', numKana(seenN), 'のこりは', `${numKana(left)}です`]));
+  } else {
+    wrap.appendChild(jaLine(
+      'ぜんぶ勉強しました！あとは復習だけです',
+      `全部 ${total} 句都学过了，接下来只有复习`,
+      'lp-ja'));
+  }
   return wrap;
 }
 
@@ -468,7 +477,7 @@ async function renderReview() {
       card.appendChild(front);
     } else {
       if (learning) {
-        const front = el('div', 'card-front is-grammar', data.ja);
+        const front = el('div', 'card-front is-ja-sentence', data.ja);
         front.lang = 'ja';
         card.appendChild(front);
       } else {
