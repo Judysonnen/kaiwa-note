@@ -69,6 +69,20 @@ Review is sentences-only (`NEW_MIX` in `js/srs.js`); grammar and vocab are
 notebook reference material, and their content should be woven into the
 sentence breakdowns.
 
+Drills: `{ id ("d01"...), zh, ja, points, vocab: [{word, reading, zh, level}] }`
+— 30-48 production exercises per lesson, written at import time. Rules:
+- Recombine patterns the student has learned (this lesson and earlier ones)
+  with everyday vocabulary; new sentences, not copies of the examples.
+- Every grammar pattern from the lesson appears in ≥2 drills; every lesson
+  vocab word that is absent from the example sentences appears in ≥1 drill.
+  Skip only proper nouns (people, book titles) — common nouns like 火鍋 are
+  high-frequency for Di by definition (they came from her own conversation).
+- `vocab` lists only words NEW to Di, seeded from the JLPT N5/N4 lists in
+  `tools/data/` (N5 first). MANDATORY: run
+  `python3 tools/check_drills.py data/lessons/YYYY-MM-DD.json --fix`
+  — it hard-fails on any seed word not on the open N5/N4 lists.
+- Audio generation (`tools/gen_audio.py`) covers drill sentences and seeds.
+
 ## Style
 
 - Keep the teacher's original wording wherever possible; this is Di's notebook,

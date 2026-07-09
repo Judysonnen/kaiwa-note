@@ -579,6 +579,37 @@ button { font-family: inherit; cursor: pointer; }
 
 .b-good:hover { background: var(--ink); color: #fff; }
 
+/* ---------- drill seed words ---------- */
+
+.seed-row { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: 0.4rem; }
+
+.seed-word {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  border: 2px solid var(--hairline);
+  background: var(--white);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.seed-word:hover { border-color: var(--ink); }
+
+.seed-ja { font-weight: 800; }
+
+.seed-zh { color: var(--ink-soft); font-size: 0.8rem; }
+
+.seed-level {
+  color: #fff;
+  background: var(--punch);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  padding: 0.05rem 0.4rem;
+}
+
 /* ---------- review done ---------- */
 
 .review-done { text-align: center; padding: 3.5rem 0; }

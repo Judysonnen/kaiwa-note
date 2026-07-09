@@ -569,6 +569,120 @@ async function renderReview() {
   showCard();
 }
 
+// ---------- drills（練習）----------
+// Output practice, not memory tracking: random order, no repeats within a
+// round, reshuffle when the pool is exhausted. No FSRS, no grading.
+
+const DRILL_KEY = 'kaiwa-note:drill:v1';
+
+async function getAllDrills() {
+  const { lessons } = await getManifest();
+  const drills = [];
+  for (const meta of lessons) {
+    const lesson = await getLesson(meta.id);
+    for (const dr of lesson.drills || []) {
+      drills.push({ ...dr, drillId: `${lesson.id}/${dr.id}` });
+    }
+  }
+  return drills;
+}
+
+function drillRound(ids) {
+  let state;
+  try {
+    state = JSON.parse(localStorage.getItem(DRILL_KEY)) || {};
+  } catch {
+    state = {};
+  }
+  const sameSet = Array.isArray(state.order)
+    && state.order.length === ids.length
+    && state.order.every(id => ids.includes(id));
+  if (!sameSet || state.next >= state.order.length) {
+    const order = [...ids];
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    state = { order, next: 0 };
+    localStorage.setItem(DRILL_KEY, JSON.stringify(state));
+  }
+  return state;
+}
+
+function advanceDrill(state) {
+  state.next += 1;
+  localStorage.setItem(DRILL_KEY, JSON.stringify(state));
+}
+
+async function renderDrill() {
+  const drills = await getAllDrills();
+  if (!drills.length) {
+    view.replaceChildren(el('p', 'empty-note', 'まだ練習問題がありません。'));
+    return;
+  }
+  const byId = new Map(drills.map(dr => [dr.drillId, dr]));
+
+  function showDrill() {
+    const state = drillRound([...byId.keys()]);
+    const dr = byId.get(state.order[state.next]);
+
+    view.replaceChildren();
+    view.appendChild(el('p', 'review-status',
+      `このラウンド：${state.next + 1} / ${state.order.length}`));
+
+    const card = el('div', 'bigcard');
+    card.appendChild(el('div', 'card-tag tag-sentence', '練習'));
+    card.appendChild(el('div', 'card-front is-sentence', dr.zh));
+    card.appendChild(jaLine('日本語で言ってみましょう', '试着用日语说说看', 'card-hint'));
+
+    const back = el('div', 'card-back');
+    back.hidden = true;
+    const answer = el('div', 'sentence-answer', dr.ja);
+    answer.lang = 'ja';
+    back.appendChild(answer);
+    back.appendChild(speakButton(dr.ja));
+    if (dr.points?.length) back.appendChild(breakdownList(dr.points));
+    if (dr.vocab?.length) {
+      const row = el('div', 'seed-row');
+      for (const v of dr.vocab) {
+        const chip = el('button', 'seed-word');
+        chip.type = 'button';
+        chip.title = '点击朗读';
+        chip.appendChild(el('span', 'seed-ja', `${v.word}（${v.reading}）`));
+        chip.appendChild(el('span', 'seed-zh', v.zh));
+        chip.appendChild(el('span', 'seed-level', v.level));
+        chip.addEventListener('click', () => speakJa(v.word));
+        row.appendChild(chip);
+      }
+      back.appendChild(row);
+    }
+    card.appendChild(back);
+    view.appendChild(card);
+
+    const revealBtn = el('button', 'reveal-btn', '答えを見る');
+    revealBtn.type = 'button';
+    view.appendChild(revealBtn);
+
+    const nextBtn = el('button', 'reveal-btn', 'つぎへ');
+    nextBtn.type = 'button';
+    nextBtn.hidden = true;
+    nextBtn.addEventListener('click', () => {
+      advanceDrill(state);
+      showDrill();
+    });
+    view.appendChild(labeled(nextBtn, '下一题'));
+
+    revealBtn.addEventListener('click', () => {
+      back.hidden = false;
+      revealBtn.hidden = true;
+      nextBtn.hidden = false;
+      speakJa(dr.ja);
+    });
+  }
+
+  showDrill();
+}
+
 // ---------- router ----------
 
 function setActiveNav(name) {
@@ -579,11 +693,14 @@ function setActiveNav(name) {
 
 async function route() {
   const hash = location.hash || '#/';
-  view.classList.toggle('center-view', hash === '#/review');
+  view.classList.toggle('center-view', hash === '#/review' || hash === '#/drill');
   try {
     if (hash.startsWith('#/lesson/')) {
       setActiveNav('lessons');
       await renderLesson(hash.slice('#/lesson/'.length));
+    } else if (hash === '#/drill') {
+      setActiveNav('drill');
+      await renderDrill();
     } else if (hash === '#/lessons') {
       setActiveNav('lessons');
       await renderLessonList();

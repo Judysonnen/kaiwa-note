@@ -46,6 +46,10 @@ def lesson_texts(lesson: dict) -> list[str]:
             texts.append(ex["ja"] if isinstance(ex, dict) else ex)
     for s in lesson.get("sentences", []):
         texts.append(s["ja"])
+    for d in lesson.get("drills", []):
+        texts.append(d["ja"])
+        for v in d.get("vocab", []):
+            texts.append(v["word"])
     # De-duplicate, keep order.
     seen = set()
     unique = []
